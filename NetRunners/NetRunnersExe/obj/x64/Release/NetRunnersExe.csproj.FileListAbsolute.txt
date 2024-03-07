@@ -1,0 +1,6 @@
+X:\solutions\NetRunners\NetRunnersExe\bin\x64\Release\NetRunners.exe.config
+X:\solutions\NetRunners\NetRunnersExe\bin\x64\Release\NetRunners.exe
+X:\solutions\NetRunners\NetRunnersExe\bin\x64\Release\NetRunners.pdb
+X:\solutions\NetRunners\NetRunnersExe\obj\x64\Release\NetRunnersExe.csproj.CoreCompileInputs.cache
+X:\solutions\NetRunners\NetRunnersExe\obj\x64\Release\NetRunners.exe
+X:\solutions\NetRunners\NetRunnersExe\obj\x64\Release\NetRunners.pdb

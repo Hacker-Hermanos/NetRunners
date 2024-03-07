@@ -1,0 +1,16 @@
+X:\solutions\NetRunners\NetCLM\bin\x64\Release\NetCLM.exe.config
+X:\solutions\NetRunners\NetCLM\bin\x64\Release\NetCLM.exe
+X:\solutions\NetRunners\NetCLM\bin\x64\Release\NetCLM.pdb
+X:\solutions\NetRunners\NetCLM\bin\x64\Release\System.Management.Automation.dll
+X:\solutions\NetRunners\NetCLM\obj\x64\Release\NetRunnersCLM.csprojAssemblyReference.cache
+X:\solutions\NetRunners\NetCLM\obj\x64\Release\NetRunnersCLM.csproj.CoreCompileInputs.cache
+X:\solutions\NetRunners\NetCLM\obj\x64\Release\NetRunnersCLM.csproj.CopyComplete
+X:\solutions\NetRunners\NetCLM\obj\x64\Release\NetCLM.exe
+X:\solutions\NetRunners\NetCLM\obj\x64\Release\NetCLM.pdb
+X:\solutions\NetRunners\NetRunnersCLM\bin\x64\Release\NetRunnersCLM.exe.config
+X:\solutions\NetRunners\NetRunnersCLM\bin\x64\Release\NetRunnersCLM.exe
+X:\solutions\NetRunners\NetRunnersCLM\bin\x64\Release\System.Management.Automation.dll
+X:\solutions\NetRunners\NetRunnersCLM\obj\x64\Release\NetRunnersCLM.csprojAssemblyReference.cache
+X:\solutions\NetRunners\NetRunnersCLM\obj\x64\Release\NetRunnersCLM.csproj.CoreCompileInputs.cache
+X:\solutions\NetRunners\NetRunnersCLM\obj\x64\Release\NetRunnersCLM.csproj.CopyComplete
+X:\solutions\NetRunners\NetRunnersCLM\obj\x64\Release\NetRunnersCLM.exe

@@ -1,0 +1,5 @@
+X:\solutions\Netrunners\NetRunnersDLL\bin\x86\Release\NetRunnersDLL.dll
+X:\solutions\Netrunners\NetRunnersDLL\bin\x86\Release\NetRunnersDLL.pdb
+X:\solutions\Netrunners\NetRunnersDLL\obj\x86\Release\NetRunnersDLL.csproj.CoreCompileInputs.cache
+X:\solutions\Netrunners\NetRunnersDLL\obj\x86\Release\NetRunnersDLL.dll
+X:\solutions\Netrunners\NetRunnersDLL\obj\x86\Release\NetRunnersDLL.pdb

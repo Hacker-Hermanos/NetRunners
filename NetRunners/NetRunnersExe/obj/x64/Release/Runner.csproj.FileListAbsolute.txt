@@ -1,0 +1,14 @@
+X:\runners\Netrunners\Netrunners\bin\x64\Release\Netrunners.exe.config
+X:\runners\Netrunners\Netrunners\bin\x64\Release\Netrunners.exe
+X:\runners\Netrunners\Netrunners\bin\x64\Release\Netrunners.pdb
+X:\runners\Netrunners\Netrunners\obj\x64\Release\Runner.csprojAssemblyReference.cache
+X:\runners\Netrunners\Netrunners\obj\x64\Release\Runner.csproj.CoreCompileInputs.cache
+X:\runners\Netrunners\Netrunners\obj\x64\Release\Netrunners.exe
+X:\runners\Netrunners\Netrunners\obj\x64\Release\Netrunners.pdb
+X:\solutions\Netrunners.bak\Netrunners\bin\x64\Release\Netrunners.exe.config
+X:\solutions\Netrunners.bak\Netrunners\bin\x64\Release\Netrunners.exe
+X:\solutions\Netrunners.bak\Netrunners\bin\x64\Release\Netrunners.pdb
+X:\solutions\Netrunners.bak\Netrunners\obj\x64\Release\Runner.csprojAssemblyReference.cache
+X:\solutions\Netrunners.bak\Netrunners\obj\x64\Release\Runner.csproj.CoreCompileInputs.cache
+X:\solutions\Netrunners.bak\Netrunners\obj\x64\Release\Netrunners.exe
+X:\solutions\Netrunners.bak\Netrunners\obj\x64\Release\Netrunners.pdb

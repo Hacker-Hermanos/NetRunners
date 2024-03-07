@@ -1,0 +1,6 @@
+X:\solutions\Netrunners\ReflectiveLoad\bin\x64\Release\ReflectiveLoad.dll
+X:\solutions\Netrunners\ReflectiveLoad\bin\x64\Release\ReflectiveLoad.pdb
+X:\solutions\Netrunners\ReflectiveLoad\obj\x64\Release\ReflectiveLoad.csproj.CoreCompileInputs.cache
+X:\solutions\Netrunners\ReflectiveLoad\obj\x64\Release\ReflectiveLoad.dll
+X:\solutions\Netrunners\ReflectiveLoad\obj\x64\Release\ReflectiveLoad.pdb
+X:\solutions\Netrunners\ReflectiveLoad\obj\x64\Release\ReflectiveLoad.csprojAssemblyReference.cache
