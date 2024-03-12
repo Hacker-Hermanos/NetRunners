@@ -6,7 +6,6 @@ namespace Encryptors
 {
     public static class Encryptor
     {
-
         // Generates an Initialization Vector (IV) for aes encryption
         public static byte[] GenerateIV_Aes()
         {

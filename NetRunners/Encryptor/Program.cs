@@ -60,7 +60,16 @@ namespace Encryptors
                     Console.Write("public static byte[] buf = ");
                     PrintBytesToHex(encrypted);
 
-                    // encrypt and print all functions
+                    // encrypt amsi related strings and print
+                    for (int i = 0; i < AmsiArray.Length; i++)
+                    {
+                        byte[] AmsiArrayBytes = Encoding.UTF8.GetBytes(AmsiArray[i]);
+                        encrypted = EncryptBytesToBytes_Aes(AmsiArrayBytes, AesKey, AesIV);
+                        Console.Write($"public static byte[] {AmsiArray[i].Replace(".", "")}_Byte = ");
+                        PrintBytesToHex(encrypted);
+                    }
+
+                    // encrypt and print windows api functions
                     for (int i = 0; i < FunctionNames.Length; i++) 
                     {
                         byte[] FunctionNameBytes = Encoding.UTF8.GetBytes(FunctionNames[i]);

@@ -13,7 +13,7 @@ namespace NetRunners.Data
     public class Delegates
     {
         // helper to decrypt API string
-        static string Decrypt(byte[] API_String)
+        public static string Decrypt(byte[] API_String)
         {
             string decrypted = System.Text.Encoding.UTF8.GetString(NetRunners.Decryptors.Decryptors.DecryptBytesToBytes_Aes(API_String, AesKey, AesIV));
             return decrypted; 

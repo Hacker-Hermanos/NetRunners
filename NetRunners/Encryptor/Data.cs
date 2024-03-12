@@ -47,25 +47,11 @@
             "LoadLibraryA",
             "GetStdHandle"
         };
-        public static readonly string[] Variable_Names =
+        public static readonly string[] AmsiArray =
         {
-            "sVirtualAlloc",
-            "sVirtualProtect",
-            "sCreateThread",
-            "sWaitForSingleObject",
-            "sVirtualAllocEx",
-            "sWriteProcessMemory",
-            "sCreateRemoteThread",
-            "sOpenProcess",
-            "sGetCurrentProcess",
-            "sFlsAlloc",
-            "sVirtualAllocExNuma",
-            "sCreateProcessA",
-            "sZwQueryInformationProcess",
-            "sReadProcessMemory",
-            "sResumeThread",
-            "sLoadLibraryA",
-            "sGetStdHandle"
+            "amsi.dll",
+            "AmsiOpenSession",
+            "AmsiScanBuffer"
         };
     }
 }

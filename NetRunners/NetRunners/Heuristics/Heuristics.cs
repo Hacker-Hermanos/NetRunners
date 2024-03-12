@@ -12,6 +12,7 @@ namespace NetRunners.Heuristics
 		// perform a sleep function, if this func is skipped the binary is being emulated by AV
 		public static bool Sleep()
 		{
+			Console.WriteLine("[+] Sleeping 5\"");
 			DateTime t1 = DateTime.Now;
 
 			Thread.Sleep(5000);
@@ -29,8 +30,9 @@ namespace NetRunners.Heuristics
 		// execute a non-emulable function, if memory address is null, the binary is being emulated by AV
 		public static bool NonEmulated()
         {
-			// try to run virtualallocexnuma
-			IntPtr mem = VirtualAllocExNuma(GetCurrentProcess(), IntPtr.Zero, 0x1000, 0x3000, 0x4, 0);
+            Console.WriteLine("[+] Running Non-Emulated APIs");
+            // try to run virtualallocexnuma
+            IntPtr mem = VirtualAllocExNuma(GetCurrentProcess(), IntPtr.Zero, 0x1000, 0x3000, 0x4, 0);
 			// try to run flsalloc
 			IntPtr checkPtr = FlsAlloc(IntPtr.Zero);
 			if (mem == null || checkPtr == null) 
