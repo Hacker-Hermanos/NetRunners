@@ -1,61 +1,92 @@
 ﻿using System;
-using System.Text;
-using static ShellcodeEncryptor.Print;
+using System.IO;
+using System.Security.Cryptography;
 
-namespace ShellcodeEncryptor
+namespace Encryptors
 {
-    /// <summary>
-    /// Contains various encryption rotuines to treat unencrypted shellcode.
-    /// </summary>
-    public static class Encryptors
+    public static class Encryptor
     {
-        // generate random substitution key
-        static Random rnd = new Random();
-        static int subKey = rnd.Next(10, 101);
 
-        // caesar encryption routine to decimal for Csharp shellcode runner
-        public static void Caesar(byte[] buf)
+        // Generates an Initialization Vector (IV) for aes encryption
+        public static byte[] GenerateIV_Aes()
         {
-            // encrypt payload
-            byte[] encoded = new byte[buf.Length];
-            for (int i = 0; i < buf.Length; i++)
+            try
             {
-                encoded[i] = (byte)(((uint)buf[i] + subKey) & 0xFF);
-            }
-            // format and print encrypted payload
-            StringBuilder hex = new StringBuilder(encoded.Length * 2);
-            foreach (byte b in encoded)
-            {
-                hex.AppendFormat("0x{0:x2}, ", b);
-            }
-            
-            csPrint(subKey.ToString(), hex.ToString());
-            return;
-        }
-        public static void vbCaesar(byte[] buf)
-        {
-            // caesar encryption routine to decimal for visual basic shellcode runner
-            byte[] encoded = new byte[buf.Length];
-            for (int i = 0; i < buf.Length; i++)
-            {
-                encoded[i] = (byte)(((uint)buf[i] + subKey) & 0xFF);
-            }
-
-            uint counter = 0;
-
-            StringBuilder hex = new StringBuilder(encoded.Length * 2);
-            foreach (byte b in encoded)
-            {
-                hex.AppendFormat("{0:D}, ", b);
-                counter++;
-                if (counter % 50 == 0)
+                using (AesManaged aesAlg = new AesManaged())
                 {
-                    hex.AppendFormat("_{0}", Environment.NewLine);
+                    aesAlg.GenerateIV();
+                    byte[] IV = aesAlg.IV;
+
+                    return IV;
                 }
             }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException("Failed generating IV.", e);
+            }
+        }
+        // Generates a valid aes key for aes encryption
+        public static byte[] GenerateKey_Aes()
+        {
+            using (var random = new RNGCryptoServiceProvider())
+            {
+                var key = new byte[32];
+                random.GetBytes(key);
 
-            vbPrint(subKey.ToString(), hex.ToString());
-            return;
+                return key;
+            }
+        }
+        // Aes Encrypt Byte Arrays
+        public static byte[] EncryptBytesToBytes_Aes(byte[] plainBytes, byte[] AesKey, byte[] AesIV)
+        {
+            try
+            {
+                byte[] encrypted;
+
+                using (Aes aesAlg = Aes.Create())
+                {
+                    aesAlg.Key = AesKey;
+                    aesAlg.IV = AesIV;
+                    aesAlg.Mode = CipherMode.CBC;
+                    aesAlg.Padding = PaddingMode.PKCS7;
+
+                    var encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+                    // Create the streams used for encryption.
+                    using (var msEncrypt = new MemoryStream())
+                    {
+                        using (var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                        {
+                            // Write all data to the stream.
+                            csEncrypt.Write(plainBytes, 0, plainBytes.Length);
+                        }
+                        encrypted = msEncrypt.ToArray();
+                    }
+                }
+
+                var combinedIvCt = new byte[AesIV.Length + encrypted.Length];
+                Array.Copy(AesIV, 0, combinedIvCt, 0, AesIV.Length);
+                Array.Copy(encrypted, 0, combinedIvCt, AesIV.Length, encrypted.Length);
+
+                // Return the encrypted bytes from the memory stream.
+                return combinedIvCt;
+            }
+            catch (Exception e)
+            {
+
+                throw new InvalidOperationException("Failed encrypting payload.", e);
+            }
+        }
+        // Used for Caesar Encryption
+        public static byte[] EncryptBytesToBytes_Caesar(byte[] buf, int CaesarKey)
+        {
+            // encrypt payload using key
+            byte[] encoded = new byte[buf.Length];
+            for (int i = 0; i < buf.Length; i++)
+            {
+                encoded[i] = (byte)(((uint)buf[i] + CaesarKey) & 0xFF);
+            }
+            return encoded;
         }
     }
 }

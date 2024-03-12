@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30717.126
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetRunnersDll", "NetRunnersDLL\NetRunnersDll.csproj", "{8EA2AD9A-BF9A-424A-BFC3-615E0C9FE1AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShellcodeEncryptor", "ShellcodeEncryptor\ShellcodeEncryptor.csproj", "{1C0D57EA-70FD-4BD4-9950-73665009F46E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryptor", "ShellcodeEncryptor\Encryptor.csproj", "{1C0D57EA-70FD-4BD4-9950-73665009F46E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetRunnersSvc", "NetRunnersSvc\NetRunnersSvc.csproj", "{FD617A78-C89D-4E90-ABF9-65F15B4B3E21}"
 EndProject
@@ -16,13 +16,6 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "NetRunners", "NetRunners\NetRunners.shproj", "{66523EC1-20FF-4278-9695-E46C029A9A0B}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		NetRunners\NetRunners.projitems*{66523ec1-20ff-4278-9695-e46c029a9a0b}*SharedItemsImports = 13
-		NetRunners\NetRunners.projitems*{7e5b3755-3663-4d1b-9b3d-996111527d45}*SharedItemsImports = 4
-		NetRunners\NetRunners.projitems*{8ea2ad9a-bf9a-424a-bfc3-615e0c9fe1ac}*SharedItemsImports = 4
-		NetRunners\NetRunners.projitems*{a80dacef-4196-4abf-a99d-5e980c4c6eb1}*SharedItemsImports = 4
-		NetRunners\NetRunners.projitems*{fd617a78-c89d-4e90-abf9-65f15b4b3e21}*SharedItemsImports = 4
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
@@ -98,5 +91,12 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6C25C765-3527-4F0E-87EF-C90801D3A821}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		NetRunners\NetRunners.projitems*{66523ec1-20ff-4278-9695-e46c029a9a0b}*SharedItemsImports = 13
+		NetRunners\NetRunners.projitems*{7e5b3755-3663-4d1b-9b3d-996111527d45}*SharedItemsImports = 4
+		NetRunners\NetRunners.projitems*{8ea2ad9a-bf9a-424a-bfc3-615e0c9fe1ac}*SharedItemsImports = 4
+		NetRunners\NetRunners.projitems*{a80dacef-4196-4abf-a99d-5e980c4c6eb1}*SharedItemsImports = 4
+		NetRunners\NetRunners.projitems*{fd617a78-c89d-4e90-abf9-65f15b4b3e21}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal

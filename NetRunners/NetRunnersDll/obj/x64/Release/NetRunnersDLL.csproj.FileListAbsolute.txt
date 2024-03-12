@@ -10,3 +10,9 @@ X:\solutions\Netrunners\NetRunnersDLL\obj\x64\Release\NetRunnersDLL.csprojAssemb
 X:\solutions\Netrunners\NetRunnersDLL\obj\x64\Release\NetRunnersDLL.csproj.CoreCompileInputs.cache
 X:\solutions\Netrunners\NetRunnersDLL\obj\x64\Release\NetRunnersDLL.dll
 X:\solutions\Netrunners\NetRunnersDLL\obj\x64\Release\NetRunnersDLL.pdb
+Z:\NetRunnersRepo\NetRunners\NetRunnersDLL\bin\x64\Release\NetRunnersDLL.dll
+Z:\NetRunnersRepo\NetRunners\NetRunnersDLL\bin\x64\Release\NetRunnersDLL.pdb
+Z:\NetRunnersRepo\NetRunners\NetRunnersDLL\obj\x64\Release\NetRunnersDll.csproj.AssemblyReference.cache
+Z:\NetRunnersRepo\NetRunners\NetRunnersDLL\obj\x64\Release\NetRunnersDll.csproj.CoreCompileInputs.cache
+Z:\NetRunnersRepo\NetRunners\NetRunnersDLL\obj\x64\Release\NetRunnersDLL.dll
+Z:\NetRunnersRepo\NetRunners\NetRunnersDLL\obj\x64\Release\NetRunnersDLL.pdb

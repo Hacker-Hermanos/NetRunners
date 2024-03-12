@@ -1,17 +1,18 @@
 ﻿using System;
-using static ShellcodeEncryptor.Encryptors;
-using static ShellcodeEncryptor.Shellcode;
+using static Printers.Printer;
+using static Encryptors.Encryptor;
+using static Encryptors.Data.Data;
+using System.Text;
 
-namespace ShellcodeEncryptor
+namespace Encryptors
 {
     /// <summary>
-    /// Entry point for this program, checks for arguments, prints decryption key and payload.
-    /// Supports one or zero arguments. If no arguments are specified, shellcode gets encrypted in csharp format.
+    /// Entry point for this Encryptor, checks for arguments, prints decryption key and encrypted data.
+    /// Supports one or zero arguments. If no arguments are specified. If no argument is supplied, program prints data in csharp format for use within netrunners.
     /// </summary>
-    /// <param name="-vba">Shellcode gets formated in decimal notation for VBA macros</param>
+    /// <param name="-vba">Shellcode gets formated in decimal notation for use in VBA macro</param>
     class Program
     {
-        [STAThreadAttribute]    // keep compiler happy 
         static void Main(string[] args)
         {
 
@@ -22,19 +23,54 @@ namespace ShellcodeEncryptor
                 return;
             }
 
-            // Determine the function call based on the argument provided, case insensitive
+            // check arguments, case insensitive
             string call = args.Length == 1 ? args[0] : string.Empty;
+
+            byte[] encrypted;
+
             switch (call.ToLower())
             {
-                // print visualbasic encoded payload
+                // visualbasic 
                 case "-vba":
-                    vbCaesar(buf);
+                    // generate random caesar substitution key
+                    Random rnd = new Random();
+                    int CaesarKey = rnd.Next(101, 999);
+
+                    // print substitution key
+                    Console.WriteLine($"key = {CaesarKey}");
+
+                    encrypted = EncryptBytesToBytes_Caesar(buf, CaesarKey);
+                    PrintBytesToDec(buf);
                     break;
-                // print csharp encoded payload
+                // csharp
                 default:
-                    Caesar(buf);
+                    byte[] AesIV = GenerateIV_Aes();
+                    byte[] AesKey = GenerateKey_Aes();
+
+                    // print aes key
+                    Console.Write($"public static byte[] AesKey = ");
+                    PrintBytesToHex(AesKey);
+
+                    // print IV
+                    Console.Write($"public static byte[] AesIV = ");
+                    PrintBytesToHex(AesIV);
+
+                    // encrypt buf and print
+                    encrypted = EncryptBytesToBytes_Aes(buf, AesKey, AesIV);
+                    Console.Write("public static byte[] buf = ");
+                    PrintBytesToHex(encrypted);
+
+                    // encrypt and print all functions
+                    for (int i = 0; i < FunctionNames.Length; i++) 
+                    {
+                        byte[] FunctionNameBytes = Encoding.UTF8.GetBytes(FunctionNames[i]);
+                        encrypted = EncryptBytesToBytes_Aes(FunctionNameBytes, AesKey, AesIV);
+                        Console.Write($"public static byte[] {FunctionNames[i]}_Byte = ");
+                        PrintBytesToHex(encrypted);
+                    }
                     break;
             }
+            return;
         }
     }
 }

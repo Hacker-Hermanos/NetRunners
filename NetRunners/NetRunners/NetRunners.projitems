@@ -9,12 +9,19 @@
     <Import_RootNamespace>NetRunners</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Decryptors.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DLLImports.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Heuristics.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Patchers.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Runners.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Shellcode.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Structures.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Decryptors\Decryptors.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Delegates.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Heuristics\Heuristics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Patchers\Patchers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Runners\Runners.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Encrypted.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Structures.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Data\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Decryptors\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Heuristics\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Patchers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Runners\" />
   </ItemGroup>
 </Project>

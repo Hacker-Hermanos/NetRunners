@@ -5,3 +5,10 @@ X:\solutions\NetRunners\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.csprojAssemb
 X:\solutions\NetRunners\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.csproj.CoreCompileInputs.cache
 X:\solutions\NetRunners\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.exe
 X:\solutions\NetRunners\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.pdb
+Z:\NetRunnersRepo\NetRunners\NetRunnersSvc\bin\x64\Release\NetRunnersSvc.exe.config
+Z:\NetRunnersRepo\NetRunners\NetRunnersSvc\bin\x64\Release\NetRunnersSvc.exe
+Z:\NetRunnersRepo\NetRunners\NetRunnersSvc\bin\x64\Release\NetRunnersSvc.pdb
+Z:\NetRunnersRepo\NetRunners\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.csproj.AssemblyReference.cache
+Z:\NetRunnersRepo\NetRunners\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.csproj.CoreCompileInputs.cache
+Z:\NetRunnersRepo\NetRunners\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.exe
+Z:\NetRunnersRepo\NetRunners\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.pdb

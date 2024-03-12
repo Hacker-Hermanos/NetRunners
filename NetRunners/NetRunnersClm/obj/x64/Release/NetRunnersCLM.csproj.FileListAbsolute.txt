@@ -14,3 +14,11 @@ X:\solutions\NetRunners\NetRunnersCLM\obj\x64\Release\NetRunnersCLM.csprojAssemb
 X:\solutions\NetRunners\NetRunnersCLM\obj\x64\Release\NetRunnersCLM.csproj.CoreCompileInputs.cache
 X:\solutions\NetRunners\NetRunnersCLM\obj\x64\Release\NetRunnersCLM.csproj.CopyComplete
 X:\solutions\NetRunners\NetRunnersCLM\obj\x64\Release\NetRunnersCLM.exe
+Z:\NetRunnersRepo\NetRunners\NetRunnersCLM\bin\x64\Release\NetRunnersClm.exe.config
+Z:\NetRunnersRepo\NetRunners\NetRunnersCLM\bin\x64\Release\NetRunnersClm.exe
+Z:\NetRunnersRepo\NetRunners\NetRunnersCLM\bin\x64\Release\System.Management.Automation.dll
+Z:\NetRunnersRepo\NetRunners\NetRunnersCLM\obj\x64\Release\NetRunnersClm.csproj.AssemblyReference.cache
+Z:\NetRunnersRepo\NetRunners\NetRunnersCLM\obj\x64\Release\NetRunnersClm.csproj.CoreCompileInputs.cache
+Z:\NetRunnersRepo\NetRunners\NetRunnersCLM\obj\x64\Release\NetRunne.413B379B.Up2Date
+Z:\NetRunnersRepo\NetRunners\NetRunnersCLM\obj\x64\Release\NetRunnersClm.exe
+Z:\NetRunnersRepo\NetRunners\NetRunnersCLM\bin\x64\Release\Microsoft.PowerShell.ConsoleHost.dll
