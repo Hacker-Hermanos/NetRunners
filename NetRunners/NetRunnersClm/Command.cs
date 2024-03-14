@@ -22,7 +22,7 @@ namespace NetRunnersClm
         //}
 
         // interactive CLM bypass source: https://github.com/calebstewart/bypass-clm/blob/master/bypass-clm/Program.cs
-        public static void Bypass()
+        public static void BypassClm()
         {
             // Find a reference to the automation assembly
             var Automation = typeof(System.Management.Automation.Alignment).Assembly;

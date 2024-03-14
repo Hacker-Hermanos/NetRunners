@@ -51,6 +51,10 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

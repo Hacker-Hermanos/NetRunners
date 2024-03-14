@@ -51,5 +51,39 @@ namespace NetRunners.Data
 			public IntPtr UniquePid;
 			public IntPtr MoreReserved;
 		}
-	}
+        // netresource for SMB retriever
+        [StructLayout(LayoutKind.Sequential)]
+        public class NETRESOURCE /* Its Not a Typo, Its Meant To Be Defined as a Class */
+        {
+            public int dwScope = 0;
+            public int dwType = 0;
+            public int dwDisplayType = 0;
+            public int dwUsage = 0;
+            public string lpLocalName = "";
+            public string lpRemoteName = "";
+            public string lpComment = "";
+            public string lpProvider = "";
+        }
+        // event descriptor for etweventwrite
+        // Event Descriptor Structure
+        [StructLayout(LayoutKind.Sequential)]
+        public struct EVENT_DESCRIPTOR
+        {
+            public ushort Id;
+            public byte Version;
+            public byte Channel;
+            public byte Level;
+            public byte Opcode;
+            public ushort Task;
+            public ulong Keyword;
+        }
+        // Event Data Descriptor Structure for etweventwrite
+        [StructLayout(LayoutKind.Sequential)]
+        public struct EVENT_DATA_DESCRIPTOR
+        {
+            public IntPtr DataPtr;
+            public uint Size;
+            public uint Reserved;
+        }
+    }
 }

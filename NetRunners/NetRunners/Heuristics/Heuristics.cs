@@ -20,11 +20,11 @@ namespace NetRunners.Heuristics
 
 			if (t2 < 1.5)
 			{
-				return true;
+				return false;
 			}
 			else
 			{
-				return false;
+				return true;
 			}
         }
 		// execute a non-emulable function, if memory address is null, the binary is being emulated by AV
@@ -37,11 +37,11 @@ namespace NetRunners.Heuristics
 			IntPtr checkPtr = FlsAlloc(IntPtr.Zero);
 			if (mem == null || checkPtr == null) 
 			{ 
-				return true; 
+				return false; 
 			}
 			else
 			{
-				return false;
+				return true;
 			}
 		}
     }

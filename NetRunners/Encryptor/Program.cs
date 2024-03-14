@@ -59,22 +59,16 @@ namespace Encryptors
                     encrypted = EncryptBytesToBytes_Aes(buf, AesKey, AesIV);
                     Console.Write("public static byte[] buf = ");
                     PrintBytesToHex(encrypted);
+                    // print decrypted buf size
+                    Console.Write($"public static int sBuf = ");
+                    Console.WriteLine($"{buf.Length};");
 
-                    // encrypt amsi related strings and print
-                    for (int i = 0; i < AmsiArray.Length; i++)
-                    {
-                        byte[] AmsiArrayBytes = Encoding.UTF8.GetBytes(AmsiArray[i]);
-                        encrypted = EncryptBytesToBytes_Aes(AmsiArrayBytes, AesKey, AesIV);
-                        Console.Write($"public static byte[] {AmsiArray[i].Replace(".", "")}_Byte = ");
-                        PrintBytesToHex(encrypted);
-                    }
-
-                    // encrypt and print windows api functions
+                    // encrypt and print all strings
                     for (int i = 0; i < FunctionNames.Length; i++) 
                     {
                         byte[] FunctionNameBytes = Encoding.UTF8.GetBytes(FunctionNames[i]);
                         encrypted = EncryptBytesToBytes_Aes(FunctionNameBytes, AesKey, AesIV);
-                        Console.Write($"public static byte[] {FunctionNames[i]}_Byte = ");
+                        Console.Write($"public static byte[] {FunctionNames[i].Replace(".", "")}_Byte = ");
                         PrintBytesToHex(encrypted);
                     }
                     break;

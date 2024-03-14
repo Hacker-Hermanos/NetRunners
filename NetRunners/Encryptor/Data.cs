@@ -45,13 +45,12 @@
             "ReadProcessMemory",
             "ResumeThread",
             "LoadLibraryA",
-            "GetStdHandle"
-        };
-        public static readonly string[] AmsiArray =
-        {
+            "GetStdHandle",
+            "MiniDumpWriteDump",
             "amsi.dll",
             "AmsiOpenSession",
-            "AmsiScanBuffer"
+            "AmsiScanBuffer",
+            "EtwEventWrite"
         };
     }
 }
