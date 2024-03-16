@@ -43,7 +43,7 @@ namespace NetRunners.Runners
                 // change memory protection
                 uint oldProtect;
 
-                int bVP = VirtualProtect(pMemory, (UIntPtr)sBuf, PAGE_READWRITE, out oldProtect);
+                int bVP = VirtualProtect(pMemory, (UIntPtr)sBuf, PAGE_EXECUTE_READ, out oldProtect);
                 if (bVP != 1) // not true
                 {
                     throw new InvalidOperationException($"VirtualProtect failed with error code: {Marshal.GetLastWin32Error()}");

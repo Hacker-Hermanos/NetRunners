@@ -25,4 +25,8 @@
     <Folder Include="$(MSBuildThisFileDirectory)Heuristics\" />
     <Folder Include="$(MSBuildThisFileDirectory)Patchers\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Scripts %28VBA, PS%29\AES.ps1" />
+    <None Include="$(MSBuildThisFileDirectory)Scripts %28VBA, PS%29\Runner.ps1" />
+  </ItemGroup>
 </Project>
