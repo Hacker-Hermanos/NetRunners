@@ -22,3 +22,4 @@ Z:\NetRunnersRepo\NetRunnersCs\NetRunnersDLL\obj\x64\Release\NetRunnersDll.cspro
 Z:\NetRunnersRepo\NetRunnersCs\NetRunnersDLL\obj\x64\Release\NetRunnersDll.csproj.CoreCompileInputs.cache
 Z:\NetRunnersRepo\NetRunnersCs\NetRunnersDLL\obj\x64\Release\NetRunnersDll.dll
 Z:\NetRunnersRepo\NetRunnersCs\bin\Release\NetRunnersDll.dll
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\x64\NetRunnersDll.dll

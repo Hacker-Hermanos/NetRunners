@@ -34,3 +34,5 @@ Z:\NetRunnersRepo\NetRunnersCs\NetRunnersCLM\obj\x64\Release\NetRunnersClm.cspro
 Z:\NetRunnersRepo\NetRunnersCs\NetRunnersCLM\obj\x64\Release\NetRunnersClm.csproj.CoreCompileInputs.cache
 Z:\NetRunnersRepo\NetRunnersCs\NetRunnersCLM\obj\x64\Release\NetRunne.413B379B.Up2Date
 Z:\NetRunnersRepo\NetRunnersCs\NetRunnersCLM\obj\x64\Release\NetRunnersClm.exe
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\x64\NetRunnersClm.exe.config
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\x64\NetRunnersClm.exe

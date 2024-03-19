@@ -27,6 +27,9 @@ namespace NetRunners.Encryptor
             string call = args.Length == 1 ? args[0] : string.Empty;
 
             byte[] encrypted;
+            //byte[] XorKey = new byte[4];
+            byte[] AesIV = GenerateIV_Aes();
+            byte[] AesKey = GenerateKey_Aes();
 
             switch (call.ToLower())
             {
@@ -40,13 +43,12 @@ namespace NetRunners.Encryptor
                     Console.WriteLine($"key = {CaesarKey}");
 
                     encrypted = EncryptBytesToBytes_Caesar(buf, CaesarKey);
-                    PrintBytesToDec(buf);
+                    Console.Write($"buf = ");
+                    PrintBytesToDec(encrypted);
                     break;
+
                 // csharp
                 default:
-                    byte[] AesIV = GenerateIV_Aes();
-                    byte[] AesKey = GenerateKey_Aes();
-
                     // print aes key
                     Console.Write($"public static byte[] AesKey = ");
                     PrintBytesToHex(AesKey);

@@ -1,0 +1,11 @@
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersCLM\bin\x86\Release\NetRunnersClm.exe.config
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersCLM\bin\x86\Release\NetRunnersClm.exe
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersCLM\bin\x86\Release\NetRunnersClm.pdb
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersCLM\bin\x86\Release\Microsoft.PowerShell.ConsoleHost.dll
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersCLM\bin\x86\Release\System.Management.Automation.dll
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersCLM\obj\x86\Release\NetRunnersClm.csproj.AssemblyReference.cache
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersCLM\obj\x86\Release\NetRunnersClm.csproj.CoreCompileInputs.cache
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersCLM\obj\x86\Release\NetRunne.413B379B.Up2Date
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersCLM\obj\x86\Release\NetRunnersClm.exe
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\x86\NetRunnersClm.exe.config
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\x86\NetRunnersClm.exe

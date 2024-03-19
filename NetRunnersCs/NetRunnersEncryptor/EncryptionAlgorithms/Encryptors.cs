@@ -76,7 +76,7 @@ namespace NetRunners.Encryptor.EncryptionAlgorithms
                 throw new InvalidOperationException("Failed encrypting payload.", e);
             }
         }
-        // Used for Caesar Encryption
+        // Used for Caesar Encryption (for vba)
         public static byte[] EncryptBytesToBytes_Caesar(byte[] buf, int CaesarKey)
         {
             // encrypt payload using key
@@ -86,6 +86,22 @@ namespace NetRunners.Encryptor.EncryptionAlgorithms
                 encoded[i] = (byte)(((uint)buf[i] + CaesarKey) & 0xFF);
             }
             return encoded;
+        }
+
+        // Used for XOR encryption (for vba)
+        public static byte[] EncryptBytesToBytes_Xor(byte[] data, byte[] key)
+        {
+            int dataLength = data.Length;
+            int keyLength = key.Length;
+
+            byte[] decryptedData = new byte[dataLength];
+
+            for (int i = 0; i < dataLength; i++)
+            {
+                decryptedData[i] = (byte)(data[i] ^ key[i % keyLength]);
+            }
+
+            return decryptedData;
         }
     }
 }

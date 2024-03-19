@@ -42,8 +42,8 @@ namespace NetRunners.Encryptor.Printers
             // remove trailing comma to decimal payload
             dec.Remove(dec.Length - 2, 2); // Removes the last comma and space
 
-            // print payload and key
-            Console.WriteLine($"buf = Array({dec})");
+            // print data
+            Console.WriteLine($"Array({dec})");
         }
     }
 }

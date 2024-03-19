@@ -21,3 +21,5 @@ Z:\NetRunnersRepo\NetRunnersCs\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.cspro
 Z:\NetRunnersRepo\NetRunnersCs\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.exe
 Z:\NetRunnersRepo\NetRunnersCs\bin\Release\NetRunnersSvc.exe.config
 Z:\NetRunnersRepo\NetRunnersCs\bin\Release\NetRunnersSvc.exe
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\x64\NetRunnersSvc.exe.config
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\x64\NetRunnersSvc.exe

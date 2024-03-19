@@ -14,3 +14,5 @@ Z:\NetRunnersRepo\NetRunnersCs\bin\Release\NetRunnersUac.exe
 Z:\NetRunnersRepo\NetRunnersCs\NetRunnersUac\obj\x64\Release\NetRunnersUac.csproj.AssemblyReference.cache
 Z:\NetRunnersRepo\NetRunnersCs\NetRunnersUac\obj\x64\Release\NetRunnersUac.csproj.CoreCompileInputs.cache
 Z:\NetRunnersRepo\NetRunnersCs\NetRunnersUac\obj\x64\Release\NetRunnersUac.exe
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\x64\NetRunnersUac.exe.config
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\x64\NetRunnersUac.exe

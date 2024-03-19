@@ -21,3 +21,5 @@ Z:\NetRunnersRepo\NetRunnersCs\NetRunnersEncryptor\obj\x64\Release\Encryptor.csp
 Z:\NetRunnersRepo\NetRunnersCs\bin\Release\Encryptor.exe.config
 Z:\NetRunnersRepo\NetRunnersCs\bin\Release\Encryptor.exe
 Z:\NetRunnersRepo\NetRunnersCs\NetRunnersEncryptor\obj\x64\Release\Encryptor.exe
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\x64\Encryptor.exe.config
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\x64\Encryptor.exe
