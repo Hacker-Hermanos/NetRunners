@@ -1,6 +1,0 @@
-X:\solutions\Netrunners\Netrunners\bin\Release\Netrunners.exe.config
-X:\solutions\Netrunners\Netrunners\bin\Release\Netrunners.exe
-X:\solutions\Netrunners\Netrunners\bin\Release\Netrunners.pdb
-X:\solutions\Netrunners\Netrunners\obj\Release\Runner.csproj.CoreCompileInputs.cache
-X:\solutions\Netrunners\Netrunners\obj\Release\Netrunners.exe
-X:\solutions\Netrunners\Netrunners\obj\Release\Netrunners.pdb
