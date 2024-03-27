@@ -1,0 +1,109 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "Z:\\Repos\\NetRunners\\NetRunnersCs\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{66523EC1-20FF-4278-9695-E46C029A9A0B}|NetRunners\\NetRunners.shproj|z:\\repos\\netrunners\\netrunnerscs\\netrunners\\data\\encrypted.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66523EC1-20FF-4278-9695-E46C029A9A0B}|NetRunners\\NetRunners.shproj|solutionrelative:netrunners\\data\\encrypted.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C0D57EA-70FD-4BD4-9950-73665009F46E}|NetRunnersEncryptor\\Encryptor.csproj|Z:\\Repos\\NetRunners\\NetRunnersCs\\netrunnersencryptor\\data\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C0D57EA-70FD-4BD4-9950-73665009F46E}|NetRunnersEncryptor\\Encryptor.csproj|solutionrelative:netrunnersencryptor\\data\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C0D57EA-70FD-4BD4-9950-73665009F46E}|NetRunnersEncryptor\\Encryptor.csproj|z:\\repos\\netrunners\\netrunnerscs\\netrunnersencryptor\\printers\\printer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C0D57EA-70FD-4BD4-9950-73665009F46E}|NetRunnersEncryptor\\Encryptor.csproj|solutionrelative:netrunnersencryptor\\printers\\printer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C0D57EA-70FD-4BD4-9950-73665009F46E}|NetRunnersEncryptor\\Encryptor.csproj|z:\\repos\\netrunners\\netrunnerscs\\netrunnersencryptor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C0D57EA-70FD-4BD4-9950-73665009F46E}|NetRunnersEncryptor\\Encryptor.csproj|solutionrelative:netrunnersencryptor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C0D57EA-70FD-4BD4-9950-73665009F46E}|NetRunnersEncryptor\\Encryptor.csproj|z:\\repos\\netrunners\\netrunnerscs\\netrunnersencryptor\\data\\calc.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{1C0D57EA-70FD-4BD4-9950-73665009F46E}|NetRunnersEncryptor\\Encryptor.csproj|solutionrelative:netrunnersencryptor\\data\\calc.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Printer.cs",
+              "DocumentMoniker": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunnersEncryptor\\Printers\\Printer.cs",
+              "RelativeDocumentMoniker": "NetRunnersEncryptor\\Printers\\Printer.cs",
+              "ToolTip": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunnersEncryptor\\Printers\\Printer.cs",
+              "RelativeToolTip": "NetRunnersEncryptor\\Printers\\Printer.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAxwCkAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T22:29:23.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Encrypted.cs",
+              "DocumentMoniker": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunners\\Data\\Encrypted.cs",
+              "RelativeDocumentMoniker": "NetRunners\\Data\\Encrypted.cs",
+              "ToolTip": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunners\\Data\\Encrypted.cs",
+              "RelativeToolTip": "NetRunners\\Data\\Encrypted.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T22:03:47.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "calc.txt",
+              "DocumentMoniker": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunnersEncryptor\\Data\\calc.txt",
+              "RelativeDocumentMoniker": "NetRunnersEncryptor\\Data\\calc.txt",
+              "ToolTip": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunnersEncryptor\\Data\\calc.txt",
+              "RelativeToolTip": "NetRunnersEncryptor\\Data\\calc.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-03-27T22:00:21.562Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunnersEncryptor\\Program.cs",
+              "RelativeDocumentMoniker": "NetRunnersEncryptor\\Program.cs",
+              "ToolTip": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunnersEncryptor\\Program.cs",
+              "RelativeToolTip": "NetRunnersEncryptor\\Program.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAAmwEcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T13:59:05.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Data.cs",
+              "DocumentMoniker": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunnersEncryptor\\Data\\Data.cs",
+              "RelativeDocumentMoniker": "NetRunnersEncryptor\\Data\\Data.cs",
+              "ToolTip": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunnersEncryptor\\Data\\Data.cs",
+              "RelativeToolTip": "NetRunnersEncryptor\\Data\\Data.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T13:56:39.807Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

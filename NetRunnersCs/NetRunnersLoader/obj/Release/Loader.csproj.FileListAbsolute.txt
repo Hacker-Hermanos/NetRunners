@@ -1,0 +1,7 @@
+Z:\NetRunnersRepo\NetRunners\Loader\bin\Release\Loader.exe.config
+Z:\NetRunnersRepo\NetRunners\Loader\bin\Release\Loader.exe
+Z:\NetRunnersRepo\NetRunners\Loader\bin\Release\Loader.pdb
+Z:\NetRunnersRepo\NetRunners\Loader\obj\Release\Loader.csproj.AssemblyReference.cache
+Z:\NetRunnersRepo\NetRunners\Loader\obj\Release\Loader.csproj.CoreCompileInputs.cache
+Z:\NetRunnersRepo\NetRunners\Loader\obj\Release\Loader.exe
+Z:\NetRunnersRepo\NetRunners\Loader\obj\Release\Loader.pdb
