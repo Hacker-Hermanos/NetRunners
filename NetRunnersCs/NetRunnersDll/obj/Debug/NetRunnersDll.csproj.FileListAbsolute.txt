@@ -1,6 +1,0 @@
-Z:\NetRunnersRepo\NetRunners\NetRunnersDLL\bin\Debug\NetRunnersDLL.dll
-Z:\NetRunnersRepo\NetRunners\NetRunnersDLL\bin\Debug\NetRunnersDLL.pdb
-Z:\NetRunnersRepo\NetRunners\NetRunnersDLL\obj\Debug\NetRunnersDll.csproj.AssemblyReference.cache
-Z:\NetRunnersRepo\NetRunners\NetRunnersDLL\obj\Debug\NetRunnersDll.csproj.CoreCompileInputs.cache
-Z:\NetRunnersRepo\NetRunners\NetRunnersDLL\obj\Debug\NetRunnersDLL.dll
-Z:\NetRunnersRepo\NetRunners\NetRunnersDLL\obj\Debug\NetRunnersDLL.pdb

@@ -1,8 +1,0 @@
-C:\Users\rafa\Desktop\NR\NetRunners\NetRunnersCs\NetRunnersLoader\bin\x86\Release\Loader.exe.config
-C:\Users\rafa\Desktop\NR\NetRunners\NetRunnersCs\NetRunnersLoader\bin\x86\Release\Loader.exe
-C:\Users\rafa\Desktop\NR\NetRunners\NetRunnersCs\NetRunnersLoader\obj\x86\Release\Loader.csproj.AssemblyReference.cache
-C:\Users\rafa\Desktop\NR\NetRunners\NetRunnersCs\NetRunnersLoader\obj\x86\Release\Loader.csproj.CoreCompileInputs.cache
-C:\Users\rafa\Desktop\NR\NetRunners\NetRunnersCs\NetRunnersLoader\obj\x86\Release\Loader.exe
-C:\Users\rafa\Desktop\NR\NetRunners\NetRunnersCs\NetRunnersLoader\bin\x86\Release\CommandLine.dll
-C:\Users\rafa\Desktop\NR\NetRunners\NetRunnersCs\NetRunnersLoader\bin\x86\Release\CommandLine.xml
-C:\Users\rafa\Desktop\NR\NetRunners\NetRunnersCs\NetRunnersLoader\obj\x86\Release\Loader.csproj.Up2Date
