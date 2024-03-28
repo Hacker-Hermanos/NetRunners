@@ -1,0 +1,17 @@
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersExe\bin\x86\Release\NetRunners.exe.config
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersExe\bin\x86\Release\NetRunners.exe
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersExe\bin\x86\Release\NetRunners.pdb
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersExe\obj\x86\Release\NetRunnersExe.csproj.AssemblyReference.cache
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersExe\obj\x86\Release\NetRunnersExe.csproj.CoreCompileInputs.cache
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersExe\obj\x86\Release\NetRunners.exe
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\NetRunners.exe.config
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\NetRunners.exe
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\NetRunners.pdb
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\x86\NetRunners.exe.config
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\x86\NetRunners.exe
+Z:\Repos\NetRunners\NetRunnersCs\bin\Release\x86\NetRunners.exe.config
+Z:\Repos\NetRunners\NetRunnersCs\bin\Release\x86\NetRunners.exe
+Z:\Repos\NetRunners\NetRunnersCs\NetRunnersExe\obj\x86\Release\NetRunnersExe.csproj.AssemblyReference.cache
+Z:\Repos\NetRunners\NetRunnersCs\NetRunnersExe\obj\x86\Release\NetRunnersExe.csproj.CoreCompileInputs.cache
+Z:\Repos\NetRunners\NetRunnersCs\NetRunnersExe\obj\x86\Release\NetRunne.AF9FFB32.Up2Date
+Z:\Repos\NetRunners\NetRunnersCs\NetRunnersExe\obj\x86\Release\NetRunners.exe

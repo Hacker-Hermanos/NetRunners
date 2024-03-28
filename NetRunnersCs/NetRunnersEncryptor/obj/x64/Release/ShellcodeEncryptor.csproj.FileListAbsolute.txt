@@ -1,0 +1,14 @@
+X:\solutions\NetRunners\ShellcodeEncryptor\bin\x64\Release\ShellcodeEncryptor.exe.config
+X:\solutions\NetRunners\ShellcodeEncryptor\bin\x64\Release\ShellcodeEncryptor.exe
+X:\solutions\NetRunners\ShellcodeEncryptor\bin\x64\Release\ShellcodeEncryptor.pdb
+X:\solutions\NetRunners\ShellcodeEncryptor\obj\x64\Release\ShellcodeEncryptor.csprojAssemblyReference.cache
+X:\solutions\NetRunners\ShellcodeEncryptor\obj\x64\Release\ShellcodeEncryptor.csproj.CoreCompileInputs.cache
+X:\solutions\NetRunners\ShellcodeEncryptor\obj\x64\Release\ShellcodeEncryptor.exe
+X:\solutions\NetRunners\ShellcodeEncryptor\obj\x64\Release\ShellcodeEncryptor.pdb
+Z:\NetRunnersRepo\NetRunners\ShellcodeEncryptor\bin\x64\Release\ShellcodeEncryptor.exe.config
+Z:\NetRunnersRepo\NetRunners\ShellcodeEncryptor\bin\x64\Release\ShellcodeEncryptor.exe
+Z:\NetRunnersRepo\NetRunners\ShellcodeEncryptor\bin\x64\Release\ShellcodeEncryptor.pdb
+Z:\NetRunnersRepo\NetRunners\ShellcodeEncryptor\obj\x64\Release\ShellcodeEncryptor.csproj.AssemblyReference.cache
+Z:\NetRunnersRepo\NetRunners\ShellcodeEncryptor\obj\x64\Release\ShellcodeEncryptor.csproj.CoreCompileInputs.cache
+Z:\NetRunnersRepo\NetRunners\ShellcodeEncryptor\obj\x64\Release\ShellcodeEncryptor.exe
+Z:\NetRunnersRepo\NetRunners\ShellcodeEncryptor\obj\x64\Release\ShellcodeEncryptor.pdb

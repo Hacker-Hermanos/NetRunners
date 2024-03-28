@@ -1,0 +1,11 @@
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersUac\bin\x86\Release\NetRunnersUac.exe.config
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersUac\bin\x86\Release\NetRunnersUac.exe
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersUac\bin\x86\Release\NetRunnersUac.pdb
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersUac\obj\x86\Release\NetRunnersUac.csproj.AssemblyReference.cache
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersUac\obj\x86\Release\NetRunnersUac.csproj.CoreCompileInputs.cache
+Z:\NetRunnersRepo\NetRunnersCs\NetRunnersUac\obj\x86\Release\NetRunnersUac.exe
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\NetRunnersUac.exe.config
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\NetRunnersUac.exe
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\NetRunnersUac.pdb
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\x86\NetRunnersUac.exe.config
+Z:\NetRunnersRepo\NetRunnersCs\bin\Release\x86\NetRunnersUac.exe
