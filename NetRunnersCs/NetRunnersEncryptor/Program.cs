@@ -71,13 +71,13 @@ namespace NetRunners.Encryptor
                 PrintBytesToHexPs(encrypted);
 
                 // encrypt and print all strings
-                //for (int i = 0; i < FunctionNames.Length; i++)
-                //{
-                //    byte[] FunctionNameBytes = Encoding.UTF8.GetBytes(FunctionNames[i]);
-                //    encrypted = EncryptBytesToBytes_Aes(FunctionNameBytes, AesKey, AesIV);
-                //    Console.Write($"public static byte[] {FunctionNames[i].Replace(".", "")}_Byte = ");
-                //    PrintBytesToHex(encrypted);
-                //}
+                for (int i = 0; i < FunctionNames.Length; i++)
+                {
+                    byte[] FunctionNameBytes = Encoding.UTF8.GetBytes(FunctionNames[i]);
+                    encrypted = EncryptBytesToBytes_Aes(FunctionNameBytes, AesKey, AesIV);
+                    Console.Write($"[Byte[]] ${FunctionNames[i].Replace(".", "")}_Byte = ");
+                    PrintBytesToHex(encrypted);
+                }
                 return;
             }
             else
