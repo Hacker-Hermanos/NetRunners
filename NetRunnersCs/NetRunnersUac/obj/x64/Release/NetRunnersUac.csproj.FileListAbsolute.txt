@@ -1,0 +1,5 @@
+C:\Users\rafa\Desktop\NetRunnersCs\bin\Release\x64\NetRunnersUac.exe.config
+C:\Users\rafa\Desktop\NetRunnersCs\bin\Release\x64\NetRunnersUac.exe
+C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersUac\obj\x64\Release\NetRunnersUac.csproj.AssemblyReference.cache
+C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersUac\obj\x64\Release\NetRunnersUac.csproj.CoreCompileInputs.cache
+C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersUac\obj\x64\Release\NetRunnersUac.exe

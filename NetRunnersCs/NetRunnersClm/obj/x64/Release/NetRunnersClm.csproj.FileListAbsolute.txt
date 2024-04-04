@@ -1,0 +1,6 @@
+C:\Users\rafa\Desktop\NetRunnersCs\bin\Release\x64\NetRunnersClm.exe.config
+C:\Users\rafa\Desktop\NetRunnersCs\bin\Release\x64\NetRunnersClm.exe
+C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersCLM\obj\x64\Release\NetRunnersClm.csproj.AssemblyReference.cache
+C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersCLM\obj\x64\Release\NetRunnersClm.csproj.CoreCompileInputs.cache
+C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersCLM\obj\x64\Release\NetRunne.413B379B.Up2Date
+C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersCLM\obj\x64\Release\NetRunnersClm.exe
