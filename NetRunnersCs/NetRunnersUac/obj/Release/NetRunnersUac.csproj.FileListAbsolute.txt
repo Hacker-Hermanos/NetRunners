@@ -1,7 +1,0 @@
-Z:\NetRunnersRepo\NetRunners\NetRunnersUac\bin\Release\NetRunnersUac.exe.config
-Z:\NetRunnersRepo\NetRunners\NetRunnersUac\bin\Release\NetRunnersUac.exe
-Z:\NetRunnersRepo\NetRunners\NetRunnersUac\bin\Release\NetRunnersUac.pdb
-Z:\NetRunnersRepo\NetRunners\NetRunnersUac\obj\Release\NetRunnersUac.csproj.AssemblyReference.cache
-Z:\NetRunnersRepo\NetRunners\NetRunnersUac\obj\Release\NetRunnersUac.csproj.CoreCompileInputs.cache
-Z:\NetRunnersRepo\NetRunners\NetRunnersUac\obj\Release\NetRunnersUac.exe
-Z:\NetRunnersRepo\NetRunners\NetRunnersUac\obj\Release\NetRunnersUac.pdb
