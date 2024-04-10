@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryptor", "NetRunnersEncr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loader", "NetRunnersLoader\Loader.csproj", "{CCAA3F06-0715-4E7B-9AEF-EC21CFA9C10B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetRunnersPrintSpoofer", "NetRunnersPrintSpoofer\NetRunnersPrintSpoofer.csproj", "{224EE359-6217-489B-A479-76BF12D11162}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,18 @@ Global
 		{CCAA3F06-0715-4E7B-9AEF-EC21CFA9C10B}.Release|x64.Build.0 = Release|x64
 		{CCAA3F06-0715-4E7B-9AEF-EC21CFA9C10B}.Release|x86.ActiveCfg = Release|x86
 		{CCAA3F06-0715-4E7B-9AEF-EC21CFA9C10B}.Release|x86.Build.0 = Release|x86
+		{224EE359-6217-489B-A479-76BF12D11162}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{224EE359-6217-489B-A479-76BF12D11162}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{224EE359-6217-489B-A479-76BF12D11162}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{224EE359-6217-489B-A479-76BF12D11162}.Debug|x64.Build.0 = Debug|Any CPU
+		{224EE359-6217-489B-A479-76BF12D11162}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{224EE359-6217-489B-A479-76BF12D11162}.Debug|x86.Build.0 = Debug|Any CPU
+		{224EE359-6217-489B-A479-76BF12D11162}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{224EE359-6217-489B-A479-76BF12D11162}.Release|Any CPU.Build.0 = Release|Any CPU
+		{224EE359-6217-489B-A479-76BF12D11162}.Release|x64.ActiveCfg = Release|x64
+		{224EE359-6217-489B-A479-76BF12D11162}.Release|x64.Build.0 = Release|x64
+		{224EE359-6217-489B-A479-76BF12D11162}.Release|x86.ActiveCfg = Release|Any CPU
+		{224EE359-6217-489B-A479-76BF12D11162}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

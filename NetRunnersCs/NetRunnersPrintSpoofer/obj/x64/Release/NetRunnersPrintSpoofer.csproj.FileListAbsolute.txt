@@ -1,0 +1,7 @@
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersPrintSpoofer\$(SolutionDir)bin\$(Configuration)\$(Platform)\NetRunnersPrintSpoofer.exe.config
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersPrintSpoofer\$(SolutionDir)bin\$(Configuration)\$(Platform)\NetRunnersPrintSpoofer.exe
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersPrintSpoofer\obj\x64\Release\NetRunnersPrintSpoofer.csproj.AssemblyReference.cache
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersPrintSpoofer\obj\x64\Release\NetRunnersPrintSpoofer.csproj.CoreCompileInputs.cache
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersPrintSpoofer\obj\x64\Release\NetRunnersPrintSpoofer.exe
+C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Release\x64\NetRunnersPrintSpoofer.exe.config
+C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Release\x64\NetRunnersPrintSpoofer.exe
