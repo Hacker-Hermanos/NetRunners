@@ -6,7 +6,7 @@ using NetRunners.Patchers;
 using NetRunners.Runners;
 
 [ComVisible(true)]
-class TestClass
+public class TestClass
 {
     /// <summary>
     /// Main function for this DLL. 
