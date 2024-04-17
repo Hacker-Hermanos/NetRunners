@@ -1,0 +1,6 @@
+C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersDLL\obj\Release\NetRunnersDll.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersDLL\obj\Release\NetRunnersDll.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\AnyCPU\NetRunnersDll.dll
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\AnyCPU\NetRunnersDll.pdb
+C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersDLL\obj\Release\NetRunnersDll.dll
+C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersDLL\obj\Release\NetRunnersDll.pdb

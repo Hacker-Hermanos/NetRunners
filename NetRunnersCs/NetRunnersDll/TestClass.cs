@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using NetRunners.Heuristics;
 using NetRunners.Interfaces;
@@ -25,9 +26,9 @@ public class TestClass
         }
 
         // uncomment your choice
-        IRunner runner = new ProcessInjectionRunner();
-        //IRunner runner = new DefaultRunner();
         //IRunner runner = new ProcessInjectionRunner();
+        //IRunner runner = new DefaultRunner();
+        IRunner runner = new EntryPointStompingRunner();
         runner.Run();
     }
     public void RunProcess(string path)
