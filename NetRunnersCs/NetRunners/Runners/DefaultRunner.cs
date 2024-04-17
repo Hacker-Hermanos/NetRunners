@@ -21,8 +21,8 @@ namespace NetRunners.Runners
             IntPtr pMemory;
             IntPtr hThread;
             uint oldProtect;
-            var payload = GetPayloadAndSize();
             byte[] buf = GetPayload();
+            int sBuf = GetSize();
 
             try
             {

