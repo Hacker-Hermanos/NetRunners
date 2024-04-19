@@ -2,7 +2,6 @@
 using static NetRunners.Loader.Helpers.Helpers;
 using NetRunners.Patchers;
 using NetRunners.Heuristics;
-using CommandLine;
 
 namespace NetRunners.Loader
 {
