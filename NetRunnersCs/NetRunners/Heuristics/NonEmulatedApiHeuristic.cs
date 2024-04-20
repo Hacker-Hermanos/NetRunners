@@ -14,8 +14,6 @@ namespace NetRunners.Heuristics
             IntPtr pMemory;
             IntPtr checkPtr;
 
-            Console.WriteLine("we here");
-
             pMemory = VirtualAllocExNuma(GetCurrentProcess(), IntPtr.Zero, 0x1000, 0x3000, 0x4, 0);
             checkPtr = FlsAlloc(IntPtr.Zero);
             result = (pMemory == null || checkPtr == null)
