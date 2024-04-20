@@ -1,0 +1,8 @@
+C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersExe\obj\x86\Release\NetRunnersExe.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersExe\obj\x86\Release\NetRunnersExe.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersExe\obj\x86\Release\NetRunnersExe.csproj.Fody.CopyLocal.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersExe\obj\x86\Release\NetRunnersExe.csproj.Fody.RuntimeCopyLocal.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersExe\obj\x86\Release\NetRunnersExe.csproj.CopyComplete
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x86\NR.exe.config
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x86\NR.exe
+C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersExe\obj\x86\Release\NR.exe

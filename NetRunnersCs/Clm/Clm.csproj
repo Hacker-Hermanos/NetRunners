@@ -57,6 +57,7 @@
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <UseVSHostingProcess>true</UseVSHostingProcess>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -79,6 +80,7 @@
     <ErrorReport>none</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.PowerShell.ConsoleHost, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -112,8 +114,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>cd $(OutDir)
-del CommandLine.xml
-del Encryptor.exe.config
-del System.Diagnostics.DiagnosticSource.xml</PostBuildEvent>
+del Clm.exe.config
+del Microsoft.PowerShell.ConsoleHost.dll
+del System.Management.Automation.dll</PostBuildEvent>
   </PropertyGroup>
 </Project>

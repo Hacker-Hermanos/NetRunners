@@ -1,0 +1,4 @@
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x86\PrintSpoofer.exe.config
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x86\PrintSpoofer.exe
+C:\Users\Administrator\Desktop\NetRunnersCs\PrintSpoofer\obj\x86\Release\PrintSpoofer.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\PrintSpoofer\obj\x86\Release\PrintSpoofer.exe

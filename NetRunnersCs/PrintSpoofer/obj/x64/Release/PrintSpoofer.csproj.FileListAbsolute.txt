@@ -3,3 +3,8 @@ C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Release\x64\PrintSpoofer.exe
 C:\Users\rafa\Desktop\NR\NetRunnersCs\PrintSpoofer\obj\x64\Release\PrintSpoofer.csproj.AssemblyReference.cache
 C:\Users\rafa\Desktop\NR\NetRunnersCs\PrintSpoofer\obj\x64\Release\PrintSpoofer.csproj.CoreCompileInputs.cache
 C:\Users\rafa\Desktop\NR\NetRunnersCs\PrintSpoofer\obj\x64\Release\PrintSpoofer.exe
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x64\PrintSpoofer.exe.config
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x64\PrintSpoofer.exe
+C:\Users\Administrator\Desktop\NetRunnersCs\PrintSpoofer\obj\x64\Release\PrintSpoofer.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\PrintSpoofer\obj\x64\Release\PrintSpoofer.exe
+C:\Users\Administrator\Desktop\NetRunnersCs\PrintSpoofer\obj\x64\Release\PrintSpoofer.csprojAssemblyReference.cache

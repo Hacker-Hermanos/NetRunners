@@ -1,0 +1,7 @@
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x86\Loader.exe.config
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x86\Loader.exe
+C:\Users\Administrator\Desktop\NetRunnersCs\Loader\obj\x86\Release\Loader.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Loader\obj\x86\Release\Loader.csproj.Fody.CopyLocal.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Loader\obj\x86\Release\Loader.csproj.Fody.RuntimeCopyLocal.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Loader\obj\x86\Release\Loader.csproj.CopyComplete
+C:\Users\Administrator\Desktop\NetRunnersCs\Loader\obj\x86\Release\Loader.exe

@@ -1,0 +1,8 @@
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x86\Encryptor.exe.config
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x86\Encryptor.exe
+C:\Users\Administrator\Desktop\NetRunnersCs\Encryptor\obj\x86\Release\Encryptor.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Encryptor\obj\x86\Release\Encryptor.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Encryptor\obj\x86\Release\Encryptor.csproj.Fody.CopyLocal.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Encryptor\obj\x86\Release\Encryptor.csproj.Fody.RuntimeCopyLocal.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Encryptor\obj\x86\Release\Encryptor.csproj.CopyComplete
+C:\Users\Administrator\Desktop\NetRunnersCs\Encryptor\obj\x86\Release\Encryptor.exe

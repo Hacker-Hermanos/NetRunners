@@ -20,7 +20,8 @@ namespace NetRunners.Heuristics
                 ? false
                 : true;
 
-            Console.WriteLine("[+] Non-Emulated APIs Check Done!");
+            Console.WriteLine("[+] VirtualAllocExNuma Check :   Success!");
+            Console.WriteLine("[+] FlsAlloc Check           :   Success!");
 
             return result;
         }

@@ -21,7 +21,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Patchers\AmsiPatcher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Patchers\EtwPatcher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Runners\DefaultRunner.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Runners\EntryPointStompingRunner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Runners\EntryPointStompingProcessInjectionRunner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Runners\ClassicProcessInjectionRunner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Runners\ProcessInjectionClassicDll.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Runners\SuspendedProcessInjectionRunner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Runners\ProcessInjectionRunner.cs" />
   </ItemGroup>
   <ItemGroup>

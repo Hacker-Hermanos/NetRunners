@@ -1,0 +1,4 @@
+C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersDLL\obj\x86\Release\NetRunnersDll.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersDLL\obj\x86\Release\NetRunnersDll.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x86\NR.dll
+C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersDLL\obj\x86\Release\NR.dll

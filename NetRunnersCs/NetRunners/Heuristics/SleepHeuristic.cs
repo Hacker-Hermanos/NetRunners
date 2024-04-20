@@ -15,19 +15,19 @@ namespace NetRunners.Heuristics
 			bool result;
             double t2;
             DateTime t1;
+            int seconds = 2000;
 
-            Console.WriteLine("[+] Sleeping 2\"");
+            Console.WriteLine($"[+] Sleeping {seconds /1000 }\"...");
 
 			t1 = DateTime.Now;
-			Thread.Sleep(2000);
+			Thread.Sleep(seconds);
 			t2 = DateTime.Now.Subtract(t1).TotalSeconds;
 
 			result = (t2 < 1.5)
 			    ? false
                 : true;
 
-            Console.WriteLine("[+] Sleep Check Done!");
-
+            Console.WriteLine("[+] Sleep Check              :   Success!");
             return result;
         }
     }

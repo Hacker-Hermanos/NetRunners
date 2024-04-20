@@ -18,3 +18,10 @@ C:\Users\rafa\Desktop\NR\NetRunnersCs\Loader\obj\x64\Release\Loader.csproj.Fody.
 C:\Users\rafa\Desktop\NR\NetRunnersCs\Loader\obj\x64\Release\Loader.csproj.Fody.RuntimeCopyLocal.cache
 C:\Users\rafa\Desktop\NR\NetRunnersCs\Loader\obj\x64\Release\Loader.csproj.CopyComplete
 C:\Users\rafa\Desktop\NR\NetRunnersCs\Loader\obj\x64\Release\Loader.exe
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x64\Loader.exe.config
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x64\Loader.exe
+C:\Users\Administrator\Desktop\NetRunnersCs\Loader\obj\x64\Release\Loader.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Loader\obj\x64\Release\Loader.csproj.Fody.CopyLocal.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Loader\obj\x64\Release\Loader.csproj.Fody.RuntimeCopyLocal.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Loader\obj\x64\Release\Loader.csproj.CopyComplete
+C:\Users\Administrator\Desktop\NetRunnersCs\Loader\obj\x64\Release\Loader.exe

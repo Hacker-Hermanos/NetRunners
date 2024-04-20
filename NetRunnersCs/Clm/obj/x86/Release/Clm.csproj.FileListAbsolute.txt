@@ -1,0 +1,6 @@
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x86\Clm.exe.config
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x86\Clm.exe
+C:\Users\Administrator\Desktop\NetRunnersCs\Clm\obj\x86\Release\Clm.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Clm\obj\x86\Release\Clm.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Clm\obj\x86\Release\Clm.csproj.CopyComplete
+C:\Users\Administrator\Desktop\NetRunnersCs\Clm\obj\x86\Release\Clm.exe

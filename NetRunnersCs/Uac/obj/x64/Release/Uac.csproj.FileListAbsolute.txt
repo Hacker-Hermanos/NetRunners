@@ -6,3 +6,11 @@ C:\Users\rafa\Desktop\NR\NetRunnersCs\Uac\obj\x64\Release\Uac.csproj.Fody.CopyLo
 C:\Users\rafa\Desktop\NR\NetRunnersCs\Uac\obj\x64\Release\Uac.csproj.Fody.RuntimeCopyLocal.cache
 C:\Users\rafa\Desktop\NR\NetRunnersCs\Uac\obj\x64\Release\Uac.csproj.CopyComplete
 C:\Users\rafa\Desktop\NR\NetRunnersCs\Uac\obj\x64\Release\Uac.exe
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x64\Uac.exe.config
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x64\Uac.exe
+C:\Users\Administrator\Desktop\NetRunnersCs\Uac\obj\x64\Release\Uac.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Uac\obj\x64\Release\Uac.csproj.Fody.CopyLocal.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Uac\obj\x64\Release\Uac.csproj.Fody.RuntimeCopyLocal.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Uac\obj\x64\Release\Uac.csproj.CopyComplete
+C:\Users\Administrator\Desktop\NetRunnersCs\Uac\obj\x64\Release\Uac.exe
+C:\Users\Administrator\Desktop\NetRunnersCs\Uac\obj\x64\Release\Uac.csprojAssemblyReference.cache

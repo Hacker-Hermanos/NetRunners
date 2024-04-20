@@ -1,0 +1,8 @@
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x86\Uac.exe.config
+C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x86\Uac.exe
+C:\Users\Administrator\Desktop\NetRunnersCs\Uac\obj\x86\Release\Uac.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Uac\obj\x86\Release\Uac.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Uac\obj\x86\Release\Uac.csproj.Fody.CopyLocal.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Uac\obj\x86\Release\Uac.csproj.Fody.RuntimeCopyLocal.cache
+C:\Users\Administrator\Desktop\NetRunnersCs\Uac\obj\x86\Release\Uac.csproj.CopyComplete
+C:\Users\Administrator\Desktop\NetRunnersCs\Uac\obj\x86\Release\Uac.exe

