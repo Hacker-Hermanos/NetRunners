@@ -170,5 +170,18 @@ namespace NetRunners.Helpers
             }
             Console.WriteLine("");
         }
+        public static void PrintBanner()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            string banner = @"
+   _  __    __  ___      linktr.ee/hackerhermanos
+  / |/ /__ / /_/ _ \__ _____  ___  ___ _______
+ /    / -_) __/ , _/ // / _ \/ _ \/ -_) __(_-<
+/_/|_/\__/\__/_/|_|\_,_/_//_/_//_/\__/_/ /___/
+";
+            Console.WriteLine(banner);
+            Console.ResetColor();
+        }
     }
 }

@@ -27,9 +27,10 @@ namespace NetRunners.Exe
         /// </param>
         static void Main(string[] args)
         {
+            NetRunners.Helpers.Helper.PrintBanner();
+
             // evasion
             NetRunners.Helpers.Helper.PerformChecks();
-
             // execute runner
             IRunner runner = DetermineRunner(args);
             runner?.Run();

