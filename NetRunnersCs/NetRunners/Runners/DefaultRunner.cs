@@ -26,6 +26,8 @@ namespace NetRunners.Runners
 
             try
             {
+                Console.WriteLine("[+] Default Shellcode Runner selected!");
+
                 // call virtual alloc to allocate memory space here
                 pMemory = VirtualAlloc(IntPtr.Zero, (uint)sBuf, 0x3000, PAGE_READWRITE);
                 if (pMemory == IntPtr.Zero)

@@ -29,13 +29,10 @@ namespace NetRunners.Exe
             switch (call)
             {
                 case "-pi":
-                    Console.WriteLine("Process Injection Shellcode Runner selected!");
                     return new ProcessInjectionRunner();
                 case "-eps":
-                    Console.WriteLine("EntryPoint Stomping Shellcode Runner selected!");
                     return new EntryPointStompingRunner();
                 default:
-                    Console.WriteLine("Default Shellcode Runner selected!");
                     return new DefaultRunner();
             }
         }

