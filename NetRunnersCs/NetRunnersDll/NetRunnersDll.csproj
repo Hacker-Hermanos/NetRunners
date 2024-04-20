@@ -88,4 +88,9 @@
   </ItemGroup>
   <Import Project="..\NetRunners\NetRunners.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>cd $(OutDir)
+del *.nlp
+del mscorlib.dll</PostBuildEvent>
+  </PropertyGroup>
 </Project>

@@ -75,4 +75,11 @@
   </ItemGroup>
   <Import Project="..\NetRunners\NetRunners.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>cd $(OutDir)
+del CommandLine.xml
+del PrintSpoofer.exe.config
+del System.Diagnostics.DiagnosticSource.xml
+</PostBuildEvent>
+  </PropertyGroup>
 </Project>

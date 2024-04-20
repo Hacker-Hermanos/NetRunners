@@ -112,6 +112,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>cd $(OutDir)
-del *.config</PostBuildEvent>
+del CommandLine.xml
+del Encryptor.exe.config
+del System.Diagnostics.DiagnosticSource.xml</PostBuildEvent>
   </PropertyGroup>
 </Project>

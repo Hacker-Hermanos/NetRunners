@@ -104,6 +104,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>cd $(OutDir)
-del *.config</PostBuildEvent>
-  </PropertyGroup>
+del NetRunnersSvc.exe.config
+del System.Diagnostics.DiagnosticSource.xml
+</PostBuildEvent>
 </Project>
