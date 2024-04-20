@@ -1,0 +1,2 @@
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersPrintSpoofer\$(SolutionDir)bin\$(Configuration)\$(Platform)\NetRunnersPrintSpoofer.exe.config
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersPrintSpoofer\$(SolutionDir)bin\$(Configuration)\$(Platform)\NetRunnersPrintSpoofer.exe

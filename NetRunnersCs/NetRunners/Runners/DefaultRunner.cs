@@ -27,7 +27,7 @@ namespace NetRunners.Runners
             try
             {
                 // call virtual alloc to allocate memory space here
-                pMemory = VirtualAlloc(IntPtr.Zero, (UIntPtr)sBuf, 0x3000, PAGE_READWRITE);
+                pMemory = VirtualAlloc(IntPtr.Zero, (uint)sBuf, 0x3000, PAGE_READWRITE);
                 if (pMemory == IntPtr.Zero)
                     throw new InvalidOperationException($"VirtualAlloc failed with error code: {Marshal.GetLastWin32Error()} ");
 

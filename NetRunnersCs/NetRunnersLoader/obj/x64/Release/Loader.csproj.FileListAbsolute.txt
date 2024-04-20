@@ -1,6 +1,0 @@
-\\192.168.45.205\kali\Share\Repos\NetRunners\NetRunnersCs\bin\Release\x64\Loader.exe.config
-\\192.168.45.205\kali\Share\Repos\NetRunners\NetRunnersCs\bin\Release\x64\Loader.exe
-\\192.168.45.205\kali\Share\Repos\NetRunners\NetRunnersCs\NetRunnersLoader\obj\x64\Release\Loader.csprojAssemblyReference.cache
-\\192.168.45.205\kali\Share\Repos\NetRunners\NetRunnersCs\NetRunnersLoader\obj\x64\Release\Loader.csproj.CoreCompileInputs.cache
-\\192.168.45.205\kali\Share\Repos\NetRunners\NetRunnersCs\NetRunnersLoader\obj\x64\Release\Loader.csproj.CopyComplete
-\\192.168.45.205\kali\Share\Repos\NetRunners\NetRunnersCs\NetRunnersLoader\obj\x64\Release\Loader.exe

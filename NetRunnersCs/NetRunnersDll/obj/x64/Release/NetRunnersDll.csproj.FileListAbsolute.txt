@@ -7,3 +7,8 @@ C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersDLL\obj\x64\Release\NetRun
 C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersDLL\obj\x64\Release\NetRunnersDll.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersDLL\obj\x64\Release\NetRunnersDll.dll
 C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersDLL\obj\x64\Release\NetRunnersDll.csproj.CopyComplete
+C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Release\x64\NetRunnersDll.dll
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersDLL\obj\x64\Release\NetRunnersDll.csproj.AssemblyReference.cache
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersDLL\obj\x64\Release\NetRunnersDll.csproj.CoreCompileInputs.cache
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersDLL\obj\x64\Release\NetRunnersDll.csproj.CopyComplete
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersDLL\obj\x64\Release\NetRunnersDll.dll

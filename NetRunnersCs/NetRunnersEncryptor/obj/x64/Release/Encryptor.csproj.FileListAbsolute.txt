@@ -1,6 +1,0 @@
-C:\Users\rafa\Desktop\NetRunnersCs\bin\Release\x64\Encryptor.exe.config
-C:\Users\rafa\Desktop\NetRunnersCs\bin\Release\x64\Encryptor.exe
-C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersEncryptor\obj\x64\Release\Encryptor.csproj.AssemblyReference.cache
-C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersEncryptor\obj\x64\Release\Encryptor.csproj.CoreCompileInputs.cache
-C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersEncryptor\obj\x64\Release\Encryptor.csproj.Up2Date
-C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersEncryptor\obj\x64\Release\Encryptor.exe

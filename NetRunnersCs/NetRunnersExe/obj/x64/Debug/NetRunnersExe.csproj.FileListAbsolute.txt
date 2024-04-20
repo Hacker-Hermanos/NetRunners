@@ -1,0 +1,10 @@
+C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Debug\x64\NetRunners.exe.config
+C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Debug\x64\NetRunners.exe
+C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Debug\x64\NetRunners.pdb
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersExe\obj\x64\Debug\NetRunnersExe.csproj.AssemblyReference.cache
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersExe\obj\x64\Debug\NetRunnersExe.csproj.CoreCompileInputs.cache
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersExe\obj\x64\Debug\NetRunnersExe.csproj.Fody.CopyLocal.cache
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersExe\obj\x64\Debug\NetRunnersExe.csproj.Fody.RuntimeCopyLocal.cache
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersExe\obj\x64\Debug\NetRunnersExe.csproj.CopyComplete
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersExe\obj\x64\Debug\NetRunners.exe
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersExe\obj\x64\Debug\NetRunners.pdb

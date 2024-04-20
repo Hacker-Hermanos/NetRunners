@@ -1,0 +1,6 @@
+C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Release\x64\Clm.exe.config
+C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Release\x64\Clm.exe
+C:\Users\rafa\Desktop\NR\NetRunnersCs\Clm\obj\x64\Release\Clm.csproj.AssemblyReference.cache
+C:\Users\rafa\Desktop\NR\NetRunnersCs\Clm\obj\x64\Release\Clm.csproj.CoreCompileInputs.cache
+C:\Users\rafa\Desktop\NR\NetRunnersCs\Clm\obj\x64\Release\Clm.csproj.CopyComplete
+C:\Users\rafa\Desktop\NR\NetRunnersCs\Clm\obj\x64\Release\Clm.exe

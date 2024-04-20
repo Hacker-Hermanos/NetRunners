@@ -48,5 +48,18 @@ namespace NetRunners.Data
             public IntPtr UniquePid;
             public IntPtr MoreReserved;
         }
+        // Initialize structures for ConvertSidToStringSid
+        // PROCESSINFO
+        // STARTUPINFO
+        [StructLayout(LayoutKind.Sequential)]
+        public struct SID_AND_ATTRIBUTES
+        {
+            public IntPtr Sid;
+            public int Attributes;
+        }
+        public struct TOKEN_USER
+        {
+            public SID_AND_ATTRIBUTES User;
+        }
     }
 }

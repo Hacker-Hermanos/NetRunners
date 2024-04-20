@@ -1,0 +1,8 @@
+C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Release\x64\Uac.exe.config
+C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Release\x64\Uac.exe
+C:\Users\rafa\Desktop\NR\NetRunnersCs\Uac\obj\x64\Release\Uac.csproj.AssemblyReference.cache
+C:\Users\rafa\Desktop\NR\NetRunnersCs\Uac\obj\x64\Release\Uac.csproj.CoreCompileInputs.cache
+C:\Users\rafa\Desktop\NR\NetRunnersCs\Uac\obj\x64\Release\Uac.csproj.Fody.CopyLocal.cache
+C:\Users\rafa\Desktop\NR\NetRunnersCs\Uac\obj\x64\Release\Uac.csproj.Fody.RuntimeCopyLocal.cache
+C:\Users\rafa\Desktop\NR\NetRunnersCs\Uac\obj\x64\Release\Uac.csproj.CopyComplete
+C:\Users\rafa\Desktop\NR\NetRunnersCs\Uac\obj\x64\Release\Uac.exe
