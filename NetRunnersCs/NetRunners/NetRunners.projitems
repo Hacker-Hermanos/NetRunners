@@ -20,12 +20,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IRunner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Patchers\AmsiPatcher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Patchers\EtwPatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Runners\ClassicDllInjectionRunner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Runners\DefaultRunner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Runners\EntryPointStompingProcessInjectionRunner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Runners\ClassicProcessInjectionRunner.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Runners\ProcessInjectionClassicDll.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Runners\SuspendedProcessInjectionRunner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Runners\NewProcessInjectionRunner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Runners\ProcessInjectionRunner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Runners\ReflectiveDllLoad.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Scripts %28VBA, PS%29\AES.ps1" />

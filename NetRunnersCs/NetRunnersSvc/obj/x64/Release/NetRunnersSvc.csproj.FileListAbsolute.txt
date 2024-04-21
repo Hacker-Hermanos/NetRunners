@@ -3,13 +3,13 @@ C:\Users\rafa\Desktop\NetRunnersCs\bin\Release\x64\NetRunnersSvc.exe
 C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.csproj.AssemblyReference.cache
 C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.csproj.CoreCompileInputs.cache
 C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.exe
-C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Release\x64\NetRunnersSvc.exe.config
-C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Release\x64\NetRunnersSvc.exe
 C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.csproj.AssemblyReference.cache
 C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.csproj.CoreCompileInputs.cache
-C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.exe
 C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersSvc\obj\x64\Release\NetRunnersSvc.csprojAssemblyReference.cache
 C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x64\NR.Svc.exe.config
 C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x64\NR.Svc.exe
 C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersSvc\obj\x64\Release\NR.Svc.exe
+C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Release\x64\NR.Svc.exe.config
+C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Release\x64\NR.Svc.exe
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersSvc\obj\x64\Release\NR.Svc.exe

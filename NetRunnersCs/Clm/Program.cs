@@ -12,7 +12,7 @@ namespace NetRunners.Clm
         static void Main(string[] args)
         {
             // evasion
-            NetRunners.Helpers.Helper.PerformChecks();
+            NetRunners.Helpers.Helper.PerformEvasion();
 
             string cmd = args.Length == 1 ? args[0] : string.Empty;
 
@@ -36,7 +36,7 @@ namespace NetRunners.Clm
         public override void Uninstall(System.Collections.IDictionary savedState)
         {
             // evasion
-            NetRunners.Helpers.Helper.PerformChecks();
+            NetRunners.Helpers.Helper.PerformEvasion();
 
             string cmd = NetRunners.Helpers.Helper.SelectCmd();
  

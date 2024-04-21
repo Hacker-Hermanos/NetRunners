@@ -4,14 +4,11 @@ C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersExe\obj\x64\Release\NetRunnersExe.c
 C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersExe\obj\x64\Release\NetRunnersExe.csproj.CoreCompileInputs.cache
 C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersExe\obj\x64\Release\NetRunne.AF9FFB32.Up2Date
 C:\Users\rafa\Desktop\NetRunnersCs\NetRunnersExe\obj\x64\Release\NetRunners.exe
-C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Release\x64\NetRunners.exe.config
-C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Release\x64\NetRunners.exe
 C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersExe\obj\x64\Release\NetRunnersExe.csproj.AssemblyReference.cache
 C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersExe\obj\x64\Release\NetRunnersExe.csproj.CoreCompileInputs.cache
 C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersExe\obj\x64\Release\NetRunnersExe.csproj.Fody.CopyLocal.cache
 C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersExe\obj\x64\Release\NetRunnersExe.csproj.Fody.RuntimeCopyLocal.cache
 C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersExe\obj\x64\Release\NetRunnersExe.csproj.CopyComplete
-C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersExe\obj\x64\Release\NetRunners.exe
 C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersExe\obj\x64\Release\NetRunnersExe.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersExe\obj\x64\Release\NetRunnersExe.csproj.Fody.CopyLocal.cache
 C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersExe\obj\x64\Release\NetRunnersExe.csproj.Fody.RuntimeCopyLocal.cache
@@ -20,3 +17,6 @@ C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersExe\obj\x64\Release\NetRun
 C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x64\NR.exe.config
 C:\Users\Administrator\Desktop\NetRunnersCs\bin\Release\x64\NR.exe
 C:\Users\Administrator\Desktop\NetRunnersCs\NetRunnersExe\obj\x64\Release\NR.exe
+C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Release\x64\NR.exe.config
+C:\Users\rafa\Desktop\NR\NetRunnersCs\bin\Release\x64\NR.exe
+C:\Users\rafa\Desktop\NR\NetRunnersCs\NetRunnersExe\obj\x64\Release\NR.exe

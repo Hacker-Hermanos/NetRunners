@@ -10,7 +10,7 @@ namespace NetRunners.PrintSpoofer
             string cmd = NetRunners.Helpers.Helper.SelectCmd();
             
             // evasion
-            NetRunners.Helpers.Helper.PerformChecks();
+            NetRunners.Helpers.Helper.PerformEvasion();
 
             string pipeName = (args[0] != null)
                 ? args[0]
@@ -32,7 +32,7 @@ namespace NetRunners.PrintSpoofer
             string pipeName = "mypipe";     // default name
             
             // evasion
-            NetRunners.Helpers.Helper.PerformChecks();
+            NetRunners.Helpers.Helper.PerformEvasion();
             // execution
             Exploit(pipeName, cmd);
         }
